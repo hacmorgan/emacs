@@ -1,0 +1,16 @@
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/data_processing/seqview/preferences/platypus.scout.ping.json
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!platypus!scout!data_processing!seqview!preferences!platypus.scout.ping.json#
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/data_processing/platypus-scout-calc
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!platypus!scout!data_processing!platypus-scout-calc#
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/systemd/bluerobotics-ping-sonar.service
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!platypus!scout!systemd!bluerobotics-ping-sonar.service#
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/data_processing/README.md
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!platypus!scout!data_processing!README.md#
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/README.md
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!platypus!scout!README.md#
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/ops-manual/ops-manual.pdf
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!platypus!scout!ops-manual!ops-manual.pdf#
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/abyss-bedrock/sensors/bluerobotics/bluerobotics-ping-sonar-to-csv
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!abyss-bedrock!sensors!bluerobotics!bluerobotics-ping-sonar-to-csv#
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/rpi_install.sh
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!platypus!scout!rpi_install.sh#

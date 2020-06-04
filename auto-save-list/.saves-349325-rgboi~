@@ -1,0 +1,10 @@
+/ssh:work:/home/hamish/src/abyss/operations/model-processing/standard-workflow/abyss-photogrammetry
+/tmp/#!ssh:work:!home!hamish!src!abyss!operations!model-processing!standard-workflow!abyss-photogrammetry#
+/ssh:work:/home/hamish/src/abyss/operations/model-processing/calibration/calibration-les-2.sh
+/tmp/#!ssh:work:!home!hamish!src!abyss!operations!model-processing!calibration!calibration-les-2.sh#
+/ssh:work:/home/hamish/src/abyss/operations/model-processing/standard-workflow/les-metashape-from-seqview.sh
+/tmp/#!ssh:work:!home!hamish!src!abyss!operations!model-processing!standard-workflow!les-metashape-from-seqview.sh#
+/ssh:work:/home/hamish/src/abyss/operations/model-processing/standard-workflow/lantern-to-seqview-video.sh
+/tmp/#!ssh:work:!home!hamish!src!abyss!operations!model-processing!standard-workflow!lantern-to-seqview-video.sh#
+/ssh:work:/home/hamish/src/abyss/platypus/scout/data_processing/platypus-scout-calc
+/tmp/#!ssh:work:!home!hamish!src!abyss!platypus!scout!data_processing!platypus-scout-calc#

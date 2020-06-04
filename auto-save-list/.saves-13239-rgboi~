@@ -1,0 +1,10 @@
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/data_processing/examples/ping-sonar-accumulate
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!platypus!scout!data_processing!examples!ping-sonar-accumulate#
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/setup.py
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!platypus!scout!setup.py#
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/data_processing/platypus-scout-calc
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!platypus!scout!data_processing!platypus-scout-calc#
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/abyss-bedrock/sensors/oculus/examples/extract-sonar
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!abyss-bedrock!sensors!oculus!examples!extract-sonar#
+/ssh:hamish@10.0.0.73:/home/hamish/src/abyss/platypus/setup.py
+/tmp/#!ssh:hamish@10.0.0.73:!home!hamish!src!abyss!platypus!setup.py#
