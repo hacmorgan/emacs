@@ -1,2 +1,6 @@
+/home/hamish/.emacs.d/init.el
+/home/hamish/.emacs.d/#init.el#
 /ssh:processor:/mnt/pond/processed/bp/2020-05-28-mad-dog-uwild/setup/calibration/20191020/calibration.150ft/validation-unit-accuracies.csv
 /tmp/#!ssh:processor:!mnt!pond!processed!bp!2020-05-28-mad-dog-uwild!setup!calibration!20191020!calibration.150ft!validation-unit-accuracies.csv#
+/home/hamish/.emacs.d/elpa/org-20200602/org-loaddefs.el
+/home/hamish/.emacs.d/elpa/org-20200602/#org-loaddefs.el#
