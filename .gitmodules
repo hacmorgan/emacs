@@ -1,0 +1,3 @@
+[submodule "cyberpunk"]
+	path = cyberpunk
+	url = https://github.com/n3mo/cyberpunk-theme.el.git

@@ -6,6 +6,7 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (setq use-package-always-pin  "melpa-stable")
 (package-initialize)
 
@@ -17,15 +18,10 @@
 ;; Reduce load time
 (eval-when-compile (require 'use-package))
 
-;; Initialise evilmode
-(add-to-list 'load-path "~/.emacs.d/evil")
-
-;; Initialise org mode
-(add-to-list 'load-path "~/.emacs.d/org")
-
 ;; Initialise cyberpunk theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/cyberpunk/")
 
+;; evilmode
 (require 'evil)
 (evil-mode 1)
 (setq x-super-keysym 'meta)
@@ -52,7 +48,7 @@
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(package-selected-packages
    (quote
-    (csv-mode magit haskell-mode ein markdown-mode company)))
+    (org evil csv-mode magit haskell-mode ein markdown-mode company)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(vc-follow-symlinks t))
@@ -76,10 +72,8 @@
 (setq backup-directory-alist `(("." . "~/.emacs_backups")))
 (setq backup-by-copying t)
 
-;; Set python to indent by tabs
+;; set default tab width
 (setq-default tab-width 4)
-(setq python-indent-tabs-mode t)
-
 
 ;; (add-hook 'org-mode-hook #'toggle-word-wrap)
 (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
