@@ -1,0 +1,352 @@
+#!/usr/bin/env python3
+
+# Abyss Metashape scripting
+# Author: Jordan Jolly
+# Date: June 2019
+
+import 	Metashape
+import 	os, sys, math, time, json
+from 	functions import config_parse
+from 	array import *
+from 	shutil import copyfile
+import 	datetime
+import 	argparse
+
+# FUNCTIONS
+
+# Attempts to realign any non-aligned images once. Returns number of non-aligned images
+def realign_cameras(photo_list, chunk):
+	camera_realign=[]  #array storing non aligned images
+	nonaligned=0
+	
+	print(photo_list)
+	
+	# Finds non-aligned
+	for i in range(0, len(photo_list)):
+		camera=chunk.cameras[i]
+		if camera.transform == None: #Checking for non-aligned photos
+			camera_realign.append(camera)
+			print (str(camera) + " did NOT align")
+		print(i)
+	# Aligning non-aligned photos
+	if len(camera_realign)>0:
+		print("WARNING: " + str(len(camera_realign)) 
+			+ " Camera(s) or (" 
+			+ str(100*float(len(camera_realign))/float(len(photo_list)))
+			+ "% of Cameras) did NOT realign")
+		print("Attempting realignment")
+		chunk.alignCameras(camera_realign) #re-aligning
+		chunk.optimizeCameras()
+
+		return nonaligned #return number of misaligned images
+
+	else:
+	        return 0	#No mis-alignments
+
+
+
+def make_export_filepath(save_path, model_name, folder):
+	if folder == "model":
+		export_filepath=save_path + "/model-output/"
+		if not os.path.exists(export_filepath):
+			os.makedirs(export_filepath)
+
+	elif folder == "documents":
+		export_filepath=save_path + "/textfiles-output/"
+		if not os.path.exists(export_filepath):
+			os.makedirs(export_filepath)
+
+	elif folder == "pointcloud":
+		export_filepath=save_path + "/pointcloud-output/"
+		if not os.path.exists(export_filepath):
+			os.makedirs(export_filepath)
+
+	else:
+		return "Error creating save directories"
+
+	export_filepath += model_name
+	return export_filepath 		#return save filepath
+
+def save_and_update(doc, project_path, chunk):
+	doc.save(project_path, [chunk])
+	Metashape.app.update()
+
+def print_divide():
+	print("\n******************************************************\n")
+
+def vector_distance(a, b):
+	return math.sqrt(math.pow((a[0]-b[0]),2)+math.pow((a[1]-b[1]),2)+math.pow((a[2]-b[2]),2))
+
+
+
+# MAIN
+def main(): 
+
+	# Instantiate the parser
+	parser = argparse.ArgumentParser(description='Abyss Metashape scripting')
+
+	# Required Args
+	parser.add_argument('i', type=str, help='input directory')
+	parser.add_argument('c', type=str, help='path to calibrations dir')
+	parser.add_argument('e', type=str, help='extrincs config.json file from datasets log')
+	parser.add_argument('-o', type=str, help='output directory')
+	parser.add_argument('-z', type=str, help='An optional integer argument')
+	parser.add_argument('-p', type=str, help='processing_json for processing')
+	parser.add_argument('-s', type=int, help='Stereo TRUE flag (deprecated)', default=0) 
+	parser.add_argument('-m', type=int, help='build object file model', default=0)
+	parser.add_argument('-t', type=int, help='build model with texture', default=0 )
+	parser.add_argument('-f', type=int, help='Fixed calibration', default=0)
+	parser.add_argument('-d', type=int, help='build model with dense cloud', default=1 )
+	#parser.add_argument('--ortho', type=int, help='build ortho photo')
+
+
+	# Parsing arguments
+	args 				= parser.parse_args()
+	input_path			= args.i
+	#cameras_json_path 	= args.c
+	extrinsic_json_path	= args.e
+	calibration_path	= args.c
+	save_path			= args.o
+	processing_json_path= args.p
+	stereo_flag			= args.s
+	build_model  		= args.m
+	build_dense			= args.d	
+	build_texture   	= args.t	
+	build_orthophoto	= False
+	FIXED_CALIBRATION	= args.f	
+	model_name			= args.z			
+
+	# Checking json files
+	try:
+		processing_json=open(processing_json_path,'r').read()
+		processing_config = json.loads(processing_json)
+	except:
+		print('ERROR: invalid processing_config file')
+		return 0
+	try:
+		print(extrinsic_json_path)
+		extrinsic_json=open(extrinsic_json_path,'r').read()
+		extrinsic_config = json.loads(extrinsic_json)
+	except:
+		print('ERROR: invalid extrincs_json file')
+		return 0
+
+	print("Script started")
+	print(input_path)
+	startTime = datetime.datetime.now()
+	print(startTime)
+
+	# SETTINGS
+
+	# PHOTOSCAN Settings
+	accuracy = 		config_parse.accuracy_get(processing_config["processing_data"]["accuracy"])  
+	preselection = 	config_parse.preselection_get(processing_config["processing_data"]["preselection"])
+	keypoints = 	processing_config["processing_data"]["keypoints"] 
+	tiepoints = 	processing_config["processing_data"]["tiepoints"] 
+	surface = 		config_parse.surface_get(processing_config["processing_data"]["surface"])
+	cloudquality = 	config_parse.cloudquality_get(processing_config["processing_data"]["cloudquality"])
+	filtering = 	config_parse.filtering_get(processing_config["processing_data"]["filtering"])
+	interpolation = config_parse.interpolation_get(processing_config["processing_data"]["interpolation"]) 
+	mapping = 		config_parse.mapping_get(processing_config["processing_data"]["mapping"])
+	atlas_size = 	processing_config["processing_data"]["atlas_size"]
+	blending = 		config_parse.blending_get(processing_config["processing_data"]["blending"])
+	facecount = 	config_parse.facecount_get(processing_config["processing_data"]["facecount"])
+
+	# ABYSS Settings
+	nonaligned_e=processing_config["processing_data"]["nonaligned_e"] # max error tolerance for non-aligned photos
+
+	# SETUP
+
+	# Checking save filename
+	project_path = os.path.join(save_path,model_name) 
+	if not os.path.exists(project_path):
+		os.makedirs(project_path)
+		print("Created directory tree for save path...")
+
+	#  USE PROPER PYTHON FUNCTION os.path etc
+	if project_path[-4:].lower() != ".psx": #double checking the extension of the project name
+		project_path += ".psx"
+
+	# Making chunk
+	doc = Metashape.app.document
+	doc.clear()
+	doc.addChunk()  #creating new chunk
+	chunk = doc.chunks[-1]
+	chunk.label = "abyss-chunk"
+
+	# Initialising camera matrix
+	cameras_array={}
+
+	# Loadings cameras and calibration files
+	for machine in os.listdir(input_path):
+
+		if any(lanterns in machine for lanterns in("lem", "les")): 
+
+			cameras_array[machine]={}
+
+			for sensor_id in os.listdir(os.path.join(input_path,machine)):
+
+				sensor = chunk.addSensor() #creating sensor instance per camera
+				
+				camera_list=[] # array of camera objects being created
+				cameras_array[machine][sensor_id]={}
+
+		
+				for image_current in sorted(os.listdir(os.path.join(input_path,machine,sensor_id))):
+
+					# Image params
+					print (image_current)
+					camera=chunk.addCamera()	
+					camera.label = os.path.join(machine,sensor_id, image_current)	
+					camera.open(os.path.join(input_path,machine,sensor_id, image_current))
+					
+					camera_list.append(camera)
+
+					# Sensor params
+					sensor.label = os.path.join(machine,sensor_id)
+					sensor.type = Metashape.Sensor.Type.Frame
+					sensor.width = camera.photo.image().width
+					sensor.height = camera.photo.image().height
+					camera.sensor = sensor
+
+				# Adding fixed calibration
+				sensor.user_calib = Metashape.Calibration()
+				cali = Metashape.Calibration()
+				cali.load(os.path.join(calibration_path,machine,sensor_id+".xml"), format="xml")
+				sensor.user_calib=cali
+
+				if FIXED_CALIBRATION:
+					sensor.fixed = True #extrinsic_config["extrinsics"][machine]["fixed"]
+					
+
+				print(sensor)
+				# Adding camera objects to main dictionary
+				cameras_array[machine][sensor_id] = camera_list 
+
+	chunk.updateTransform()
+	save_and_update(doc, project_path, chunk)	
+	print_divide()
+
+	cameras_all=[]
+
+	for _, sensor_list in cameras_array.items():
+		#print(sensor_list)
+		for _, camera_object in sensor_list.items():
+			for i in camera_object:
+				print(i)
+				cameras_all.append(i)
+	print("************")
+	print(cameras_all)
+	# MODEL CONSTRUCTION
+
+	# Photo Alignment
+	chunk.matchPhotos(accuracy = accuracy, preselection = preselection, keypoint_limit = keypoints, tiepoint_limit = tiepoints)
+	chunk.alignCameras()
+	chunk.optimizeCameras()
+
+	# Camera offsets
+	for machines, image_lists in cameras_array.items():
+		print("*****")
+		print(machines)
+		print("****")
+		print(image_lists)
+		if "les" in machines:  
+
+			camera_offset = extrinsic_config["extrinsics"][machines]
+			offset=vector_distance(camera_offset["camera-0"]["offset"],camera_offset["camera-1"]["offset"])
+			uncertainty = vector_distance(camera_offset["camera-0"]["uncertainty"],camera_offset["camera-1"]["uncertainty"])
+			print(offset)
+			print(uncertainty)
+
+			for i, j in zip(image_lists["camera-0"], image_lists["camera-1"]):
+
+				scale_bar = chunk.addScalebar(i,j)
+				scale_bar.reference.distance = offset
+				scale_bar.reference.accuracy=0.001#uncertainty
+				print(scale_bar)
+
+	chunk.updateTransform()
+	save_and_update(doc, project_path, chunk)
+
+	nonaligned = realign_cameras(cameras_all, chunk)
+	if float(nonaligned)/float(len(cameras_all)) >  nonaligned_e:
+		print("WARNING: Too many non-aligned images..... Attempting Realignment") 
+
+		nonaligned = realign_cameras(nonaligned, chunk)
+		if float(nonaligned)/float(len(cameras_all)) >  nonaligned_e:
+			print("ERROR: Too many non-aligned images.....\nExiting script")
+			return 0
+	save_and_update(doc, project_path, chunk)
+
+	# Dense Cloud 	
+	chunk.resetRegion() # Resets bounding box around sparse cloud
+
+	if build_dense:
+		chunk.buildDepthMaps(quality = cloudquality, filter = filtering)
+		chunk.buildDenseCloud(point_colors = True)
+		save_and_update(doc, project_path, chunk)
+
+	if (build_model or build_texture) and not build_orthophoto:
+		
+		# Mesh
+		chunk.buildModel(surface = surface, interpolation = interpolation, face_count=facecount)
+		save_and_update(doc, project_path, chunk)
+
+		if build_texture:
+			# Texture
+			chunk.buildUV(mapping=mapping)
+			chunk.buildTexture(blending = blending , size = atlas_size)
+			save_and_update(doc, project_path, chunk)
+			print("Model build finished")
+
+
+	# EXPORTING
+	
+	# Object files and texture
+	if (build_model or build_texture) and not build_orthophoto:
+		#Export as .obj and with jpeg texture
+		export_filepath=make_export_filepath(save_path, 
+												model_name, "model")
+		chunk.exportModel(export_filepath+".obj", binary=True, precision=6, texture_format=Metashape.ImageFormatJPEG, texture=True, normals=True, colors= True, cameras=False, format=Metashape.ModelFormatOBJ)
+		print("Model exported as an Object File")
+
+	# Orthophoto build
+	if build_orthophoto:
+		#Export as .obj and with jpeg texture
+		export_filepath=make_export_filepath(save_path, 
+												model_name, "model")
+		chunk.buildUV(mapping=Metashape.OrthophotoMapping)
+		chunk.buildTexture(blending=Metashape.MosaicBlending, size=8192)
+		chunk.buildOrthomosaic()
+		chunk.exportOrthomosaic(path=export_filepath+".tif", jpeg_quality=99)
+		#chunk.exportModel(export_filepath+".obj", binary=True, precision=6, texture_format=Metashape.ImageFormatJPEG, texture=True, normals=True, colors= True, cameras=False, format=Metashape.ModelFormatOBJ)
+		print("Build and saved Orthomosaic")
+
+	#Create new directory for point cloud export
+	export_filepath=make_export_filepath(save_path, 
+											model_name, "pointcloud")
+	chunk.exportPoints((export_filepath+".ply"), format = Metashape.PointsFormatPLY)#, projection=Metashape.CoordinateSystem("EPSG::3742"))
+
+	#create new directory for text outputs
+	export_filepath=make_export_filepath(save_path, 
+											model_name, "documents")
+	chunk.saveReference((export_filepath+"camera-localisation.txt"), 
+						Metashape.ReferenceFormat.ReferenceFormatCSV, 
+						items=Metashape.ReferenceItems.ReferenceItemsCameras) #Sets camerlocal data as ecp
+	print("Saved localisation data to local directory")
+	copyfile(processing_json_path, (export_filepath+"-metashape-processing-config.json")) #make copy of processing_config file
+	print("Saved a copy of processing_config file to local directory")
+
+	save_and_update(doc, project_path, chunk)
+	print("Script finished")
+
+	print("Script total run time: "+ str(datetime.datetime.now()-startTime))
+
+
+
+
+
+##################################################################################################
+if __name__ == "__main__":
+	main()
+

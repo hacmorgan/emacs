@@ -1,0 +1,15 @@
+#!/bin/bash
+
+function error()
+{
+    local message="backup-scout: "
+    message+="could not connect to the Scout. Please ensure the scout is powered on and is connected to the computer."
+    echo $message
+}
+
+ping -c 1 10.137.10.100 > /dev/null || error && exit 1
+
+rsync -rvh --progress pi@10.137.10.100:/home/pi/scout/ ~/documents/scout \
+    | grep "xfr" | cut -d= -f2 | cut -d/ -f1 | sed 's/^/files remaining: /g' \
+    || error && exit 1
+

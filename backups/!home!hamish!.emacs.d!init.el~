@@ -37,17 +37,14 @@
    (quote
     ("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default)))
  '(display-line-numbers (quote relative))
- '(display-line-numbers-type (quote visual))
  '(doc-view-continuous t)
  '(electric-pair-inhibit-predicate (quote electric-pair-conservative-inhibit))
  '(electric-pair-mode nil)
  '(electric-pair-preserve-balance t)
  '(global-auto-revert-mode t)
  '(global-company-mode t)
- '(global-display-line-numbers-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(line-number-mode t)
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(package-selected-packages
    (quote
@@ -60,8 +57,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(cursor ((t (:background "violet"))))
- '(line-number-current-line ((t (:inherit line-number :foreground "magenta")))))
+ '(cursor ((t (:background "violet")))))
 
 ;; Resize windows
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)

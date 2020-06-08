@@ -1,0 +1,19 @@
+% Packages
+\documentclass[12pt]{article}
+\usepackage[left=3cm, right=3cm, top=2.5cm]{geometry} %set margins
+\usepackage[document]{ragged2e}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel} 
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+
+\includegraphics[width=0.8\linewidth]{}
+  
+\end{center}
+\end{titlepage}
+
+\end{document}

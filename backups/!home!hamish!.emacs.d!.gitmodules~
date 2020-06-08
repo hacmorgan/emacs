@@ -1,0 +1,6 @@
+[submodule "cyberpunk"]
+	path = cyberpunk
+	url = https://github.com/n3mo/cyberpunk-theme.el.git
+[submodule "evil"]
+	path = evil
+	url = https://github.com/emacs-evil/evil.git

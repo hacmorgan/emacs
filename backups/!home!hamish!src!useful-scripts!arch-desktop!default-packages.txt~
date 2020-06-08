@@ -1,0 +1,11 @@
+firefox
+gimp
+   46  sudo pacman -S picom
+   64  sudo pacman -S ttf-liberation
+   72  sudo pacman -S pkgstats
+   90  sudo pacman -S yay
+  105  sudo pacman -S ntfs-3g
+  139  sudo pacman -S cmake ncurses git
+  144  sudo pacman -S cmake ncurses git
+  300  sudo pacman -S $(cat programs)
+  303  history | grep "sudo pacman -S "

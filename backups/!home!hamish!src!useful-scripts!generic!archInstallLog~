@@ -1,0 +1,6 @@
+Followed Distrotube 2019 tutorial and install guide on arch page
+Mostly was good, after chrooting, had to install vim, dhcpcd before I could use them
+Added exec i3 to ~/.xinitrc
+See the arch wiki for starting x at login
+Must start and enable systemd-timesyncd.serivce
+

@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# First ensure we are in the repo 
+cd $(dirname "$0")
+
+# todo: putting bluerobotics-ping-sonar-to-csv is too hacky
+#       still a hack, but it might be better to instead create
+#       something like a subset of abyss-bedrock with only
+#       sensors/bluerobotics/bluerobotics-ping-sonar-to-csv
+#       and a special setup.py for it:
+#           platypus/scout/abyss-bedrock/setup.py
+#       then install.sh would curl bluerobotics-ping-sonar-to-csv
+#       to platypus/scout/abyss-bedrock/sensors/...sonar-to-csv
+#       this is hacky, too, but at least does separation of
+#       concerns
+# todo: certainly move install.sh to platypus/scout/install.sh
+
+# get the ping-sonar-to-csv script and make it executable
+dest=scout/sensors/bluerobotics/bluerobotics-ping-sonar-to-csv
+curl -L "https://raw.githubusercontent.com/abyss-solutions/abyss-bedrock/master/sensors/bluerobotics/bluerobotics-ping-sonar-to-csv?token=AESKDVGNEGHM4KFYPU6VJNS6QGBS6" -o $dest
+chmod +x $dest
+
+# perform the installation
+sudo pip3 install .
+
+# symlink the systemd unit files
+sudo ln -s $(realpath scout/systemd/bluerobotics-ping-sonar.service) /etc/systemd/system/bluerobotics-ping-sonar.service
+sudo ln -s $(realpath scout/systemd/bluerobotics-ping-watch.service) /etc/systemd/system/bluerobotics-ping-watch.service
+
+# enable the services 
+sudo systemctl enable bluerobotics-ping-sonar.service
+sudo systemctl enable bluerobotics-ping-watch.service
+
+# start the services
+sudo systemctl start bluerobotics-ping-sonar.service
+sudo systemctl start bluerobotics-ping-watch.service
+
+# this package is not installed by default on raspbian lite, and is required for numpy
+sudo apt install libatlas-base-dev -y

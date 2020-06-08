@@ -1,0 +1,30 @@
+* A tutorial introduction
+** Data types
+C has a number of data types: 
+- =char=: one byte 
+- =int=: integer (size machine dependent, 4 bytes on 64-bit arch)
+- =short=: short integer (size machine dependent. 2 bytes on 64-bit arch)
+- =long=: long integer (size machine dependent. 8 bytes on 64-bit arch)
+- =float=: floating point (size machine dependent. 4 bytes on 64-bit arch)
+- =double=: double precision floating point (size machine dependent. 8 bytes on 64-bit arch)
+
+*** [[./chapter-1/farenToCelc.c][Farenheit to celsius]]
+In the farenheit to celsius converter, we write
+#+BEGIN_SRC C
+celsius = 5 * (fahr-32)/9 
+#+END_SRC
+because integer division truncates any fractional part, so if we wrote
+#+BEGIN_SRC C
+celsius = 5/9 * (fahr-32)
+#+END_SRC
+the =5/9= would be truncated to 0.
+
+**** Making the output prettier
+Originally we had:
+#+BEGIN_SRC C
+printf("%d\t%d\n", fahr, celsius);
+#+END_SRC
+But the output numbers weren't nicely justified. If we include a number in each =%d=, then the output will be right justified as many characters as we specify, so we change the above line to:
+#+BEGIN_SRC C
+printf("%3d %6d\n", fahr, celsius);
+#+END_SRC

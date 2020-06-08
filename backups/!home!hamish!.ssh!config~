@@ -1,0 +1,7 @@
+Host work
+     User hamish
+     HostName 10.0.0.73
+
+Host thinkpad
+     User Hamish
+     HostName 10.0.0.80 

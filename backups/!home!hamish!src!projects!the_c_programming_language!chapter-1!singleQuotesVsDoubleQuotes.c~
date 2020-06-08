@@ -1,0 +1,10 @@
+#include <stdio.h>
+
+int main ()
+{
+  int singl, doubl;
+  singl = "a";
+  doubl = 'a';
+
+  printf("Single quotes as int, char: %d, %c", singl, singl);
+}

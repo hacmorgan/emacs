@@ -1,0 +1,3 @@
+* Things that cannot be scripted
+- It is usually necessary to modify /etc/systemd/logind.conf in order to control how the system reacts to the power button or lid being closed
+- The colour of the zsh autosuggestions can be changed by modifying line 36 of zsh-autosuggestions.zsh. Currently it looks like: typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'

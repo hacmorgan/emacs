@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# simple script that generates 3D models for calibration using lantern-photogrammetry
+# written on the back of a napkin by Hamish 
+
+
+# lantern directory stores calibrations and metashape config
+new_lantern_dir="/mnt/pond/processed/bp/2020-05-28-mad-dog-uwild/setup/calibration/calibration-configs/mooring-line-fairlead-5-2019-10-23"
+
+# input and output directories, in the order they'll be used
+input_dirs=(
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-1/poly-1st-insert.518ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-1/poly-1st-insert.513ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-1/poly-1st-insert.515ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-insert-1.509ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-insert-1.512ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-insert-1.515ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-insert-515ft-redo
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-full-rope-589ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-full-rope-595ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-full-rope-600ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-7/poly-1st-insert-606ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-7/poly-1st-insert-603ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-7/poly-1st-insert-600ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-11/poly-3rd-insert.695ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-11/poly-3rd-insert.700ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-11/poly-3rd-insert.690ft
+)
+
+output_dirs=(
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-1/poly-1st-insert.518ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-1/poly-1st-insert.513ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-1/poly-1st-insert.515ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-insert-1.509ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-insert-1.512ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-insert-1.515ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-insert-515ft-redo
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-full-rope-589ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-full-rope-595ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-4/poly-full-rope-600ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-7/poly-1st-insert-606ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-7/poly-1st-insert-603ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-7/poly-1st-insert-600ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-11/poly-3rd-insert.695ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-11/poly-3rd-insert.700ft
+    /mnt/pond/datasets/bp/2019-10-07-mad-dog/uwild/mooring-line-11/poly-3rd-insert.690ft
+)
+
+
+printf "beginning batch calibration\n" >> batch-gen-video-log.txt
+for (( i=0; i<${#input_dirs[@]}; i++ )); do
+    cd ${output_dirs[i]}
+    lantern-photogrammetry model-from-seqview --input-directory ${input_dirs[i]} \
+                                              --filter darker  \
+                                              --lantern-directory "$new_lantern_dir"\
+                                              --darktable-config "/usr/local/etc/abyss/lantern-eye/darktable/example.xmp" \
+                                              --force \
+                                              --verbose \
+    | tee batch-gen-video-log.txt 2>&1 
+    [[ ${PIPESTATUS[0]} != 0 ]] || printf "\n${input_dirs[i]} processed successfully\n\n" >> batch-gen-video-log.txt
+done
+printf "\n\n\n\n" >> batch-gen-video-log.txt 2>&1

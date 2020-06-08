@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Script to automatically pull code from all git repos, and commit and push any changes
+
+for f in \
+	/home/hamish/src/useful-scripts \
+	/home/hamish/src/projects/the-c-programming-language
+do
+	echo
+	echo Updating git repo: $f
+	cd $f
+	git pull --recurse-submodules=yes
+	git commit -a -m "automatic update"
+	git push
+done

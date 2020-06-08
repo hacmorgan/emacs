@@ -1,0 +1,150 @@
+#!/usr/bin/env python3
+
+import os
+import time
+import datetime
+import sys
+import argparse
+
+
+description_string = """Watches the given directory for file size changes and new file creations to monitor
+a bluerobotics-ping-sonar-to-csv instance that is logging to that directory.
+
+Also controls an LED on a Raspberry Pi, but prints to STDERR instead if the 
+--debug flag is given.
+"""
+
+# Common message type definitions, allows simple logfile writing calls
+# and a simple way to suppress certain messages
+message_types = {
+    "start" : {
+        "msg" : "watchdog starting",
+        "is_error" : False
+    },
+    "stop" : {
+        "msg" : "watchdog stopping",
+        "is_error" : False
+    },
+    "rollover" : {
+        "msg" : "datafile rolled over",
+        "is_error" : False
+    },
+    "increasing" : {
+        "msg" : "datafile increasing size",
+        "is_error" : False
+    },
+    "terminated" : {
+        "msg" : "LOGGING INSTANCE HAS TERMINATED",
+        "is_error" : True
+    }
+}
+
+# List to be populated with any types of messages the user wants to suppress
+ignore_types = []
+
+
+# Function to print messages to stdout and write to log
+# will ignore any messages specified by the user
+def cprint(msg_type=None, logfile, is_error=False, msg_str=None):
+    
+    timestamp = datetime.datetime.utcnow().isoformat().replace('-','').replace(':','')
+
+    # Do nothing if this is a message we want to ignore
+    if msg_type in ignore_types:
+        return
+    
+    # case where msg_str is given is highest priority 
+    if msg_str is not None:
+        msg_str = str( int( is_error ) ) + "," + msg_str
+    else:
+        if msg_type in message_types.keys():
+            msg_str = str( int( message_types[msg_type]["is_error"] ) ) + ","
+            msg_str += message_types[msg_type]["msg"]
+        else:
+            eprint("message type non-existent")
+
+    # prepend timestamp
+    msg_str = timestamp + "," + msg_str
+
+    # print to STDOUT and write to file
+    print( "bluerobotics-ping-sonar-watch: ", msg_str)
+    logfile.write(msg_str)
+    logfile.flush()
+    return
+
+    
+# print to STDERR, mostly for error/debug messages for the watchdog itself
+def eprint(msg_str)
+    timestamp = datetime.datetime.utcnow().isoformat().replace('-','').replace(':','')
+    msg_str = timestamp + ": " + msg_str
+    print( "bluerobotics-ping-sonar-watch: ", msg_str, file=sys.stderr)
+
+# gets a timestamped file object to write to
+def get_new_file(args):
+     timestamp = datetime.datetime.utcnow().isoformat().replace('-','').replace(':','')
+     if args.binary:
+         return open(args.output_dir + "/" + timestamp + ".bin", "wb")
+     else:
+         return open(args.output_dir + "/" + timestamp + ".csv", "w")
+    
+# gets most recent file in the watch_dir with match_string in the name
+def get_most_recent_file(args, match_string):
+    files = []
+    directory_contents = os.listdir(args.output_dir)
+    for entry in directory_contents:
+        if entry.find(match_string) != -1:
+            files.append(entry)
+    files.sort()
+    if len(files) > 0:
+        return files[-1]
+    else:
+        cprint
+
+
+def get_args():
+    parser = argparse.ArgumentParser(description=description_string, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument('--output-dir', action="store", default=".", type=str, help="directory to write log files to (default: .)")
+    parser.add_argument('--watch-dir', action="store", required=True, type=str, help="directory to watch")
+    parser.add_argument('--ignore', action="store", type=str, help="message types to ignore")
+    parser.add_argument('--message-types', action="store_true", help="print the possible types of message to STDOUT and exit")
+    return parser.parse_args()
+
+
+def main(args):
+
+    if args.message_types:
+        print(",".join(message_types.keys()))
+        exit(0)
+
+    logfile = get_new_file(args)
+        
+    if args.ignore is not None:
+        [ignore_types.append(msg) for msg in args.ignore.split(",")]
+        
+    most_recent_outfile = args.output_dir + '/' + get_most_recent_file(args)
+    last_size = 0
+    stagnant_iterations = 0
+    
+    while True:
+        size = os.path.getsize(most_recent_outfile)
+        if size == last_size:
+            stagnant_iterations += 1
+            if stagnant_iterations > 3:
+                if args.output_dir + '/' + get_most_recent_file(args) == most_recent_outfile:
+                    cprint("terminated", True)
+                    time.sleep(3.0)
+                else:
+                    eprint('outfile rolled over')
+                # these lines must be run on file rollover or launching of a new instance
+                most_recent_outfile = args.output_dir + '/' + get_most_recent_file(args)
+                stagnant_iterations = 0
+                last_size = 0
+        else:
+            eprint('outfile increasing size')
+            stagnant_iterations = 0
+        last_size = size
+        time.sleep(1.0)
+
+        
+if __name__ == '__main__':
+    sys.exit(main(get_args()))

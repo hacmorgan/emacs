@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+from distutils.core import setup
+
+setup(
+    name = "BlueRobotics Ping sonar utilities",
+    version = "0.0.1",
+    author = "Abyss Solutions",
+    author_email = "tech@abysssolutions.com.au",
+    description = "Simple logger and watchdog programs for the BlueRobotics ping sonar",
+    packages = [],
+    scripts = [
+        "scout/sensors/bluerobotics/bluerobotics-ping-sonar-watch"
+    ],
+    install_requires = [
+        "bluerobotics-ping",
+        "numpy",
+        "RPi.GPIO"
+    ]
+)

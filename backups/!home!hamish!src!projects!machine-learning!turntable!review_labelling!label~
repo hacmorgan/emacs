@@ -1,0 +1,77 @@
+#!/usr/bin/env python
+
+import time
+import tkinter
+import cv2
+import PIL.Image, PIL.ImageTk
+import argparse
+import sys
+import signal
+import numpy as np
+
+
+img_width = 64
+img_height = 48
+
+
+def get_args():
+    parser = argparse.ArgumentParser(description='labelling tool using Tkinter')
+    parser.add_argument('--image-file', '-i', type=str, help='file containing the images')
+    parser.add_argument('--label-file', '-l', type=str, help='file to write the labels to')
+    return parser.parse_args()
+
+
+
+def get_data(args):
+    # Import data and find number of examples
+    num_records=-1
+    with open(args.image_file, "r") as infile:
+        # Find how much data we have
+        records = infile.read().split("\n")
+        for num_records, row in enumerate(records, 1): # adding 1 makes enumerate start from 1 rather than 0
+            pass
+
+        # Halt if data is not found
+        if num_records == -1:
+            print("given file contains no records", sys.stderr)
+            sys.exit(1)
+
+        # Initialise the array
+        images = np.zeros((num_records, img_height, img_width), dtype='float32')
+
+        # Initialise the numpy array
+        for i, row in enumerate(records):
+            if len(records[i]) != 0:
+                images[i,:,:] = np.fromstring(row, dtype='float32', sep=',').reshape((img_height, img_width))
+            else:
+                print("error!")
+    return images
+
+
+def main(args):
+
+    images = get_data(args)
+    labels = np.array(len(images), dtype=np.uint8)
+    with open(args.label_file, "r") as label_file:
+        labels = np.fromstring(label_file.read(), dtype=np.uint8, sep='\n')
+    
+    
+    window = tkinter.Tk()
+    canvas = tkinter.Canvas(window, width=img_width*2, height=img_height*2)
+    canvas.pack()
+
+    # print(np.shape(images))
+    image = cv2.resize(images[0,:,:], None, fx=2, fy=2)
+
+    # pillow wants images on [0,255] not [0,1] grr
+    example = PIL.ImageTk.PhotoImage(image = PIL.Image.fromarray(image))
+    canvas.create_image(0,0, image=example, anchor=tkinter.NW)
+
+    window.mainloop()
+    
+
+if __name__ == "__main__":
+    sys.exit(main(get_args()))
+    
+
+

@@ -1,0 +1,17 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = git@github.com:hacmorgan/emacs.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[submodule "cyberpunk"]
+	url = https://github.com/n3mo/cyberpunk-theme.el.git
+	active = true
+[submodule "evil"]
+	url = https://github.com/emacs-evil/evil.git
+	active = true

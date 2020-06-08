@@ -1,0 +1,21 @@
+# scout installation
+
+*This guide is for installing Platypus Scout system on a Raspberry Pi. If you just want to install `platypus-scout-calc`, see the main README in the root folder of this repo*
+
+Clone the repo and navigate to the scout directory:
+
+        cd ~/src/abyss
+        git clone git@github.com:abyss-solutions/platypus.git
+        cd platypus/scout
+	
+If installing on Raspbian lite, git and python3-pip will need to be installed first. (n.b vim is also not installed by default)
+
+
+
+	./rpi_install.sh
+
+
+**Note:** if you have already installed the utilities and need to re-install (new changes pulled, local modifications, etc.), `sudo pip3 install .` won't reinstall non-python scripts. Instead, run:
+
+	sudo pip3 install . --upgrade
+	

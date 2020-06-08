@@ -1,0 +1,2225 @@
+: 1581726331:0;l
+: 1581726337:0;./arch-package-install_after-zsh
+: 1581726475:0;cat install-scripts/graphical
+: 1581726522:0;pwd
+: 1581726538:0;cd ~/src
+: 1581726560:0;l
+: 1581726574:0;bash useful-scripts/arch-desktop/install-scripts/graphical
+: 1581726807:0;cat useful-scripts/arch-desktop/arch-package-install_after-zsh
+: 1581726964:0;cp /etc/zsh/zprofile ~/.zprofile
+: 1581726965:0;cd
+: 1581726970:0;tem .zprofile
+: 1581726974:0;emacs
+: 1581726994:0;emacs .zprofile
+: 1581727078:0;cp /etc/X11/xinit/xinitrc ~/.xinitrc
+: 1581727081:0;emacs .xinitrc
+: 1581727292:0;tem .zshrc
+: 1581727313:0;tem .zprofile
+: 1581727363:0;xrandr
+: 1581727369:0;xrandr --output HDMI-1 primary --right-of DVI-D-1
+: 1581727373:0;xrandr --output HDMI-1 --primary --right-of DVI-D-1
+: 1581727481:0;git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+: 1581727497:0;tem .zshrc
+: 1581727512:0;tem .zprofile
+: 1581727532:0;cd src
+: 1581727546:0;git clone https://git.suckless.org/st
+: 1581727559:0;cd st
+: 1581727579:0;mkdir patches
+: 1581727581:0;cd patches
+: 1581727832:0;cd ..
+: 1581727846:0;patch -i --merge patches/st-scrollback-20190331-21367a0.diff
+: 1581727859:0;patch --merge -i patches/st-scrollback-20190331-21367a0.diff
+: 1581727962:0;tem src/useful-scripts/arch-desktop/install-scripts/shell-terminal-after-zsh
+: 1581728141:0;ssh-keygen -t rsa -b 4096 -C "ham430@gmail.com"
+: 1581728153:0;eval "$(ssh-agent -s)"
+: 1581728160:0;ssh-add ~/.ssh/id_rsa
+: 1581728191:0;cat .ssh/id_rsa.pub
+: 1581728222:0;git remote set origin git@github.com:hacmorgan/st.git
+: 1581728239:0;git remote add origin git@github.com:hacmorgan/st.git
+: 1581728250:0;git remote set-head git@github.com:hacmorgan/st.git
+: 1581728279:0;git remote set-url git@github.com:hacmorgan/st.git
+: 1581728295:0;git remote set-url origin git@github.com:hacmorgan/st.git
+: 1581728302:0;git status
+: 1581728315:0;git add . 
+: 1581728330:0;git commit -m "after successful scrollback patch"
+: 1581728333:0;git push
+: 1581728395:0;sudo pacman -S picom
+: 1581728401:0;picom &
+: 1581728581:0;patch --merge -i patches/st-scrollback-mouse-20191024-a2c479c.diff
+: 1581728590:0;patch --merge -i patches/st-scrollback-mouse-altscreen-20191024-a2c479c.diff
+: 1581728625:0;sudo make clean install
+: 1581728628:0;st
+: 1581742672:0;sdn
+: 1581757862:0;ls /usr/bin/sh
+: 1581757867:0;l /usr/bin/sh
+: 1581757939:0;tem .config/i3/config
+: 1581758007:0;rsn
+: 1582144008:0;cd src/st
+: 1582144020:0;cat .git/HEAD
+: 1582144028:0;cat .git/config
+: 1582144042:0;git status
+: 1582144077:0;git commit -a -m "scrollback patch applied successfully" 
+: 1582144081:0;git push
+: 1582144108:0;rsn
+: 1582368690:0;sudo pacman -S ttf-liberation
+: 1582368808:0;xrandr --output HDMI-4 --primary --right-of DVI-D-1
+: 1582368816:0;xrandr --output HDMI-1  --primary --right-of DVI-D-1
+: 1582368858:0;pacman-key --recv-keys 7931B6D628C8D3BA
+: 1582368863:0;sudo pacman-key --recv-keys 7931B6D628C8D3BA
+: 1582368872:0;sudo pacman-key --finger 7931B6D628C8D3BA
+: 1582368882:0;sudo pacman-key --lsign-key 7931B6D628C8D3BA
+: 1582368897:0;sudo nvim /etc/pacman.conf
+: 1582369052:0;sudo pacman -S pkgstats
+: 1582369059:0;sudo pacman -Syu
+: 1582369080:0;sudo nvim /etc/pacman.conf
+: 1582369109:0;sudo pacman -Syu
+: 1582369439:0;cd src
+: 1582369440:0;l
+: 1582369449:0;git clone https://aur.archlinux.org/ros-melodic-desktop-full.git
+: 1582369453:0;cd ros-melodic-desktop-full
+: 1582369457:0;makepkg -si
+: 1582369524:0;cd ..
+: 1582369527:0;mkdir ros
+: 1582369532:0;mv ros-melodic-desktop-full ros/
+: 1582369533:0;l
+: 1582369536:0;l ros
+: 1582369537:0;cd ros
+: 1582369549:0;git clone https://aur.archlinux.org/ros-melodic-desktop.git
+: 1582369553:0;cd ros-melodic-desktop
+: 1582369557:0;makepkg -si
+: 1582369572:0;sudo pacman -S yay
+: 1582369612:0;yay -S ros-melodic-desktop-full
+: 1582369754:0;cd ..
+: 1582369758:0;rm -rf ros
+: 1582369760:0;l
+: 1582373200:0;sdn
+: 1582374607:0;tem .config/i3/config
+: 1582374630:0;sdn
+: 1582375219:0;timedatectl status
+: 1582375282:0;sudo systemctl enable systemd-timesyncd.service
+: 1582375299:0;sudo systemctl start systemd-timesyncd.service
+: 1582335726:0;tem src/useful-scripts/arch-desktop/archInstallLog
+: 1582335781:0;sudo rosdep init
+: 1582335796:0;yay -S ros-melodic-desktop-full
+: 1582336384:0;lsblk
+: 1582336413:0;sudo pacman -S ntfs-3g
+: 1582336423:0;l /mnt
+: 1582336434:0;sudo mkdir /mnt/storage
+: 1582336455:0;sudo mount /dev/sda1 /mnt/storage
+: 1582336468:0;cd /mnt/storage
+: 1582336468:0;l
+: 1582336472:0;cd operating_systems
+: 1582336473:0;l
+: 1582336551:0;lsblk
+: 1582336579:0;cfdisk
+: 1582336583:0;sudo cfdisk
+: 1582336595:0;sudo cfdisk /dev/sdc
+: 1582336620:0;lsblk
+: 1582336662:0;pwd
+: 1582336702:0;sudo dd bs=4M if=/mnt/storage/operating_systems/ubuntu-18.04.2-desktop-amd64.iso of=/dev/sdc conv=fdatasync status=progress
+: 1582336828:0;htop
+: 1582337041:0;killall dd
+: 1582337083:0;sudo killall dd
+: 1582337093:0;htop
+: 1582337105:0;lsblk
+: 1582337142:0;cp ubuntu-18.04.2-desktop-amd64.iso ~/Downloads/ubuntu-18.04
+: 1582337166:0;cd
+: 1582337168:0;cd Downloads
+: 1582337169:0;l
+: 1582337176:0;mv ubuntu-18.04 ubuntu-18.04.iso
+: 1582337190:0;sudo dd bs=4M if=/home/hamish/Downloads/ubuntu-18.04.iso of=/dev/sdc conv=fdatasync status=progress
+: 1582337258:0;ps -aux | grep "dd"
+: 1582337273:0;htop
+: 1582337452:0;sudo pacman-key --recv-keys 289AD6AA32857A04ABA587417EAC11ACDBCFBCEB
+: 1582337470:0;sudo pacman-key --edit-key 289AD6AA32857A04ABA587417EAC11ACDBCFBCEB
+: 1582337520:0;sudo nvim /etc/pacman.conf
+: 1582337542:0;sudo pacman -Syu
+: 1582337645:0;rsn
+: 1582860110:0;htop
+: 1582860143:0;sudo pacman -S cmake ncurses git
+: 1582860151:0;sudo pacman -Syu
+: 1582860185:0;sudo nvim /etc/pacman.c
+: 1582860189:0;sudo nvim /etc/pacman.conf
+: 1582860206:0;sudo pacman -Syu
+: 1582860290:0;sudo pacman -S cmake ncurses git
+: 1582860325:0;cd src
+: 1582860331:0;git clone https://aur.archlinux.org/nvtop.git
+: 1582860335:0;cd nvtop
+: 1582860342:0;makepkg -si
+: 1582860704:0;nvtop
+: 1582870073:0;cd src/projects/the_c_programming_language
+: 1582870074:0;l
+: 1582870077:0;cd chapter-1
+: 1582870088:0;gcc hello-world.c
+: 1582870096:0;l
+: 1582870099:0;./a.out
+: 1582870201:0;gcc hello-world.c
+: 1582870202:0;./a.out
+: 1582870217:0;gcc hello-world.c
+: 1582870218:0;./a.out
+: 1582870261:0;l
+: 1582870296:0;cp hello-world.c faren-to-celc.c
+: 1582870456:0;gcc faren-to-celc.c
+: 1582870459:0;./a.out
+: 1582870871:0;gcc faren-to-celc.c
+: 1582870882:0;./a.out
+: 1582871166:0;l
+: 1582871172:0;gcc sizeOfDataTypes.c
+: 1582871174:0;./a.out
+: 1582871616:0;l
+: 1582871627:0;mv faren-to-celc.c farenToCelc.c
+: 1582871794:0;l
+: 1582872120:0;gcc farenToCelc.c
+: 1582872122:0;./a.out
+: 1582872336:0;gcc farenToCelc.c
+: 1582872337:0;./a.out
+: 1582873876:0;cp farenToCelc.c farenToCelcFor.c
+: 1582874007:0;gcc farenToCelcFor.c
+: 1582874018:0;./a.out
+: 1582875143:0;gcc echo.c
+: 1582875145:0;./a.out
+: 1582875781:0;gcc echo.c
+: 1582875797:0;./a.out
+: 1582876066:0;gcc echo.c
+: 1582876067:0;./a.out
+: 1582876912:0;gcc echo.c
+: 1582876913:0;./a.out
+: 1582876931:0;kill 18847
+: 1582881391:0;pulsemixer
+: 1582882057:0;l
+: 1582882078:0;cat farenToCelc.c | a.out
+: 1582882091:0;cat farenToCelc.c | %./a.out
+: 1582882117:0;./a.out < farenToCelc.c
+: 1582883689:0;./a.out < a.out
+: 1582883824:0;timedatectl
+: 1582884728:0;./a.out < $(timedatectl)
+: 1582884738:0;./a.out < timedatectl
+: 1582894883:0;rsn
+: 1582938559:0;cd src/projects/the_c_programming_language/chapter-1
+: 1582938560:0;l
+: 1582938566:0;gcc singleQuotesVsDoubleQuotes.c
+: 1582938619:0;./a.out
+: 1582938636:0;gcc singleQuotesVsDoubleQuotes.c
+: 1582938637:0;./a.out
+: 1582938714:0;gcc singleQuotesVsDoubleQuotes.c
+: 1582938715:0;./a.out
+: 1582941574:0;sdn
+: 1583375508:0;pulsemixer
+: 1583377333:0;lsblk
+: 1583377346:0;ls /mnt
+: 1583377364:0;sudo mount /dev/sda1 /mnt/storage
+: 1583379661:0;sudo pacman -Syu
+: 1583379867:0;cd src/useful-scripts
+: 1583379869:0;git pull
+: 1583379876:0;l
+: 1583379898:0;cd x360
+: 1583379899:0;l
+: 1583379953:0;git pull
+: 1583379955:0;l
+: 1583379964:0;cp update-git-repos ../arch-desktop
+: 1583379967:0;cd ../arch-desktop
+: 1583379968:0;l
+: 1583379971:0;tem update-git-repos
+: 1583379980:0;ls src
+: 1583379988:0;ls src/projects
+: 1583380054:0;tem .zshrc
+: 1583380100:0;update-git-repos
+: 1583380114:0;cd ..
+: 1583380150:0;git remote set-url origin git@github.com:hacmorgan/useful-scripts.git
+: 1583380152:0;update-git-repos
+: 1583380175:0;cd ../projects/the_c_programming_language
+: 1583380176:0;l
+: 1583380180:0;cd ..
+: 1583380189:0;mv the_c_programming_language the-c-programming-language
+: 1583380192:0;cd the-c-programming-language
+: 1583380209:0;tem src/useful-scripts/arch-desktop/update-git-repos
+: 1583380248:0;git init
+: 1583380253:0;git add .
+: 1583380284:0;git commit -m "initial commit"
+: 1583380330:0;git remote add origin git@github.com:hacmorgan/the-c-programming-language.git
+: 1583380335:0;git push -u origin master
+: 1583380346:0;update-git-repos
+: 1583380362:0;cd ../../useful-scripts
+: 1583380365:0;git ststus
+: 1583380368:0;git status
+: 1583380390:0;cd arch-desktop/install-scripts
+: 1583380391:0;l
+: 1583380400:0;tem shell-terminal-after-zsh
+: 1583380405:0;l
+: 1583380413:0;rm '#shell-terminal-after-zsh#'
+: 1583380418:0;git status
+: 1583380424:0;cd ../..
+: 1583380428:0;git add .
+: 1583380431:0;update-git-repos
+: 1583385919:0;git pull
+: 1583385932:0;l
+: 1583385939:0;l other
+: 1583385956:0;git mv other deprecated
+: 1583385957:0;l
+: 1583385988:0;mv arch-desktop/update-git-repos ./
+: 1583385992:0;l
+: 1583386001:0;cat adjustKeyboardBacklight
+: 1583386010:0;l
+: 1583386012:0;l x360
+: 1583386032:0;cat x360/i3/config
+: 1583386129:0;l
+: 1583386135:0;mv adjustKeyboardBacklight deprecated
+: 1583386141:0;mv .adjustKeyboardBacklight.swp deprecated
+: 1583386142:0;l
+: 1583386182:0;mkdir generic
+: 1583386188:0;git status
+: 1583386220:0;mv update-git-repos generic
+: 1583386257:0;mv deprecated/*Keyboard* ./
+: 1583386257:0;l
+: 1583386262:0;git status
+: 1583386272:0;mv deprecated/.adjustKeyboardBacklight.swp ./
+: 1583386273:0;l
+: 1583386276:0;git ststus
+: 1583386280:0;git status
+: 1583386358:0;l
+: 1583386366:0;git mv adjustKeyboardBacklight deprecated/
+: 1583386370:0;git mv .adjustKeyboardBacklight deprecated/
+: 1583386374:0;git mv .adjustKeyboardBacklight.swp deprecated/
+: 1583386377:0;git ststus
+: 1583386380:0;git status
+: 1583386602:0;l
+: 1583386604:0;l generic
+: 1583386683:0;update-git-repos
+: 1583386980:0;cat /etc/hostname
+: 1583386988:0;update-git-repos
+: 1583387082:0;cp arch-desktop/git-repos.txt x360
+: 1583387197:0;git rm x360/update-git-repos
+: 1583387310:0;cp arch-desktop/arch-package-inst* generic
+: 1583387352:0;cat arch-desktop/install-scripts/system-utils
+: 1583387825:0;l generic
+: 1583387972:0;cd /tmp
+: 1583387988:0;echo "gimp" >> programs
+: 1583387994:0;echo "firefox" >> programs
+: 1583388028:0;for f in $(cat programs); do
+: 1583388037:0;man pacman
+: 1583388088:0;sudo pacman -S $(cat programs)
+: 1583388200:0;echo "firefox" >> ~/src/useful-scripts/arch-desktop/default-packages.txt
+: 1583388207:0;echo "gimp" >> ~/src/useful-scripts/arch-desktop/default-packages.txt
+: 1583388234:0;history | grep "sudo pacman -S "
+: 1583388249:0;history | grep "sudo pacman -S " >> ~/src/useful-scripts/arch-desktop/default-packages.txt
+: 1583388541:0;cd arch-desktop
+: 1583388543:0;cd install-scripts
+: 1583388544:0;l
+: 1583388557:0;git rm system-utils*
+: 1583388564:0;cat shell-terminal-before-zsh
+: 1583388572:0;rm shell-terminal-before-zsh
+: 1583388573:0;l
+: 1583388577:0;cat shell-terminal-after-zsh
+: 1583389307:0;l
+: 1583389315:0;git rm shell-terminal-after-zsh
+: 1583389585:0;l
+: 1583389588:0;rm shell-terminal\~
+: 1583389592:0;rm editors
+: 1583389594:0;l
+: 1583389604:0;rm editors\~
+: 1583389850:0;l
+: 1583389854:0;cd ..
+: 1583389854:0;l
+: 1583389859:0;rm -rf install-scripts
+: 1583389860:0;l
+: 1583389880:0;rm arch-package-install_*
+: 1583389882:0;l
+: 1583389949:0;cat archInstallLog
+: 1583390057:0;cat ~/.xinitrc
+: 1583390101:0;cp ~/.xinitrc ./
+: 1583390102:0;l
+: 1583390148:0;cat ~/.zprofile
+: 1583390159:0;cp ~/.zprofile ./
+: 1583390160:0;l
+: 1583390298:0;l ../generic
+: 1583390366:0;cd ..
+: 1583390368:0;git status
+: 1583390383:0;git add .
+: 1583390414:0;git commit -a -m "Revamp of update-git-repos and arch install to be generic, and rely on system based configs"
+: 1583390417:0;git push
+: 1583390481:0;git status
+: 1583390769:0;sdn
+: 1583463586:0;cd src
+: 1583463592:0;git clone https://github.com/greshake/i3status-rust.git
+: 1583463626:0;l
+: 1583463632:0;rm -rf i3status-rust
+: 1583463650:0;git clone https://aur.archlinux.org/i3status-rust.git
+: 1583463671:0;cd i3status-rust
+: 1583463684:0;makepkg -si
+: 1583463718:0;cd src/useful-scripts/x360
+: 1583463719:0;l
+: 1583463869:0;l i3
+: 1583463939:0;l ../arch-desktop/i3
+: 1583463953:0;cp i3/status.toml ../arch-desktop/i3/
+: 1583464112:0;killall polybar
+: 1583464210:0;sudo pacman -S ttf-font-awesome notify-send dunst ttf-liberation ttf-dejavu powerline powerline-fonts
+: 1583464229:0;sudo pacman -S ttf-font-awesome libnotify dunst ttf-dejavu powerline powerline-fonts
+: 1583464239:0;sudo pacman -S ttf-font-awesome dunst ttf-dejavu powerline powerline-fonts
+: 1583464553:0;sudo pacman -Syu
+: 1583464705:0;ip a
+: 1583465525:0;cd src/useful-scripts/generic
+: 1583465532:0;chmod +x pkinst
+: 1583465540:0;./pkinst a b c d e f
+: 1583465999:0;l ../arch-desktop
+: 1583466015:0;cat ../arch-desktop/default-packages.txt
+: 1583466733:0;pkinst local glances
+: 1583466742:0;cat ../arch-desktop/default-packages.txt
+: 1583468052:0;cd ~/src\
+git clone https://aur.archlinux.org/nerd-fonts-meslo.git\
+cd nerd-fonts-meslo\
+makepkg -si
+: 1583469810:0;l
+: 1583469892:0;l ../generic
+: 1583469899:0;cat archInstallLog
+: 1583469989:0;l
+: 1583470016:0;git rm archInstallLog
+: 1583470022:0;git rm archPackageInstall
+: 1583470037:0;l
+: 1583470042:0;git rm archPackageInstall -f
+: 1583470043:0;l
+: 1583470063:0;git rm -rf install-scripts
+: 1583470066:0;l
+: 1583470081:0;git rm -rf polybar/
+: 1583470088:0;git rm -rf terminator/
+: 1583470089:0;l
+: 1583470098:0;cd ../arch-desktop
+: 1583470099:0;l
+: 1583470109:0;git rm -rf terminator/
+: 1583470111:0;git rm -rf polybar/
+: 1583470112:0;l
+: 1583470121:0;git rm -rf fish
+: 1583470128:0;git rm -rf ../x360/fish
+: 1583470129:0;l
+: 1583470134:0;git status
+: 1583470148:0;git add i3/status.toml
+: 1583470160:0;git add ../generic/install_notes.org
+: 1583470169:0;git add ../generic/pkinst
+: 1583470209:0;git commit -a -m "major cleaning up of deprecated stuff from repo"
+: 1583470212:0;git push
+: 1583470419:0;update-git-repos
+: 1583470454:0;cd ..
+: 1583470455:0;l
+: 1583470457:0;l deprecated
+: 1583470497:0;common=generic/common-default-packages.txt
+: 1583470499:0;l generic
+: 1583470534:0;x360=x360/default-packages.txt
+: 1583470543:0;rgboi=arch-desktop/default-packages.txt
+: 1583470639:0;cd generic
+: 1583470650:0;mkdir not-on-path
+: 1583470652:0;cd not-on-path
+: 1583470675:0;l
+: 1583470678:0;l ..
+: 1583470799:0;l
+: 1583470814:0;chmod +x consolidate-package-lists
+: 1583471231:0;l
+: 1583471233:0;./consolidate-package-lists
+: 1583472428:0;l
+: 1583472433:0;cd ../..
+: 1583472435:0;l 
+: 1583472453:0;cp arch-desktop/default-packages.txt arch-desktop/default-packages.txt.bak
+: 1583472464:0;cp x360/default-packages.txt x360/default-packages.txt.bak
+: 1583472476:0;generic/not-on-path/consolidate-package-lists
+: 1583472512:0;touch /home/hamish/src/useful-scripts/generic/common-default-packages.txt
+: 1583472513:0;generic/not-on-path/consolidate-package-lists
+: 1583472544:0;cat arch-desktop/default-packages.txt
+: 1583472554:0;cat x360/default-packages.txt
+: 1583472560:0;cat generic/common-default-packages.txt
+: 1583472862:0;pkinst global networkmanager
+: 1583473057:0;git status
+: 1583473072:0;rm arch-desktop/default-packages.txt.bak
+: 1583473079:0;rm x360/default-packages.txt.bak
+: 1583473087:0;git add generic/common-default-packages.txt
+: 1583473092:0;git add generic/not-on-path/
+: 1583473094:0;git status
+: 1583473128:0;git commit -a -m "generic software now complete
+: 1583473132:0;git commit -a -m "generic software now complete"
+: 1583473141:0;git push
+: 1583473226:0;ls /
+: 1583473238:0;lsblk
+: 1583473345:0;pkinst global grub efibootmgr
+: 1583473441:0;pkinst global grub
+: 1583473453:0;pkinst global efibootmgr
+: 1583473514:0;grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+: 1583475235:0;cd src/projects/the-c-programming-language
+: 1583475237:0;cd chapter-1
+: 1583475237:0;l
+: 1583475242:0;gcc histogram.c
+: 1583475263:0;./a.out
+: 1583475301:0;./a.out << $(echo hello my name is mr burns)\
+
+: 1583475313:0;history | grep "<<"
+: 1583475315:0;history | grep "<"
+: 1583475326:0;./a.out < $(echo hello my name is mr burns)\
+
+: 1583475351:0;./a.out < hello my name is mr burns\
+
+: 1583475364:0;l
+: 1583475370:0;./a.out < echo.c\
+
+: 1583475394:0;echo hello my name is mr burns > /tmp/txt
+: 1583475399:0;./a.out < /tmp/txt\
+
+: 1583475441:0;./a.out < farenToCelcFor.c\
+
+: 1583475447:0;./a.out < hello-world.c\
+
+: 1583475535:0;./a.out <(echo hello my name is mr burns)\
+
+: 1583475544:0;./a.out <( echo hello my name is mr burns )\
+
+: 1583475550:0;./a.out <( echo 'hello my name is mr burns' )\
+
+: 1583475572:0;./a.out < <( echo 'hello my name is mr burns' )\
+
+: 1583475657:0;cd ..
+: 1583475659:0;git status
+: 1583475665:0;git add chapter-1/histogram.c
+: 1583475669:0;update-git-repos
+: 1583475719:0;rsn
+: 1583633228:0;sudo pacman -Syu
+: 1583633293:0;tem .config/i3/status.toml
+: 1583633432:0;glances
+: 1583633568:0;update-git-repos
+: 1583639126:0;sdn
+: 1584243767:0;sudo pacman -Syu
+: 1584243874:0;rsn
+: 1584243998:0;sudo nvim /boot/loader/loader.conf
+: 1584244069:0;sudo nvim /boot/loader/entries/arch.conf 
+: 1584244608:0;update-git-repos
+: 1584244649:0;lsblk
+: 1584244657:0;ls /mnt
+: 1584244679:0;sudo mount /dev/sda1 /mnt/storage
+: 1584244686:0;cd /mnt/storage/
+: 1584244734:0;killall compton
+: 1584245306:0;pulsemixer
+: 1584246367:0;cd
+: 1584246607:0;cd /tmp
+: 1584246608:0;l
+: 1584247322:0;cd
+: 1584247323:0;cd src
+: 1584247325:0;l
+: 1584247526:0;cd projects
+: 1584247548:0;git clone git@github.com:hacmorgan/neural-networks.git
+: 1584247709:0;cd src/projects/neural-networks/src
+: 1584247710:0;l
+: 1584247716:0;p3
+: 1584247731:0;tem ~/.zshrc
+: 1584247785:0;p3
+: 1584247789:0;python
+: 1584247861:0;source ~/.zshrc
+: 1584247864:0;p2
+: 1584247891:0;pkinst global pip3
+: 1584247896:0;pkinst global pip
+: 1584247903:0;pkinst global python3-pip
+: 1584247925:0;pkinst global python-pip
+: 1584247930:0;pkinst global python2-pip
+: 1584247942:0;tem ~/src/useful-scripts/generic/common-default-packages.txt
+: 1584247976:0;pip2 install numpy
+: 1584247987:0;pip2 install numpy --user
+: 1584248051:0;p2
+: 1584248280:0;htop
+: 1584249469:0;p2
+: 1584249779:0;p2 network2_modified.py
+: 1584251375:0;p2
+: 1584252143:0;p2 network2_modified.py
+: 1584252158:0;update-git-repos
+: 1584252175:0;cd ../useful-scripts
+: 1584252176:0;l
+: 1584252185:0;tem arch-desktop/git-repos.txt
+: 1584252208:0;update-git-repos
+: 1584253904:0;sdn
+: 1584573667:0;pulsemixer
+: 1584575057:0;sudo pacman -Syu
+: 1584575651:0;l
+: 1584575658:0;rm 2020-03-19-105407_3600x1080_scrot.png
+: 1584575675:0;scrot -s
+: 1584575693:0;l
+: 1584575921:0;pulsemixer
+: 1584576325:0;ping 10.0.0.38
+: 1584576334:0;ssh hamish@10.0.0.383
+: 1584576337:0;ssh hamish@10.0.0.38
+: 1584576433:0;ssh hamish@10.0.0.73
+: 1584576731:0;scp hamish@10.0.0.73:/home/hamish/src/abyss/abyss-bedrock/sensors/bluerobotics/bluerobotics-ping-sonar-to-csv src
+: 1584576777:0;scp hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/bluerobotics-ping-sonar-watch src/
+: 1584576783:0;cd src
+: 1584576784:0;l
+: 1584577206:0;ping 10.0.0.74
+: 1584579501:0;l
+: 1584579554:0;ping 10.0.0.74
+: 1584579620:0;sudo pacman -Syu
+: 1584579669:0;l
+: 1584579850:0;killall compton
+: 1584579861:0;picom &
+: 1584580001:0;ssh pi@10.0.0.74
+: 1584581701:0;cd src
+: 1584581704:0;l
+: 1584581709:0;./bluerobotics-ping-sonar-to-csv
+: 1584581717:0;pip3 install --user bluerobotics-ping
+: 1584581720:0;./bluerobotics-ping-sonar-to-csv
+: 1584581755:0;./bluerobotics-ping-sonar-to-csv -h
+: 1584582051:0;./bluerobotics-ping-sonar-to-csv --device /dev/ttyUSB0
+: 1584582311:0;l /dev/ttyUSB0
+: 1584582315:0;groups hamish
+: 1584582330:0;man usermoid
+: 1584582332:0;man usermod
+: 1584582349:0;sudo usermod -aG uucp hamish
+: 1584582353:0;groups hamish
+: 1584582411:0;./bluerobotics-ping-sonar-to-csv --device /dev/ttyUSB0
+: 1584582475:0;cd src
+: 1584582476:0;./bluerobotics-ping-sonar-to-csv --device /dev/ttyUSB0
+: 1584590161:0;ssh hamish@10.0.0.73
+: 1584590165:0;ssh hamish@10.0.0.73 -X
+: 1584590614:0;./bluerobotics-ping-sonar-to-csv --device /dev/ttyUSB0
+: 1584590625:0;groups hamish
+: 1584590630:0;./bluerobotics-ping-sonar-to-csv
+: 1584590883:0;cd src
+: 1584590884:0;l
+: 1584591331:0;ls /bin | grep tex
+: 1584591346:0;which pdflatex
+: 1584591460:0;mkdir /tmp/ping/watchdog
+: 1584591474:0;mkdir /tmp/ping/{watchdog,ping} -p
+: 1584591485:0;./bluerobotics-ping-sonar-to-csv --output-dir /tmp/ping/ping --binary
+: 1584591509:0;./bluerobotics-ping-sonar-watch --watch-dir /tmp/ping/ping --output-dir /tmp/ping/watchdog
+: 1584591738:0;ls /tmp/ping/watchdog
+: 1584591749:0;cat /tmp/ping/watchdog/20200319T042014.615999.csv
+: 1584591753:0;cat /tmp/ping/watchdog/20200319T042149.368924.csv
+: 1584591784:0;rm /tmp/ping/watchdog/*
+: 1584591790:0;rm /tmp/ping/ping/*
+: 1584591810:0;./bluerobotics-ping-sonar-to-csv --output-dir /tmp/ping/ping --binary --records-per-file 100
+: 1584591815:0;./bluerobotics-ping-sonar-watch --watch-dir /tmp/ping/ping --output-dir /tmp/ping/watchdog
+: 1584591892:0;./bluerobotics-ping-sonar-to-csv --output-dir /tmp/ping/ping --binary --records-per-file 100
+: 1584592169:0;htop
+: 1584592271:0;./bluerobotics-ping-sonar-watch --watch-dir /tmp/ping/ping --output-dir /tmp/ping/watchdog -h
+: 1584592288:0;./bluerobotics-ping-sonar-watch --watch-dir /tmp/ping/ping --output-dir /tmp/ping/watchdog --ignore increasing
+: 1584592395:0;cd /tmp/ping
+: 1584592396:0;l
+: 1584592405:0;cat watchdog/20200319T042335.248808.csv
+: 1584592411:0;cat watchdog/20200319T043128.861579.csv
+: 1584592448:0;ssh pi@10.0.0.74
+: 1584592958:0;pkinst local arandr
+: 1584592964:0;arandr
+: 1584596200:0;scp bluerobotics-ping-sonar-to-csv hamish@10.0.0.73:src/abyss/abyss-bedrock/sensors/bluerobotics/
+: 1584596257:0;scp bluerobotics-ping-sonar-watch hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/bluerobotics-ping-sonar-watch 
+: 1584615037:0;sdn
+: 1584657696:0;ssh 
+: 1584657703:0;ssh -X pi@10.0.0.74
+: 1584657726:0;ssh -X hamish@10.0.0.73
+: 1584658029:0;sudo pacman -Syu
+: 1584659062:0;ssh -X pi@10.0.0.74
+: 1584659693:0;pulsemixer
+: 1584667906:0;sudo pacman -Syu
+: 1584683160:0;xprop
+: 1584683215:0;killall compton
+: 1584683226:0;mv .config/compton.conf .config/picom.conf
+: 1584683231:0;picom &
+: 1584692028:0;sdn
+: 1584951025:0;xrandr
+: 1584951093:0;xprop
+: 1584951155:0;killall picom
+: 1584951160:0;killall compton
+: 1584951164:0;picom &
+: 1584951193:0;killall picom
+: 1584951194:0;picom &
+: 1584951213:0;sudo pacman -Syu
+: 1584951511:0;rsn
+: 1584953207:0;htop
+: 1584953230:0;cat src/bluerobotics-ping-sonar-to-csv
+: 1584956500:0;pulsemixer
+: 1584962449:0;sudo pkinst local octave
+: 1584962471:0;octave
+: 1584965046:0;l /tmp
+: 1584965094:0;unzip /tmp/machine-learning-ex1.zip -d ~/src/projects/machine-learning/programming-exercise-1
+: 1584965102:0;mkdir -p ~/src/projects/machine-learning/programming-exercise-1
+: 1584965104:0;unzip /tmp/machine-learning-ex1.zip -d ~/src/projects/machine-learning/programming-exercise-1
+: 1584969269:0;octave --quiet
+: 1584969487:0;rsn
+: 1585002785:0;sudo pacman -Syu
+: 1585003998:0;ping 10.0.0.74
+: 1585004003:0;ssh -X pi@10.0.0.74
+: 1585005473:0;pulsemixer
+: 1585010516:0;pkinst global transmission
+: 1585010520:0;pkinst global transmission-gtk
+: 1585010565:0;cd /tmp
+: 1585010566:0;l
+: 1585010815:0;lsblk
+: 1585010853:0;sudo umount /dev/sdc
+: 1585010896:0;cd
+: 1585010898:0;cd Desktop
+: 1585010899:0;l
+: 1585010902:0;unzip 2020-02-13-raspbian-buster-lite.zip
+: 1585010920:0;l
+: 1585010959:0;sudo dd bs=1M if=2020-02-13-raspbian-buster-lite.img of=/dev/sdc
+: 1585010999:0;htop
+: 1585011082:0;lsblk
+: 1585011090:0;sudo mount /dev/sda1 /mnt/storage
+: 1585011106:0;cd /mnt/storage/Ubuntu\ Stuff
+: 1585011107:0;l
+: 1585011120:0;pkinst global vlc
+: 1585011131:0;sudo pacman -Syu
+: 1585011158:0;sudo umount /dev/sdc
+: 1585011904:0;ip a
+: 1585011911:0;ip link
+: 1585011917:0;ip a
+: 1585011938:0;ip route
+: 1585011971:0;ping 10.0.0.75
+: 1585011978:0;ssh pi@10.0.0.75
+: 1585012134:0;mkdir /tmp/pi
+: 1585012137:0;lsblk
+: 1585012155:0;sudo mount /dev/sdc2 /tmp/pi
+: 1585012219:0;sudo umount /dev/sdc
+: 1585012222:0;sudo umount /dev/sdc2
+: 1585012229:0;sudo mount /dev/sdc1 /tmp/pi
+: 1585012247:0;cd /tmp/pi
+: 1585012248:0;l
+: 1585012257:0;touch SSH
+: 1585012262:0;sudo touch SSH
+: 1585012263:0;l
+: 1585012280:0;sudo umount -r /dev/sdc
+: 1585012286:0;sudo umount -R /dev/sdc
+: 1585012294:0;sudo umount /dev/sdc1
+: 1585012319:0;glances
+: 1585012330:0;sudo umount /dev/sdc1
+: 1585012362:0;rsn
+: 1585013130:0;sudo pacman -Syu
+: 1585013175:0;sudo pacman -Syy
+: 1585013193:0;ping 10.0.0.75
+: 1585013214:0;ssh pi@10.0.0.75
+: 1585013394:0;cat /etc/pacman.d/mirrorlist
+: 1585013423:0;sudo nvim /etc/pacman.d/mirrorlist
+: 1585013577:0;sudo pacman -Syu
+: 1585013782:0;tem src/useful-scripts/generic/common-default-packages.txt
+: 1585013910:0;cat .zshrc
+: 1585014451:0;ls ~/.ssh
+: 1585014503:0;ssh-copy-id pi@10.0.0.75
+: 1585014518:0;ssh pi@10.0.0.75
+: 1585014599:0;cat .zshrc
+: 1585014608:0;tem .zshrc
+: 1585014638:0;. .zshrc
+: 1585014671:0;source .zshrc
+: 1585014675:0;sshpi
+: 1585016356:0;pip install RPi.GPIO
+: 1585016517:0;sshpi
+: 1585020034:0;sudo mount /dev/sda1 /mnt/storage
+: 1585020044:0;lsblk
+: 1585020051:0;sudo mount /dev/sdb1 /mnt/storage
+: 1585020067:0;ls /mnt/storage
+: 1585020081:0;sudo umount /dev/sdb1
+: 1585020084:0;sudo umount /dev/sda1
+: 1585020102:0;modprobe fuse
+: 1585021122:0;pulsemixer
+: 1585029419:0;sshpi
+: 1585038752:0;cd src/projects/machine-learning/machine-learning-ex1/ex1/
+: 1585038753:0;l
+: 1585038760:0;octave
+: 1585042780:0;pulsemixer
+: 1585043263:0;cd src/st
+: 1585043264:0;l
+: 1585043266:0;git pull
+: 1585043272:0;git status
+: 1585043284:0;cd patches
+: 1585043285:0;l
+: 1585043291:0;rm Getting\ Started\ With\ setuptools\ and\ setup.py\ â€ƒ´\ an_example_pypi_project\ v0.0.5\ documentation
+: 1585043295:0;l
+: 1585043309:0;cd ..
+: 1585043331:0;git status
+: 1585043342:0;git add .
+: 1585043354:0;git commit -m "commit before delkey patch"
+: 1585043373:0;patch --merge -i patches/st-delkey-20160727-308bfbf.diff
+: 1585043376:0;l
+: 1585043382:0;rm config.h
+: 1585043385:0;l
+: 1585043393:0;sudo make clean install
+: 1585043402:0;l
+: 1585043411:0;tem config.h
+: 1585043446:0;tem config.def.h
+: 1585043499:0;cat patches/st-delkey-20160727-308bfbf.diff
+: 1585043556:0;git log
+: 1585043570:0;git checkout e5871d6b925c182a7a5bc87db531b030ea49fd74
+: 1585043577:0;git stash
+: 1585043581:0;git checkout e5871d6b925c182a7a5bc87db531b030ea49fd74
+: 1585043592:0;l
+: 1585043601:0;cat config.def.h | less
+: 1585043616:0;patch -i patches/st-delkey-20160727-308bfbf.diff
+: 1585043622:0;l patches
+: 1585043639:0;patch -i patches/st-delkey-20160727-308bfbf.diff
+: 1585043654:0;cat config.def.h | less
+: 1585043670:0;sudo make clean install
+: 1585043682:0;octave
+: 1585047285:0;sshpi
+: 1585049049:0;rsn
+: 1585199435:0;cd src
+: 1585199435:0;l
+: 1585199441:0;mkdir abyss
+: 1585199444:0;cd abyss
+: 1585199444:0;l
+: 1585199449:0;cd ..
+: 1585199452:0;rm bluerobotics-ping-sonar-*
+: 1585199455:0;cd abyss
+: 1585199537:0;git clone git@gitlab.com:orthographic/comma.git
+: 1585199551:0;git clone https://gitlab.com/orthographic/comma.git
+: 1585199559:0;cd comma
+: 1585199566:0;l
+: 1585199574:0;rm 2020-03-19-105451_402x405_scrot.png
+: 1585199595:0;mkdir -p build/abyss/{comma,snark,abyss-bedrock}
+: 1585199597:0;cd build/abyss
+: 1585199599:0;l
+: 1585199601:0;cd comma
+: 1585199617:0;ccmake ~/src/abyss/comma
+: 1585199721:0;which python
+: 1585199739:0;make -j24
+: 1585199800:0;sudo make install
+: 1585199810:0;csv-eval
+: 1585199814:0;csv-eval -h
+: 1585199821:0;ccmake ~/src/abyss/comma
+: 1585199843:0;make -j24
+: 1585199906:0;sudo make install
+: 1585199911:0;csv-eval
+: 1585199925:0;csv-sort
+: 1585199929:0;csv-sort -h
+: 1585200011:0;cd build/abyss/comma
+: 1585200013:0;ccmake ~/src/abyss/comma
+: 1585200046:0;ls /usr/local
+: 1585200055:0;ls /usr/local/bin
+: 1585200071:0;csv-eval
+: 1585200140:0;cat /usr/lib64/libboost_python38.a
+: 1585200148:0;rsn
+: 1585200198:0;lsblk
+: 1585200210:0;csv-eval
+: 1585200254:0;sudo pacman -S tree
+: 1585200274:0;tree / | grep comma
+: 1585201743:0;man find
+: 1585201756:0;find / comma
+: 1585201762:0;find / "comma"
+: 1585201785:0;ls /usr/lib/python3.8
+: 1585202144:0;pulsemixer
+: 1585202348:0;sudo pip3 install opencv
+: 1585202351:0;sudo pip3 install opencv-python
+: 1585202372:0;cd src/abyss
+: 1585202375:0;l
+: 1585202380:0;git clone git@github.com:abyss-solutions/abyss-bedrock.git
+: 1585202393:0;cd build/abyss/abyss-bedrock
+: 1585202401:0;ccmake ~/src/abyss/abyss-bedrock
+: 1585202472:0;git clone https://gitlab.com/orthographic/snark.git
+: 1585202479:0;cd ../snark
+: 1585202489:0;ccmake ~/src/abyss/snark
+: 1585202542:0;whereis opencv
+: 1585202586:0;sudo pacman -Syu
+: 1585202597:0;sudo pacman -S gtkglext hdf5
+: 1585202609:0;sudo pacman -S pkg-config
+: 1585202619:0;sudo pacman -S opencv opencv-samples
+: 1585202635:0;pkg-config --modversion opencv
+: 1585202726:0;ccmake ~/src/abyss/snark
+: 1585202779:0;sudo pacman -S qt5-3d
+: 1585202803:0;ccmake ~/src/abyss/snark
+: 1585202839:0;echo $PKG_CONFIG_PATH
+: 1585202930:0;ccmake ~/src/abyss/snark
+: 1585203162:0;rsn
+: 1585203267:0;ssh-copy-id hamish@10.0.0.73
+: 1585203288:0;ssh 'hamish@10.0.0.73'
+: 1585203302:0;emacs .zshrc
+: 1585203345:0;sshwork
+: 1585203404:0;upgrade_oh_my_zsh
+: 1585203439:0;xset -q
+: 1585203490:0;xset
+: 1585203517:0;xset r off
+: 1585203524:0;xset r on
+: 1585203532:0;xset r rate 300
+: 1585203600:0;tem .zshrc
+: 1585203636:0;sudo pacman -S zsh
+: 1585203669:0;bash
+: 1585203702:0;tem .zshrc
+: 1585203830:0;killall compton
+: 1585203834:0;picom &
+: 1585203920:0;cd src/st
+: 1585203923:0;git pull
+: 1585203932:0;sudo make clean install
+: 1585203945:0;cd src/st
+: 1585203946:0;l
+: 1585203955:0;cat config.h
+: 1585204003:0;cat .git/config
+: 1585204007:0;git checkout master
+: 1585204019:0;cd ..
+: 1585204022:0;rm -rf st
+: 1585204030:0;git clone git@github.com:hacmorgan/st.git
+: 1585204036:0;cd st
+: 1585204037:0;l
+: 1585204043:0;sudo make clean install
+: 1585204062:0;picom &
+: 1585204066:0;l .config
+: 1585204079:0;emacs .config/i3/config
+: 1585204103:0;exec picom
+: 1585204341:0;killall emacs
+: 1585204752:0;killall .emacs
+: 1585204766:0;ps -aux | grep "emacs"
+: 1585204770:0;kill 8999
+: 1585204807:0;sshwork
+: 1585205618:0;killall emacs
+: 1585205686:0;sshwork
+: 1585205733:0;killall emacs
+: 1585205804:0;tem .zshrc
+: 1585206131:0;sudo pacman -S openssh
+: 1585206145:0;sudo systemctl enable ssh
+: 1585206178:0;sudo systemctl status sshd
+: 1585206185:0;sudo systemctl enable sshd
+: 1585206189:0;sudo systemctl start sshd
+: 1585206235:0;emacs
+: 1585206245:0;groups hamish
+: 1585206369:0;ip a
+: 1585206389:0;sudo nvim /etc/ssh/sshd_config
+: 1585208510:0;ssh hamish@10.0.0.73 -Y
+: 1585208837:0;sshwork
+: 1585216900:0;pulsemixer
+: 1585221275:0;cd /tmp
+: 1585221280:0;scrot -s
+: 1585221296:0;l
+: 1585221316:0;scrot -s
+: 1585232354:0;sdn
+: 1585232576:0;sudo shutdown now
+: 1585260030:0;sudo pacman -Syu
+: 1585260076:0;lsusb
+: 1585260087:0;ls /dev
+: 1585260227:0;cat /dev/stdin
+: 1585260230:0;ls
+: 1585260246:0;cat /dev/stdout
+: 1585260249:0;ll
+: 1585260293:0;cat /dev/random
+: 1585263663:0;sshwork
+: 1585265109:0;pulsemixer
+: 1585265149:0;rsn
+: 1585265200:0;pulsemixer
+: 1585265291:0;#sudo mount /dev
+: 1585265293:0;lsblk
+: 1585265311:0;sudo mount /dev/sda1 /mnt/storage
+: 1585265465:0;cd /mnt/storage/
+: 1585265470:0;cd Games
+: 1585265753:0;l
+: 1585265758:0;cd UPLAY/Ubisoft\ Game\ Launcher
+: 1585265759:0;l
+: 1585265859:0;vlc Codi_Vore_-_Big_Tits_Bounce_On_Huge_Cock_Creampie.mp4
+: 1585265887:0;xprop
+: 1585265900:0;tem .config/picom.conf
+: 1585265931:0;killall picom
+: 1585265935:0;exec picom
+: 1585267076:0;exec picom &
+: 1585267088:0;man exec
+: 1585267235:0;nohup exec picom
+: 1585267243:0;nohup picom
+: 1585267255:0;nohup picom &
+: 1585267538:0;sshwork
+: 1585267997:0;cd /tmp
+: 1585267998:0;l
+: 1585268001:0;ls
+: 1585268138:0;csv-calc
+: 1585268140:0;csv-calc -h
+: 1585268202:0;./bashtest.sh
+: 1585268208:0;chmod +x bashtest.sh
+: 1585268209:0;./bashtest.sh
+: 1585268528:0;l
+: 1585269186:0;cat double
+: 1585269370:0;./bashtest.sh
+: 1585270144:0;csv-paste
+: 1585270183:0;./bashtest.sh
+: 1585270298:0;sudo pacman -Syu
+: 1585270309:0;./bashtest.sh
+: 1585271090:0;ls /dev/fd
+: 1585271107:0;./bashtest.sh
+: 1585271258:0;csv-paste -h
+: 1585271335:0;./bashtest.sh
+: 1585271583:0;l
+: 1585271586:0;rm double
+: 1585271588:0;./bashtest.sh
+: 1585271589:0;l
+: 1585271648:0;./bashtest.sh
+: 1585274887:0;sshwork
+: 1585283854:0;man test
+: 1585286005:0;sshwork
+: 1585286961:0;tem .zshrc
+: 1585286982:0;pm
+: 1585291667:0;sdn
+: 1585519589:0;cd src/projects/machine-learning
+: 1585519589:0;l
+: 1585519601:0;sudo pacman -Syu
+: 1585519755:0;git init
+: 1585519780:0;git add .
+: 1585519793:0;git commit -m "initial commit"
+: 1585519819:0;git remote add origin git@github.com:hacmorgan/machine-learning.git
+: 1585519829:0;git push -u origin master
+: 1585520099:0;cd ../..
+: 1585520100:0;l
+: 1585520109:0;cd useful-scripts/work-laptop
+: 1585520110:0;l
+: 1585520119:0;cd ../generic
+: 1585520120:0;l
+: 1585520124:0;cat update-git-repos
+: 1585520140:0;cd ../arch-desktop/
+: 1585520140:0;l
+: 1585520144:0;tem git-repos.txt
+: 1585520169:0;update-git-repos
+: 1585521312:0;sshwork
+: 1585522446:0;tem .zshrc
+: 1585522462:0;tem .config/i3/config
+: 1585522730:0;exec st sshwrok
+: 1585522742:0;st sshwork
+: 1585522759:0;st ssh hamish@10.0.0.73
+: 1585523040:0;tem .config/picom.conf
+: 1585523044:0;xprop
+: 1585524699:0;pm
+: 1585551025:0;for i in {1:4}; do echo hey; done
+: 1585551036:0;for i in {1..4}; do echo hey; done
+: 1585573650:0;sudo pacman -Syu
+: 1585573704:0;sdn
+: 1585609961:0;sudo pacman -SYu
+: 1585609963:0;sudo pacman -Syu
+: 1585610860:0;pm
+: 1585617945:0;f=""
+: 1585617953:0;f+="\n"
+: 1585617959:0;f+="lalal"
+: 1585617962:0;f+="\n"
+: 1585617965:0;f+="lalal"
+: 1585617967:0;echo $f
+: 1585617978:0;f+="\n"
+: 1585617981:0;f+="lalal"
+: 1585617982:0;echo $f
+: 1585630461:0;sudo pacman _Syu
+: 1585630463:0;sudo pacman -Syu
+: 1585648177:0;cat /boot/loader/entries/arch.conf
+: 1585649919:0;cat .zprofile
+: 1585649957:0;cat .xinitrc
+: 1585656475:0;sudo pacman -Syu
+: 1585656557:0;scrot -s
+: 1585656571:0;l
+: 1585657322:0;sdn
+: 1585696849:0;sudo pacman -Syu
+: 1585696921:0;pm
+: 1585697199:0;git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+: 1585697228:0;emacs .zshrc &
+: 1585701961:0;sudo pacman -S unrar
+: 1585701982:0;man unrar
+: 1585701987:0;unrar -h
+: 1585702078:0;cd /tmp
+: 1585702087:0;unrar e Nathan\ Ida.\ Sensors,\ Actuators,\ and\ Their\ Interfaces\ 2020.rar
+: 1585702091:0;l
+: 1585702169:0;sudo pacman -S ntfs-3g 
+: 1585703219:0;lsblk
+: 1585703229:0;sudo mount /dev/sdb1 /mnt/storage
+: 1585703262:0;sudo pacman -S fuse
+: 1585703265:0;sudo mount /dev/sdb1 /mnt/storage
+: 1585703340:0;sudo mount -t ntfs-3g /dev/sdb1 /mnt/storage
+: 1585722292:0;scp -r hamish@10.0.0.73:/tmp/test.sh /tmp/
+: 1585728551:0;sdn
+: 1585778826:0;sudo pacman -Syu
+: 1585779631:0;numlockx
+: 1585779641:0;numlockx &
+: 1585779650:0;numlockx & 2>/dev/null
+: 1585779657:0;numlockx & >/dev/null
+: 1585780648:0;killall picom
+: 1585780652:0;picom&
+: 1585780866:0;l
+: 1585780875:0;rm 2020-03-19-105451_402x405_scrot.png
+: 1585780882:0;rm 2020-03-31-230928_317x400_scrot.png
+: 1585798238:0;sudo pacman -Syu
+: 1585798249:0;sudo pacman -S arandr
+: 1585798253:0;arandr
+: 1585798569:0;pm
+: 1585803871:0;scrot -s
+: 1585803883:0;l
+: 1585808196:0;sudo pacman -Syu
+: 1585812765:0;sdn
+: 1586058336:0;cat .zshrc
+: 1586058352:0;lsblk
+: 1586058363:0;sudo mount -t ntfs-3g /dev/sdb1 /mnt/storage
+: 1586058385:0;cd /mnt/storage/Games/Ubisoft\ Game\ Launcher/
+: 1586058386:0;l
+: 1586058391:0;cd ..
+: 1586058394:0;cd UPLAY/Ubisoft\ Game\ Launcher
+: 1586058394:0;l
+: 1586058404:0;cd Pictures
+: 1586058405:0;l
+: 1586058432:0;feh IMG_0006.jpg
+: 1586058455:0;pwd
+: 1586097106:0;sudo shutdown now
+: 1586216037:0;sudo pacman -Syu
+: 1586216098:0;emacs .zshrc &!
+: 1586216127:0;update-git-repos
+: 1586216568:0;rsn
+: 1586217018:0;sshwork
+: 1586222666:0;sudo pacman -Syu
+: 1586231263:0;update-git-repos
+: 1586231281:0;update-git-repos -a
+: 1586232611:0;pkinst global qutebrowser
+: 1586232633:0;sudo pacman -S qutebrowser
+: 1586239490:0;sudo pacman -S libreoffice-fresh-en-gb
+: 1586239883:0;killall picom
+: 1586246001:0;picom &!
+: 1586267368:0;sudo shutdown now
+: 1586305667:0;sudo pacman -Syu
+: 1586307684:0;scp /tmp/abyss-logo.png hamish@10.0.0.73:src/abyss/platypus/scout
+: 1586308735:0;scp /tmp/platypus.png hamish@10.0.0.73:src/abyss/platypus/scout/ops-manual
+: 1586309129:0;scp hamish@10.0.0.73:/home/hamish/src/abyss/platypus/scout/ops-manual/ops-manual.pdf /tmp/
+: 1586309133:0;cd /tmp
+: 1586309134:0;l
+: 1586309618:0;sudo pacman -Syu
+: 1586309865:0;cd
+: 1586309867:0;cd src
+: 1586309868:0;l
+: 1586309870:0;cd abyss
+: 1586309871:0;l
+: 1586309914:0;git clone git@github.com:abyss-solutions/platypus.git
+: 1586309925:0;cd platypus/scout/ops-manual
+: 1586309926:0;l
+: 1586309938:0;sudo pacman -S texlive-full
+: 1586309940:0;sudo pacman -S texlive
+: 1586309971:0;sudo pacman -S texlive-most
+: 1586310163:0;l
+: 1586310176:0;pdftex ops-manual.tex
+: 1586310189:0;l
+: 1586310195:0;rm ops-manual.log
+: 1586310202:0;em ops-manual.tex
+: 1586310216:0;pdftex ops-manual.tex
+: 1586310549:0;mv ops-manual.tex ops_manual.tex
+: 1586310552:0;em ops_
+: 1586310556:0;em ops_manual.tex
+: 1586310566:0;pdftex ops_manual.tex
+: 1586310571:0;pdflatex ops_manual.tex
+: 1586310636:0;mv ops_manual.tex ops-manual.tex
+: 1586310639:0;em ops-manual.tex
+: 1586310644:0;l
+: 1586310654:0;rm ops_*
+: 1586310655:0;l
+: 1586310664:0;pdflatex ops-manual.tex
+: 1586314593:0;cd /tmp
+: 1586314607:0;scrot -s
+: 1586317930:0;l
+: 1586317940:0;feh IMG_20200408_124658.jpg
+: 1586317995:0;mv IMG_20200408_124658.jpg ~/src/abyss/platypus/scout/ops-manual/leds.png
+: 1586318014:0;#mv IMG_20200408_130309.jpg ~/src/abyss/platypus/scout/ops-manual/platypus.png
+: 1586318021:0;l ~/src/abyss/platypus/scout/ops-manual/platypus
+: 1586318027:0;l ~/src/abyss/platypus/scout/ops-manual
+: 1586318035:0;mv IMG_20200408_130309.jpg ~/src/abyss/platypus/scout/ops-manual/platypus.png
+: 1586318042:0;pdflatex ops-manual.tex
+: 1586320749:0;git status
+: 1586320768:0;git add leds.png ops-manual.pdf
+: 1586320771:0;git status
+: 1586320789:0;git commit -a -m "ops-manual improvements"
+: 1586320794:0;git pull
+: 1586320799:0;git push
+: 1586320893:0;git pull
+: 1586321537:0;pm
+: 1586322373:0;git pull
+: 1586322604:0;pdflatex ops-manual.tex
+: 1586322751:0;em ops-manual.tex
+: 1586322786:0;pdflatex ops-manual.tex
+: 1586323076:0;git status
+: 1586323100:0;git commit -a -m "ops-manual ready for review"
+: 1586323103:0;git push
+: 1586325134:0;cd src/useful-scripts/arch-desktop
+: 1586325135:0;l
+: 1586325140:0;cat use-both-screens.sh
+: 1586325166:0;mv use-both-screens.sh use-both-screens
+: 1586325175:0;mv use-curved-only.sh use-curved-only
+: 1586325176:0;l
+: 1586354872:0;sudo shutdown now
+: 1586392868:0;sudo pacman -Syu
+: 1586396710:0;em .zshrc
+: 1586396731:0;. .zshrc
+: 1586396739:0;. ./.zshrc
+: 1586396744:0;use-curved-only
+: 1586401586:0;use-both-screens
+: 1586408318:0;ip route
+: 1586409058:0;cd /tmp
+: 1586409059:0;l
+: 1586409064:0;man tar
+: 1586409138:0;tar -xvf noip-duc-linux.tar.gz
+: 1586409140:0;l
+: 1586409163:0;cat noip-2.1.9-1/README.FIRST
+: 1586409171:0;cat noip-2.1.9-1/README.FIRST | less
+: 1586409960:0;lll
+: 1586409962:0;ll
+: 1586410362:0;sshwork
+: 1586410554:0;l
+: 1586410562:0;rm *scrot*
+: 1586410563:0;l
+: 1586410573:0;ls | wc -l
+: 1586410583:0;l | wc -l
+: 1586410924:0;cd /tmp
+: 1586410926:0;scrot -s
+: 1586414261:0;cd
+: 1586414265:0;cd src/st
+: 1586414267:0;git status
+: 1586414273:0;l
+: 1586414311:0;l patches
+: 1586414325:0;patch --merge -i patches/st-scrollback-mouse-increment-0.8.2.diff
+: 1586414356:0;rm config.h
+: 1586414362:0;sudo make clean install
+: 1586414373:0;em config.def.h
+: 1586577625:0;l
+: 1586577659:0;qutebrowser
+: 1586577669:0;firefox
+: 1586784227:0;sdn
+: 1586819837:0;sudo pacman -Syu
+: 1586819877:0;mv /usr/lib/p11-kit-trust.so /usr/lib/p11-kit-trust.so.bak
+: 1586819881:0;sudo mv /usr/lib/p11-kit-trust.so /usr/lib/p11-kit-trust.so.bak
+: 1586819883:0;sudo pacman -Syu
+: 1586819989:0;xprop
+: 1586819998:0;em .config/picom.conf
+: 1586820029:0;killall picom
+: 1586820032:0;picom &!
+: 1586822519:0;tem .ssh/config
+: 1586822540:0;nvim .ssh/config
+: 1586826230:0;cd /tmp
+: 1586826235:0;nvim tempscript
+: 1586826268:0;chmod +x temp
+: 1586826271:0;chmod +x tempscript
+: 1586826280:0;./tempscript a b c d
+: 1586826301:0;nvim tempscript
+: 1586826326:0;./tempscript a b c d
+: 1586840097:0;sudo pacman -Syu
+: 1586843182:0;nvim tempscript
+: 1586843265:0;echo "ping" | ./tempscript
+: 1586843274:0;history | tail -n1
+: 1586843283:0;nvim tempscript
+: 1586843308:0;echo "ping" | ./tempscript
+: 1586843426:0;nvim tempscript
+: 1586843440:0;echo "ping" | ./tempscript
+: 1586843441:0;l
+: 1586843444:0;cat cmd.txt
+: 1586849320:0;cd
+: 1586849323:0;cd src/projects/machine-learning
+: 1586849325:0;git pull
+: 1586849331:0;l
+: 1586849337:0;git rm penis
+: 1586849511:0;cd /tmp
+: 1586849775:0;l
+: 1586849798:0;unzip machine-learning-ex4.zip -d ~/src/projects/machine-learning/
+: 1586849862:0;l
+: 1586849866:0;cd machine-learning-ex4/ex4
+: 1586849867:0;l
+: 1586849890:0;l ..
+: 1586851309:0;l
+: 1586851319:0;em nnCostFunction.m
+: 1586865092:0;ip a
+: 1586865192:0;ssh-copy-id hamish@10.0.0.67
+: 1586865401:0;sudo pacman -Syu
+: 1586865418:0;sudo pacman -S mpd mpc
+: 1586865523:0;mkdir -p .config/mpd
+: 1586865527:0;cd .config/mpd
+: 1586865527:0;l
+: 1586865572:0;touch mpd.conf mpd.log mpd.pid
+: 1586865699:0;cp /usr/share/doc/mpd/mpdconf.example mpd.conf
+: 1586865703:0;em mpd.conf
+: 1586865765:0;ll
+: 1586865781:0;sudo nvim /etc/fstab
+: 1586865786:0;lsblk
+: 1586865844:0;blkid
+: 1586865849:0;blkid /dev/sdb
+: 1586865850:0;blkid /dev/sdb1
+: 1586865887:0;ls /dev/disk/by-uuid/6267-06FE
+: 1586865893:0;l /dev/disk/by-uuid/6267-06FE
+: 1586865902:0;l /dev/disk/by-uuid/6a29d18f-ee5c-4f26-93de-6cc15c221286
+: 1586865910:0;l /dev/disk/by-uuid/
+: 1586865922:0;lsblk
+: 1586865928:0;l /dev/disk/by-uuid/
+: 1586865961:0;ls /mnt
+: 1586865965:0;ls /mnt/storage
+: 1586866169:0;sudo mount -t ntfs-3g /dev/sdb1 /mnt/storage
+: 1586866172:0;ls /mnt/storage
+: 1586866295:0;nvim ~/.zshrc
+: 1586866435:0;ls Music
+: 1586866441:0;ls /mnt/storage/Music
+: 1586866460:0;l
+: 1586866580:0;mkdir playlists
+: 1586867436:0;mpd
+: 1586867500:0;l
+: 1586867507:0;mpd
+: 1586867767:0;sudo systemctl enable mpd.service
+: 1586867773:0;sudo systemctl start mpd.service
+: 1586867801:0;l
+: 1586867812:0;sudo systemctl stop mpd.service
+: 1586867814:0;sudo systemctl start mpd.service
+: 1586867815:0;l
+: 1586867991:0;mpc
+: 1586868281:0;cp /usr/share/doc/ncmpcpp/config ../ncmpcpp/config
+: 1586868298:0;mkdir ../ncmpcpp
+: 1586868299:0;cp /usr/share/doc/ncmpcpp/config ../ncmpcpp/config
+: 1586868347:0;sudo pacman -S ncmpcpp
+: 1586868351:0;cp /usr/share/doc/ncmpcpp/config ../ncmpcpp/config
+: 1586868753:0;ncmpcpp
+: 1586868916:0;sudo reboot now
+: 1586869504:0;ncmpcpp
+: 1586874325:0;l
+: 1586874331:0;sudo shutdown now
+: 1586906921:0;sudo pacman -Syu
+: 1586913135:0;width=4
+: 1586913144:0;echo $($width / 2)
+: 1586913160:0;echo $( $width + 2)
+: 1586913166:0;width="4"
+: 1586913167:0;echo $( $width + 2)
+: 1586913178:0;echo $(( $width + 2))
+: 1586913182:0;echo $(( $width / 2))
+: 1586913189:0;echo $(($width / 2))
+: 1586913192:0;width=4
+: 1586913193:0;echo $(($width / 2))
+: 1586916478:0;man scrot
+: 1586916540:0;cd /tmp && scrot -s
+: 1586916549:0;cd
+: 1586916558:0;exec cd /tmp && scrot -s
+: 1586916564:0;cd /tmp && scrot -s
+: 1586916568:0;l
+: 1586916574:0;cd
+: 1586916615:0;l
+: 1586916618:0;l /tmp
+: 1586916622:0;man scrot
+: 1586916780:0;l 0
+: 1586916783:0;l /tmp
+: 1586916811:0;scrot -s -e 'mv $f /tmp/'
+: 1586916820:0;l
+: 1586916822:0;l /tmp
+: 1586922871:0;killall picom && picom &!
+: 1586924005:0;picom &!
+: 1586939805:0;cd src/projects/machine-learning
+: 1586939808:0;git status
+: 1586939824:0;update-git-repos -a
+: 1586939864:0;l
+: 1586943950:0;ll
+: 1586943964:0;cd src/projects/machine-learning/machine-learning-ex4/ex4
+: 1586944385:0;l
+: 1586944389:0;em nnCostFunction.m
+: 1586944479:0;ssh hamish@thinkingaboudis.zapto.org
+: 1586944986:0;octave
+: 1586950129:0;cd src/projects/machine-learning/machine-learning-ex4/ex4
+: 1586950134:0;octave
+: 1586952849:0;cd /tmp
+: 1586952850:0;l
+: 1586952854:0;unzip iM2400_step.zip
+: 1586952856:0;l
+: 1586953860:0;sdn
+: 1586998718:0;sudo pacman -Syu
+: 1587003983:0;sdn
+: 1587081699:0;mpc
+: 1587081704:0;mpd
+: 1587081721:0;sudo pacman -Syu
+: 1587192760:0;cd src/projects/machine-learning/machine-learning-ex4/ex4
+: 1587192762:0;git status
+: 1587192786:0;cd
+: 1587192792:0;cd src/useful-scripts/arch-desktop
+: 1587192799:0;em git-repos.txt
+: 1587192809:0;nvim git-repos.txt
+: 1587192825:0;update-git-repos -a
+: 1587295435:0;sdn
+: 1587340297:0;sudo pacman -Syu
+: 1587340528:0;update-git-repos
+: 1587340540:0;cd src/projects
+: 1587340541:0;l
+: 1587340555:0;git clone git@github.com:hacmorgan/pelicomputer.git
+: 1587340561:0;cd pelicomputer
+: 1587340562:0;l
+: 1587340567:0;em plan.org
+: 1587340652:0;update-git-repos
+: 1587340686:0;realpath
+: 1587340688:0;realpath .
+: 1587340709:0;echo $(realpath .) >> ../../useful-scripts/arch-desktop/git-repos.txt
+: 1587340712:0;update-git-repos
+: 1587344455:0;cd /tmp
+: 1587344456:0;l
+: 1587344469:0;unzip iM2300_step.zip
+: 1587344498:0;sudo pacman -Syu
+: 1587344928:0;unzip raspberry-pi-4-model-b-1.snapshot.3.zip
+: 1587371280:0;cd ../machine-learning/machine-learning-ex4/ex4/lib
+: 1587371284:0;cd ..
+: 1587371307:0;octave
+: 1587371548:0;unzip machine-learning-ex5.zip -d ~/src/projects/machine-learning
+: 1587373446:0;killall picom
+: 1587373450:0;picom &!
+: 1587373473:0;killall picom
+: 1587373474:0;picom &!
+: 1587376901:0;cd src/projects/machine-learning/machine-learning-ex5/ex5
+: 1587376902:0;l
+: 1587376905:0;submit
+: 1587376908:0;octave
+: 1587379861:0;sdn
+: 1587566588:0;sudo shutdown now
+: 1587598578:0;sudo pacman -Syu
+: 1587599032:0;rsn
+: 1587600604:0;ping 10.0.0.73
+: 1587616150:0;man ping
+: 1587617813:0;man rsync
+: 1587617822:0;sudo pacman -S rsync
+: 1587617825:0;man rsync
+: 1587630631:0;pulsemixer
+: 1587630772:0;use-curved-only
+: 1587636185:0;use-both-screens
+: 1587636196:0;sudo pacman -Syu
+: 1587636200:0;pm
+: 1587636822:0;ls /usr/share/pulseaudio/alsa-mixer/profile-sets/
+: 1587636851:0;cp /usr/share/pulseaudio/alsa-mixer/profile-sets/default.conf /usr/share/pulseaudio/alsa-mixer/profile-sets/asus-xonar-essence-stx.conf
+: 1587636855:0;sudo cp /usr/share/pulseaudio/alsa-mixer/profile-sets/default.conf /usr/share/pulseaudio/alsa-mixer/profile-sets/asus-xonar-essence-stx.conf
+: 1587636857:0;l
+: 1587636882:0;sudo em /usr/share/pulseaudio/alsa-mixer/profile-sets/asus-xonar-essence-stx.conf
+: 1587637159:0;sudo pacman -S alsa pulseaudio
+: 1587637248:0;sudo pacman -S alsa-utils 
+: 1587637255:0;alsamixer
+: 1587637434:0;groups hamish
+: 1587637446:0;sudo usermod -aG audio hamish
+: 1587637454:0;alsamixer
+: 1587637488:0;ls
+: 1587637506:0;nvim nohup.out
+: 1587637536:0;pm
+: 1587637574:0;alsamixer
+: 1587638189:0;sudo pacman -S pulseaudio-alsa
+: 1587638199:0;pm
+: 1587638497:0;rsn
+: 1587638784:0;pm
+: 1587638977:0;mpd
+: 1587638986:0;mpc
+: 1587639009:0;alsamixer
+: 1587639079:0;ls .config | grep "mpd"
+: 1587639102:0;em .config/mpd/mpd.conf
+: 1587639119:0;ls /mnt/storage/Music
+: 1587639137:0;cd .config/mpd
+: 1587639138:0;l
+: 1587639168:0;touch database
+: 1587639293:0;l
+: 1587639311:0;mv mpd.conf mpd.conf.default
+: 1587639319:0;em mpd.conf
+: 1587639357:0;l
+: 1587639373:0;ncmpcpp
+: 1587639392:0;mpd
+: 1587639402:0;ncmpcpp
+: 1587639446:0;sudo systemctl disable mpd.service
+: 1587639451:0;sudo systemctl stop mpd.service
+: 1587639465:0;sudo systemctl stop mpd.socket
+: 1587639469:0;mpd
+: 1587639477:0;ncmpcpp
+: 1587639616:0;mpd
+: 1587639666:0;lsof -i tcp:6600
+: 1587639674:0;sudo pacman -S lsof
+: 1587639677:0;lsof -i tcp:6600
+: 1587639718:0;cat /proc/sys/net/ipv6/bindv6only
+: 1587639734:0;kill 4819
+: 1587639736:0;mpd
+: 1587639741:0;ncmpcpp
+: 1587639814:0;killall mpd
+: 1587639816:0;mpd
+: 1587639820:0;ncmpcpp
+: 1587639825:0;mpc
+: 1587639830:0;sudo mpc
+: 1587639845:0;pacman -S mpd
+: 1587639871:0;sudo ncmpcpp
+: 1587640202:0;ls /tmp
+: 1587640249:0;cd /tmp
+: 1587640251:0;l
+: 1587640292:0;scrot -s -e 'mv $f /tmp/'
+: 1587640403:0;pulsemixer
+: 1587640509:0;scrot -s -e 'mv $f /tmp/'
+: 1587640885:0;mpc
+: 1587640890:0;ncmpcpp
+: 1587641037:0;em .emacs
+: 1587642316:0;sudo ncmpcpp
+: 1587642321:0;ncmpcpp
+: 1587642621:0;man ncmpcpp
+: 1587643693:0;glances
+: 1587643719:0;less /proc/cpuinfo
+: 1587644174:0;sudo pacman -S sakura
+: 1587644178:0;sakura
+: 1587644189:0;ncmpcpp
+: 1587644532:0;cd
+: 1587644535:0;cd .config
+: 1587644559:0;rsync -rvh hamish@work:.config/sakura ./
+: 1587644560:0;l
+: 1587644581:0;nvim .config/sakura/sakura.conf
+: 1587644643:0;sakura
+: 1587644655:0;l
+: 1587644666:0;nvim .config/sakura/sakura.conf
+: 1587644684:0;l
+: 1587644979:0;ncmpcpp
+: 1587645198:0;pulsemixer
+: 1587645274:0;alsamixer
+: 1587645504:0;pulsemixer
+: 1587650640:0;cd /mnt/storage/Games/Ubisoft\ Game\ Launcher/
+: 1587650641:0;l
+: 1587650653:0;cd ../UPLAY/Ubisoft\ Game\ Launcher
+: 1587650654:0;l
+: 1587650669:0;vlc Chubby\ BBW\ Teen\ Two\ Guys.720.mp4&!
+: 1587650734:0;l
+: 1587650739:0;pwd
+: 1587650746:0;realpath .
+: 1587650794:0;cp Chubby\ BBW\ Teen\ Two\ Guys.720.mp4 /tmp/v1.mp4
+: 1587685955:0;killall picom
+: 1587685958:0;picom &!
+: 1587685976:0;sudo pacman -Syu
+: 1587687346:0;ping 10.0.0.73
+: 1587687865:0;sudo pacman -S sshfs
+: 1587687893:0;sudo mkdir /mnt/work
+: 1587687907:0;sshfs hamish@work: /mnt/work
+: 1587687911:0;sudo sshfs hamish@work: /mnt/work
+: 1587687917:0;ls /mnt/work
+: 1587688006:0;use-curved-only
+: 1587689605:0;use-both-screens
+: 1587689998:0;sudo pacman -Syu
+: 1587690504:0;man sort
+: 1587690986:0;sshfs hamish@work:/home/hamish /mnt/work
+: 1587690991:0;sudo sshfs hamish@work:/home/hamish /mnt/work
+: 1587691079:0;sudo sshfs hamish@work:/home/hamish /mnt/work -F /home/hamish/.ssh/config
+: 1587691105:0;ls /mnt/work
+: 1587691114:0;man sshfs
+: 1587691137:0;fusermount3 -u /mnt/work
+: 1587691142:0;sudo fusermount3 -u /mnt/work
+: 1587691151:0;cd /tmp
+: 1587691154:0;mkdir work
+: 1587691169:0;sshfs hamish@work:/home/hamish /tmp/work
+: 1587691171:0;l
+: 1587691174:0;cd work
+: 1587691174:0;l
+: 1587702635:0;mpc
+: 1587702643:0;ncmpcpp
+: 1587702647:0;sudo ncmpcpp
+: 1587702658:0;sudo systemctl enable mpd.service
+: 1587702663:0;sudo systemctl start mpd.service
+: 1587702665:0;mpc
+: 1587702668:0;ncmpcpp
+: 1587702828:0;mpc
+: 1587702831:0;mpc -h
+: 1587702835:0;mpc --help
+: 1587702838:0;man mpc
+: 1587702888:0;sudo ncmpcpp
+: 1587702894:0;ncmpcpp
+: 1587702902:0;sudo ncmpcpp
+: 1587702936:0;rsn
+: 1587702973:0;mpc
+: 1587702977:0;ncmpcpp
+: 1587702989:0;less /etc/systemd/system
+: 1587703019:0;less $(find /etc/systemd/system/multi-user.target.wants/ -name "mpd.service")
+: 1587703033:0;find /etc/systemd/system/multi-user.target.wants/ -name "mpd.service"
+: 1587703037:0;find /etc/systemd/system/multi-user.target.wants/ -name "mpd"
+: 1587703042:0;find /etc/systemd/system/ -name "mpd"
+: 1587703046:0;find /etc/systemd/system/ -name "mpd*"
+: 1587703053:0;less /etc/systemd/system/default.target.wants/mpd.service
+: 1587703073:0;sudo nvim /etc/systemd/system/default.target.wants/mpd.service
+: 1587703142:0;sudo systemctl stop mpd.service
+: 1587703152:0;systemctl daemon-reload
+: 1587703157:0;sudo systemctl daemon-reload
+: 1587703166:0;ncmpcpp
+: 1587703295:0;pm
+: 1587703323:0;sudo nvim /etc/systemd/system/default.target.wants/mpd.service
+: 1587703338:0;sudo systemctl daemon-reload
+: 1587703340:0;ncmpcpp
+: 1587703354:0;pm
+: 1587703373:0;sudo systemctl disable mpd.service
+: 1587703378:0;sudo systemctl stop mpd.service
+: 1587703385:0;sudo systemctl enable mpd.service
+: 1587703389:0;sudo systemctl start mpd.service
+: 1587703399:0;killall mpd
+: 1587703403:0;mpd
+: 1587703406:0;ncmpcpp
+: 1587703413:0;mpd
+: 1587703420:0;ncmpcpp
+: 1587703743:0;sudo pacman -S qpaeq
+: 1587703810:0;sudo pacman -S pulseeffects
+: 1587709874:0;man rsync
+: 1587710093:0;cd /tmp
+: 1587710099:0;mkdir {r1,r2}
+: 1587710101:0;l
+: 1587710104:0;cd r1
+: 1587710156:0;for i in {1..10}; do echo "$i $(( $i + 1 ))" > $i; done
+: 1587710157:0;l
+: 1587710160:0;cat 1
+: 1587710162:0;cat 10
+: 1587710190:0;rsync -rvh --progress /tmp/r1/ /tmp/r2
+: 1587710195:0;l ../r2
+: 1587710198:0;l
+: 1587710201:0;rm 10
+: 1587710202:0;l
+: 1587710206:0;rsync -rvh --progress /tmp/r1/ /tmp/r2
+: 1587710209:0;l ../r2
+: 1587710213:0;l
+: 1587710218:0;rm 3 4 5
+: 1587710219:0;l
+: 1587710222:0;rsync -rvh --progress /tmp/r1/ /tmp/r2
+: 1587710227:0;l ../r2
+: 1587712001:0;ls /mnt/work
+: 1587712007:0;sshfs hamish@work:/home/hamish /tmp/work
+: 1587712013:0;mkdir /tmp/work
+: 1587712013:0;sshfs hamish@work:/home/hamish /tmp/work
+: 1587712034:0;gimp /tmp/work/src/abyss/platypus/scout/ops-manual/leds.png
+: 1587712105:0;pcmanfm /tmp/work/src/abyss/platypus/scout/ops-manual/leds.png
+: 1587712109:0;pcmanfm /tmp/work/src/abyss/platypus/scout/ops-manual/
+: 1587794741:0;update-git-repos
+: 1587910544:0;sudo shutdown now
+: 1587946229:0;sudo pacman -Syu
+: 1587946475:0;rsn
+: 1587947315:0;pm
+: 1587955648:0;sudo pacman -Syu
+: 1587955666:0;pm
+: 1587955846:0;rsn
+: 1587955936:0;pm
+: 1587957384:0;cd /tmp
+: 1587957386:0;l
+: 1587957401:0;unzip machine-learning-ex6.zip -d ~/src/projects/machine-learning
+: 1587957407:0;cd ~/src/projects/machine-learning
+: 1587957408:0;l
+: 1587957414:0;cd machine-learning-ex6/ex6
+: 1587957545:0;l
+: 1587957550:0;em gaussianKernel.m
+: 1587957741:0;octave
+: 1587960882:0;htop
+: 1587966258:0;mpd
+: 1587966263:0;ncmpcpp
+: 1587966284:0;sudo systemctl stop mpd.service
+: 1587966293:0;mpd
+: 1587966302:0;sudo systemctl stop mpd.socket
+: 1587966303:0;mpd
+: 1587966306:0;ncmpcpp
+: 1587966325:0;sudo systemctl disable mpd.service
+: 1587966327:0;killall mpd
+: 1587966334:0;sudo killall mpd
+: 1587966339:0;mpd 
+: 1587966350:0;ncmpcpp
+: 1587966355:0;pm
+: 1587966764:0;cd /mnt/storage/Music
+: 1587966764:0;l
+: 1587966767:0;cd HD\ Audio
+: 1587966768:0;l
+: 1587966780:0;tree -d
+: 1587966784:0;tree -d | less
+: 1587968830:0;cd /tmp
+: 1587968833:0;l
+: 1587968889:0;unzip Trials-K21--Soylent.zip -d /mnt/storage/Music/HD\ Audio/
+: 1587969298:0;l
+: 1587969308:0;l Desktop
+: 1587969312:0;l Downloads
+: 1587969323:0;cd Desktop
+: 1587969335:0;mkdir "Trials & K21"
+: 1587969336:0;l
+: 1587969363:0;unzip Trials-K21--Soylent.zip -d ~/Desktop/Trials\ \&\ K21
+: 1587969368:0;l Trials\ \&\ K21
+: 1587969418:0;l
+: 1587969424:0;rm *raspbian*
+: 1587969426:0;l
+: 1587969436:0;mkdir "State of the Art"
+: 1587969449:0;unzip Hilltop-Hoods-State-Of-The-Art.zip -d ~/Desktop/State\ of\ the\ Art
+: 1587969657:0;L
+: 1587969658:0;l
+: 1587969677:0;mkdir "The Undisputed Truth"
+: 1587969708:0;unzip Brother-Ali-The-Undisputed-Truth.zip -d ~/Desktop/The\ Undisputed\ Truth
+: 1587969773:0;l
+: 1587969782:0;mv 01Klutz.mp3 ~/Desktop
+: 1587969896:0;l
+: 1587969906:0;mkdir "Skelethon"
+: 1587969929:0;unzip Aesop-Rock--Skelethon.zip -d ~/Desktop/Skelethon
+: 1587970074:0;l
+: 1587970086:0;mkdir "The Mountain Will Fall"
+: 1587970098:0;unzip dj_shadow-the_mountain_will_fall.zip -d ~/Desktop/The\ Mountain\ Will\ Fall
+: 1587970102:0;l
+: 1587970170:0;sudo pacman -S ntfs-3g
+: 1587970185:0;sudo pacman -S ntfsprogs
+: 1587970197:0;cd /mnt/storage/Music
+: 1587970198:0;l
+: 1587970203:0;touch penis
+: 1587970682:0;sudo pacman -S cdparanoia
+: 1587970691:0;sudo pacman -S cdrdao
+: 1587971229:0;cd src/useful-scripts/
+: 1587971230:0;l
+: 1587971237:0;cd
+: 1587971241:0;cd src/useful-scripts/
+: 1587971241:0;l
+: 1587971463:0;sudo pacman -S cdrdao
+: 1587971566:0;sudo pacman -S gst-plugins-base python-cddb pycdio
+: 1587971637:0;sudo pacman -S python-pycdio
+: 1587971661:0;cd src
+: 1587971673:0;git clone https://aur.archlinux.org/python2-musicbrainz2.git
+: 1587971679:0;cd python2-musicbrainz2
+: 1587971683:0;makepkg -si
+: 1587971692:0;cd ..
+: 1587971698:0;git clone https://aur.archlinux.org/cddb-py.git
+: 1587971702:0;cd cddb-py
+: 1587971706:0;makepkg -si
+: 1587971745:0;cd ..
+: 1587971745:0;l
+: 1587971802:0;cd morituri
+: 1587971845:0;make -j24
+: 1587971865:0;make 
+: 1587971877:0;tree
+: 1587971911:0;make
+: 1587972593:0;sudo pacman -S asunder
+: 1587972601:0;asunder
+: 1587972733:0;pm
+: 1587972896:0;cd
+: 1587972899:0;cd Desktop
+: 1587972900:0;l
+: 1587974211:0;cd
+: 1587974213:0;cd src/useful-scripts/
+: 1587974214:0;l
+: 1587974240:0;cd generic
+: 1587974241:0;l
+: 1587974248:0;l not-on-path
+: 1587974269:0;mkdir dots
+: 1587974276:0;cd dots
+: 1587974287:0;cp -r ~/.config/sakura ./
+: 1587974287:0;l
+: 1587974298:0;rm -rf ~/.config/sakura
+: 1587974699:0;l
+: 1587974706:0;l .config
+: 1587974712:0;l ~/.config
+: 1587975067:0;sudo pacman -S i3status-rust
+: 1587975198:0;l .config
+: 1587975483:0;cd src/useful-scripts/
+: 1587975496:0;cat arch-desktop/.vimrc
+: 1587975503:0;cat x360/.vimrc
+: 1587975607:0;cp x360/.vimrc generic/dots/nvim/
+: 1587975613:0;mkdir generic/dots/nvim/
+: 1587975615:0;cp x360/.vimrc generic/dots/nvim/
+: 1587975848:0;tree | grep picom
+: 1587975859:0;less arch-desktop/compton.conf
+: 1587975870:0;diff arch-desktop/compton.conf x360/compton.conf
+: 1587975993:0;sudo pacman -Syu && sdn
+: 1587979930:0;rsn
+: 1587980142:0;touch /mnt/storage/Music/penis
+: 1587980233:0;sudo umount /mnt/storage
+: 1587980241:0;#sudo mount -t ntfs-3g /dev/sdb1 /mnt/storage
+: 1587980244:0;lsblk
+: 1587980250:0;sudo mount -t ntfs-3g /dev/sdb1 /mnt/storage
+: 1587980253:0;touch /mnt/storage/Music/penis
+: 1587980265:0;cd /mnt/storage/Music/
+: 1587980266:0;l
+: 1587980269:0;rm penis
+: 1587980278:0;cd Desktop
+: 1587980279:0;l
+: 1587980293:0;cd HD\ Audio
+: 1587980293:0;l
+: 1587980308:0;mkdir "Aesop Rock"
+: 1587980333:0;mv ~/Desktop/Aesop\ Rock\ -\ None\ Shall\ Pass Aesop\ Rock/None\ Shall\ Pass
+: 1587980340:0;l Aesop\ Rock
+: 1587980367:0;mv ~/Desktop/Bliss\ n\ Eso\ -\ Circus\ In\ The\ Sky Bliss\ n\ Eso/Circus\ In\ The\ Sky
+: 1587980381:0;emacs .
+: 1587980558:0;mkdir "Downsyde" && mv ~/Desktop/ClassicILL Downsyde/
+: 1587980586:0;mv ~/Desktop/01Klutz.mp3 Aesop\ Rock/klutz.mp3
+: 1587980630:0;mkdir Kaytranada && mv ~/Desktop/Kaytranada\ -\ 99,9% "Kaytranada/99.9%"
+: 1587980636:0;l Kaytranada
+: 1587980645:0;l
+: 1587980652:0;mkdir "Brother Ali"
+: 1587980693:0;mv ~/Desktop/{Mourning\ In\ America\ and\ Dreaming\ In\ Color,Shadows\ On\ The\ Sun,The\ Truth\ Is\ Here,The\ Undisputed\ Truth} Brother\ Ali
+: 1587980703:0;l Brother\ Ali
+: 1587980713:0;l ~/Desktop
+: 1587980724:0;mv ~/Desktop/Skelethon Aesop\ Rock
+: 1587980734:0;mkdir Esoterik
+: 1587980740:0;mv ~/Desktop/Esoterik Esoterik
+: 1587980748:0;mv ~/Desktop/Satellite Dialectrix
+: 1587980751:0;l Dialectrix
+: 1587980754:0;l Esoterik
+: 1587980755:0;l
+: 1587980759:0;l ~/Desktop
+: 1587980768:0;mv ~/Desktop/State\ of\ the\ Art Hilltop\ Hoods
+: 1587980774:0;mkdir "DJ Shadow"
+: 1587980781:0;mv ~/Desktop/The\ Mountain\ Will\ Fall DJ\ Shadow
+: 1587980800:0;mv ~/Desktop/Trials\ \&\ K21 ./
+: 1587980808:0;l Brother\ Ali
+: 1587980819:0;mv ~/Desktop/Us Brother\ Ali
+: 1587980827:0;l ~/Desktop
+: 1587980849:0;mpd
+: 1587980853:0;ncmpcpp
+: 1587980896:0;mpc update
+: 1587981209:0;mpc
+: 1587982281:0;cd /mnt/storage/Games/Ubisoft\ Game\ Launcher/
+: 1587982285:0;cd ../UPLAY/Ubisoft\ Game\ Launcher
+: 1587982286:0;l
+: 1587982305:0;cd Pictures
+: 1587982305:0;l
+: 1587982330:0;scp IMG_0006.jpg hamish@10.0.0.81:/tmp/
+: 1587982371:0;cp . /tmp/f1
+: 1587982374:0;cp . /tmp/f1 -r
+: 1587982492:0;pm
+: 1587983491:0;ncmpcpp
+: 1587983833:0;update-git-repos
+: 1587983946:0;update-git-repos -a
+: 1587984063:0;ncmpcpp
+: 1587985184:0;#scp hamish@10.0.0.81:/tmp
+: 1587985192:0;ssh-copy-id hamish@10.0.0.81
+: 1587985211:0;ssh hamish@10.0.0.81
+: 1587986455:0;pm
+: 1587986459:0;alsamixer
+: 1587986506:0;pm
+: 1587987395:0;ncmpcpp
+: 1587997196:0;sudo sh
+: 1587997203:0;sudo shutdown now
+: 1588029908:0;sudo pacman -Syu
+: 1588029932:0;l
+: 1588035719:0;cd /tmp
+: 1588035766:0;scp 120px_scale.png hamish@work:src/abyss/platypus/scout/data_processing
+: 1588038110:0;for i in {1 .. 10}; do echo "$i $(( $i + 1 ))" > $i; done
+: 1588038114:0;for i in {1..10}; do echo "$i $(( $i + 1 ))" > $i; done
+: 1588038117:0;l
+: 1588038130:0;rm 1 2 3 4 5 6 7 8 9 10
+: 1588038131:0;l
+: 1588038139:0;for i in {1..10}; do echo "$i $(( $i + 1 ))"; done
+: 1588038148:0;num_lines=10
+: 1588038154:0;for i in {1..$num_lines}; do echo "$i $(( $i + 1 ))"; done
+: 1588038793:0;if [ $num_lines = 10 ]; then echo "yes"; fi
+: 1588038820:0;echo $( $num_lines % 4 )
+: 1588038830:0;echo $(( $num_lines % 4 ))
+: 1588038833:0;echo $(( $num_lines % 5 ))
+: 1588038862:0;bash
+: 1588040413:0;$(( 29 % 30 ))
+: 1588040422:0;echo $(( 29 % 30 ))
+: 1588040433:0;echo $(( 21 % 30 ))
+: 1588042421:0;cd /tmp
+: 1588042436:0;scp hamish@work:/tmp/scale.png ./
+: 1588042437:0;l
+: 1588042866:0;scp hamish@work:/tmp/scale.png ./
+: 1588043737:0;pm
+: 1588050147:0;sudo pacman -Syu
+: 1588051991:0;cd /tmp
+: 1588052000:0;scp hamish@work:/tmp/distance_scale.png ./
+: 1588052002:0;l
+: 1588052011:0;gimp distance_scale.png
+: 1588059501:0;use-curved-only
+: 1588060839:0;use-both-screens
+: 1588546257:0;update-git-repos -a
+: 1588546274:0;cd src/useful-scripts/generic
+: 1588546275:0;l
+: 1588546285:0;source arch-package-install_after-zsh
+: 1588546301:0;freeCAD
+: 1588547349:0;cd freecad
+: 1588547349:0;l
+: 1588547357:0;nvim PKGBUILD
+: 1588547417:0;makepkg -si
+: 1588547464:0;sudo reboot now
+: 1588550659:0;l
+: 1588550951:0;sudo pacman -Syu
+: 1588550985:0;cat /etc/pacman.conf
+: 1588550994:0;sudo nvim /etc/pacman.conf
+: 1588551016:0;sudo pacman -Syu
+: 1588551177:0;rsn
+: 1588551235:0;cd src/freecad
+: 1588551235:0;l
+: 1588551237:0;cd freecad
+: 1588551240:0;makepkg -si
+: 1588551250:0;htop
+: 1588551597:0;l
+: 1588551602:0;em PKGBUILD
+: 1588551631:0;makepkg -si
+: 1588554032:0;pm
+: 1588572214:0;update-git-repos
+: 1588598892:0;sudo shutdown now
+: 1588761042:0;sudo pacman -SYu
+: 1588761044:0;sudo pacman -Syu
+: 1588761245:0;update-git-repos
+: 1588761395:0;cd src
+: 1588761397:0;tree -d
+: 1588761400:0;tree -d -L 1
+: 1588761403:0;tree -d -L 2
+: 1588761460:0;l
+: 1588761479:0;cd projects
+: 1588761481:0;l
+: 1588761491:0;git clone git@github.com:hacmorgan/bravio.git
+: 1588761496:0;cd bravio
+: 1588761497:0;l
+: 1588761502:0;em generate_reports.py
+: 1588761746:0;cd /tmp
+: 1588761749:0;l
+: 1588761762:0;unzip aprtrps.zip -d aprtrps
+: 1588761803:0;~/src/projects/bravio/generate_reports.py aprtrps
+: 1588761908:0;cat aprtrps/*.CSV
+: 1588761930:0;cat aprtrps/*.CSV | cut -d, -f5
+: 1588761936:0;cat aprtrps/*.CSV | cut -d, -f5 | less
+: 1588761959:0;cat aprtrps/*.CSV | cut -d, -f5 | head
+: 1588762024:0;cat aprtrps/*.CSV | cut -d, -f5 | grep --exclude "NSW"
+: 1588762118:0;cat aprtrps/*.CSV | cut -d, -f5 | grep --invert-match "NSW"
+: 1588762127:0;cat aprtrps/*.CSV | cut -d, -f5 | grep  "NSW"
+: 1588762136:0;cat aprtrps/*.CSV | cut -d, -f5 | grep "VIC"
+: 1588762140:0;cat aprtrps/*.CSV | cut -d, -f5 | grep -i "VIC"
+: 1588762144:0;cat aprtrps/*.CSV | cut -d, -f5 | grep -i vic
+: 1588762247:0;cat aprtrps/*.CSV | cut -d, -f5
+: 1588762251:0;cat aprtrps/*.CSV | cut -d, -f5 | less
+: 1588762645:0;cat aprtrps/*.CSV | cut -d, -f5 | sed 's/NSW/GAYY/g'
+: 1588762691:0;iconv -h
+: 1588762696:0;iconv --help
+: 1588762711:0;for file in aprtrps; do echo $file; done
+: 1588762722:0;for file in $(ls aprtrps); do echo $file; done
+: 1588762742:0;for file in $(ls -l aprtrps); do echo $file; done
+: 1588762767:0;for file in ${(ls aprtrps)}; do echo $file; done
+: 1588762774:0;for file in ${ls aprtrps}; do echo $file; done
+: 1588762895:0;man shopt
+: 1588762929:0;files=(arptrps/*)
+: 1588762958:0;files=(arptrps/*/)
+: 1588762964:0;files=(*/)
+: 1588762978:0;for file in $files; do echo $file; done
+: 1588762991:0;files=(aprtrps/)
+: 1588762992:0;for file in $files; do echo $file; done
+: 1588763000:0;files=(aprtrps/*/)
+: 1588763007:0;cd aprtrps
+: 1588763009:0;files=(*/)
+: 1588763012:0;l
+: 1588763070:0;cd ..
+: 1588763072:0;files=(aprtrps/*/)
+: 1588763078:0;files=(*/)
+: 1588763080:0;files=(aprtrps/*)
+: 1588763084:0;for file in $files; do echo $file; done
+: 1588763160:0;history
+: 1588763168:0;for file in $files; do echo $file; done
+: 1588763269:0;#for file in $files; do iconv -f utf-16 -t utf-8 $file; done
+: 1588763278:0;cp -r aprtrps aprtrps-utf8
+: 1588763288:0;files=(aprtrps-utf8/*)
+: 1588763299:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done
+: 1588763305:0;l
+: 1588763321:0;cat aprtrps-utf8/*.CSV | cut -d, -f5 | sed 's/NSW/GAYY/g'
+: 1588763325:0;cat aprtrps-utf8/*.CSV | cut -d, -f5 | less
+: 1588763340:0;cat aprtrps-utf8/*.CSV | cut -d, -f5 | nvim
+: 1588763620:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep "NSW"
+: 1588763623:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep "NZ"
+: 1588763630:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v "NSW"
+: 1588763639:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v "NSW" "VIC
+: 1588763669:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v "NSW|VIC\
+\
+q
+: 1588763673:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v "NSW|VIC"\
+\
+q
+: 1588763677:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v "NSW|VIC"
+: 1588763684:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v "NSW"
+: 1588763714:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v 'NSW|VIC'
+: 1588763745:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v -E 'NSW|VIC'
+: 1588763749:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v -E 'NSW|VIC|WA'
+: 1588763752:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v -E 'NSW|VIC|WA|QLD'
+: 1588763754:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v -E 'NSW|VIC|WA|QLD|SA'
+: 1588763760:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v -E 'NSW|VIC|WA|QLD|SA|NT'
+: 1588763763:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v -E 'NSW|VIC|WA|QLD|SA|NT|ACT'
+: 1588763767:0;for file in $files; do iconv -f utf-16 -t utf-8 $file; done | grep -v -E 'NSW|VIC|WA|QLD|SA|NT|ACT|TAS'
+: 1588763971:0;echo "NSW|VIC|WA|QLD|SA|NT|ACT|TAS" | sed 's/|/,/g
+: 1588763973:0;echo "NSW|VIC|WA|QLD|SA|NT|ACT|TAS" | sed 's/|/,/g'
+: 1588763999:0;echo "NSW|VIC|WA|QLD|SA|NT|ACT|TAS" | sed 's/|/, /g'
+: 1588764333:0;cd
+: 1588764628:0;update-git-repos --add ~/src/projects/bravio 
+: 1588764671:0;cd src/projects/machine-learning/machine-learning-ex7/ex7
+: 1588765438:0;octave
+: 1588766374:0;update-git-repos
+: 1588766417:0;sdn
+: 1588851403:0;sudo pacman -Syu
+: 1588851593:0;pm
+: 1588852431:0;ncmpcpp
+: 1588852446:0;ps -aux | grep "mpd"
+: 1588852458:0;mpd
+: 1588852461:0;ncmpcpp
+: 1588852924:0;update-git-repos
+: 1588852937:0;pm
+: 1588859583:0;sudo shutdown now
+: 1588895766:0;sudo pacman -Syu
+: 1588895794:0;pm
+: 1588895809:0;ip a
+: 1588895815:0;ip link
+: 1588895835:0;ip route
+: 1588895915:0;ssh pi@10.0.0.82
+: 1588895947:0;ssh alarm@10.0.0.82
+: 1588896593:0;ssh alarm@10.0.0.81
+: 1588896613:0;ssh alarm@10.0.0.82
+: 1588900364:0;ssh hamish@10.0.0.82
+: 1588904480:0;pm
+: 1588904670:0;rsn
+: 1588904735:0;pm
+: 1588910137:0;rsn
+: 1588910285:0;pm
+: 1588911558:0;ssh work
+: 1588912554:0;ssh hamish@10.0.0.82
+: 1588915869:0;basename Desktop
+: 1588915882:0;man basename
+: 1588915901:0;basename $(realpath src)
+: 1588917857:0;input_path=/tmp
+: 1588918557:0;INPUT_DIR=/foo
+: 1588918564:0;output_tmp=${input_path#$INPUT_DIR/datasets/}
+: 1588918570:0;echo $output_tmp
+: 1588918597:0;unset input_path
+: 1588918598:0;output_tmp=${input_path#$INPUT_DIR/datasets/}
+: 1588918600:0;echo $output_tmp
+: 1588918885:0;ssh work
+: 1588921900:0;sudo pacman -SYu
+: 1588921902:0;sudo pacman -Syu
+: 1588923495:0;rsn
+: 1588932891:0;pm
+: 1588999868:0;update-git-repos
+: 1589000289:0;update-git-repos -a
+: 1589022996:0;sudo pacman -Syu
+: 1589023167:0;pm
+: 1589024374:0;rsn
+: 1589080324:0;sudo pacman -Syu
+: 1589080450:0;pm
+: 1589081037:0;cd src/projects/
+: 1589081037:0;l
+: 1589081053:0;git clone git@github.com:hacmorgan/thesis.git
+: 1589081709:0;hhhhhhh  xm                            
+: 1589081715:0;l
+: 1589081719:0;cd thesis
+: 1589081719:0;l
+: 1589081748:0;cd final
+: 1589081749:0;l
+: 1589081763:0;em gui.py
+: 1589082413:0;cd ../..
+: 1589082415:0;l
+: 1589082421:0;git clone git@github.com:hacmorgan/emily.git
+: 1589082592:0;cd emily
+: 1589082592:0;l
+: 1589082595:0;cd non-emily
+: 1589082595:0;l
+: 1589082600:0;chmod +x mothers_day_2020
+: 1589082602:0;./mothers_day_2020
+: 1589082613:0;p3 mothers_day_2020
+: 1589082719:0;./mothers_day_2020
+: 1589083526:0;cd src/projects/
+: 1589083527:0;l
+: 1589083545:0;git clone git@github.com:hacmorgan/surface-control-panel.git
+: 1589083599:0;pip install Tkinter
+: 1589083670:0;sudo pacman -S python-tk
+: 1589083676:0;./mothers_day_2020
+: 1589084410:0;sudo pacman -S figlet
+: 1589084416:0;figlet -h
+: 1589084422:0;figlet hello
+: 1589084428:0;figlet happy mothers day
+: 1589084464:0;figlet happy 
+: 1589084478:0;figlet mothers
+: 1589084482:0;figlet mother's
+: 1589084484:0;figlet mother\'s
+: 1589084502:0;figlet day
+: 1589084504:0;figlet day!
+: 1589084537:0;./mothers_day_2020
+: 1589086591:0;history
+: 1589086602:0;figlet I
+: 1589086607:0;figlet love
+: 1589086610:0;figlet you
+: 1589086678:0;figlet mum
+: 1589086698:0;figlet <3
+: 1589086701:0;figlet \<3
+: 1589086869:0;p3
+: 1589087262:0;./mothers_day_2020
+: 1589088261:0;cd src/projects/emily/non-emily
+: 1589088262:0;l
+: 1589088268:0;realpath mothers_day_2020
+: 1589101217:0;update-git-repos
+: 1589101946:0;cd ../..
+: 1589101947:0;l
+: 1589101955:0;cd machine-learning/turntable/image_capture
+: 1589101956:0;l
+: 1589101964:0;feh wiring_diagram.png
+: 1589102310:0;pm
+: 1589125836:0;l
+: 1589125846:0;sudo shutdown now
+: 1589157444:0;em .ssh/config
+: 1589157465:0;ssh pi
+: 1589157476:0;ssh-copy-id pi
+: 1589157503:0;ssh pi
+: 1589158216:0;sudo pacman -Syu
+: 1589158219:0;update-git-repos
+: 1589158289:0;pip install pillow
+: 1589159050:0;cd src/projects/machine-learning/turntable
+: 1589159051:0;l
+: 1589159064:0;cd review_labelling
+: 1589159065:0;l
+: 1589159072:0;chmod +x label
+: 1589159074:0;l
+: 1589159088:0;./label --image-file ../training_data/webcam.csv
+: 1589160209:0;ssh work
+: 1589160214:0;cd src
+: 1589160215:0;l
+: 1589160218:0;cd abyss
+: 1589160219:0;l
+: 1589160223:0;cd platypus
+: 1589160224:0;git pull
+: 1589160232:0;l
+: 1589160234:0;tree
+: 1589160242:0;cd ../abyss-bedrock
+: 1589160245:0;git pull
+: 1589160251:0;tree
+: 1589160278:0;less $(find . -name "bluerobotics-ping*")
+: 1589160831:0;l
+: 1589160836:0;,.label
+: 1589160840:0;./label
+: 1589160847:0;./label --image-file ../training_data/webcam.csv
+: 1589161464:0;./review
+: 1589161571:0;./label --image-file ../training_data/webcam.csv
+: 1589165073:0;ssh pi
+: 1589166125:0;./label --image-file ../training_data/webcam.csv
+: 1589171627:0;less $(find . -name "bluerobotics-ping*")
+: 1589171739:0;cd /tmp
+: 1589171740:0;l
+: 1589173479:0;git pull
+: 1589173508:0;l
+: 1589173510:0;./review
+: 1589177673:0;git pull
+: 1589177694:0;./review
+: 1589178691:0;./label --image-file ../training_data/webcam.bin
+: 1589185229:0;xprop
+: 1589185490:0;./label --image-file ../training_data/webcam.bin
+: 1589186692:0;./label --input-file ../training_data/webcam.bin
+: 1589187801:0;find ../.. -name "backprop*"
+: 1589187807:0;find ../.. -name "*backprop*"
+: 1589187814:0;find ../.. -name '*backprop*'
+: 1589187817:0;find ../.. -name 'backprop*'
+: 1589187825:0;tree ../..
+: 1589188314:0;./label --input-file ../training_data/webcam.bin
+: 1589188410:0;./label --input-file ../training_data/webcam.bin --output-file ../training_data/webcam.annotated.bin
+: 1589188472:0;./label --output-file ../training_data/webcam.zzz.bin --input-file ../training_data/webcam.annotated.bin
+: 1589188715:0;l ../training_data
+: 1589191043:0;git mv ../training_data/ ../data
+: 1589191045:0;l ..
+: 1589195759:0;l
+: 1589195763:0;cd ../training
+: 1589195763:0;l
+: 1589195770:0;chmod +x train
+: 1589195799:0;./train --training-data ../data/webcam.bin
+: 1589198074:0;git status
+: 1589198083:0;l
+: 1589198087:0;git status
+: 1589198105:0;rm ../data/webcam.annotated.bin
+: 1589198118:0;git status
+: 1589198128:0;git add ../review_labelling/label
+: 1589198134:0;git add .
+: 1589198137:0;git status
+: 1589198393:0;git pull
+: 1589198403:0;git status
+: 1589198420:0;tree ..
+: 1589198489:0;git commit -a -m "training code and labelling code functional"
+: 1589198491:0;git push
+: 1589241830:0;sudo pacman -Syu
+: 1589241852:0;ssh work
+: 1589243022:0;realpath !
+: 1589243025:0;realpath ~
+: 1589243107:0;use-curved-only
+: 1589243205:0;pm
+: 1589243310:0;use-both-screens
+: 1589244514:0;pm
+: 1589245111:0;sudo pacman -Syu
+: 1589245350:0;use-curved-only
+: 1589249985:0;use-both-screens
+: 1589256377:0;ssh pi
+: 1589257581:0;use-curved-only
+: 1589259750:0;use-both-screens
+: 1589266242:0;pm
+: 1589297437:0;sudo shutdown now
+: 1589329157:0;sudo pacman -Syu
+: 1589329419:0;pm
+: 1589331183:0;man export
+: 1589335643:0;save_name="hellnoi"
+: 1589335664:0;input_path=/home/hamish/build/abyss 
+: 1589335697:0;model_name=$( basename $input_path )."$save_name"
+: 1589335701:0;echo $model_name
+: 1589335706:0;save_name="hell noi"
+: 1589335708:0;model_name=$( basename $input_path )."$save_name"
+: 1589335710:0;echo $model_name
+: 1589335719:0;model_name=$( basename $input_path ).$save_name
+: 1589335720:0;echo $model_name
+: 1589335889:0;[[ -n $model_name ]] && echo "ye"
+: 1589335892:0;[[ -z $model_name ]] && echo "ye"
+: 1589338897:0;use-curved-only
+: 1589338906:0;pm
+: 1589345109:0;use-both-screens
+: 1589348893:0;pm
+: 1589350293:0;use-curved-only
+: 1589350390:0;pm
+: 1589351808:0;use-both-screens
+: 1589352660:0;pm
+: 1589370633:0;rsn
+: 1589379004:0;sdn
+: 1589411339:0;grep "work" .zshrc 
+: 1589411345:0;man ssh
+: 1589412460:0;sudo pacman -Syu
+: 1589413256:0;pm
+: 1589416239:0;use-curved-only
+: 1589417224:0;use-both-screens
+: 1589417912:0;use-curved-only
+: 1589417934:0;pm
+: 1589419639:0;use-both-screens
+: 1589430302:0;use-curved-only
+: 1589432947:0;use-both-screens
+: 1589434414:0;pm
+: 1589436007:0;sudo pacman -S synergy
+: 1589436084:0;ynergys
+: 1589436090:0;synergy
+: 1589436724:0;ssh -YC work x2x -east -to :0.0
+: 1589438098:0;ssh -YC work x2x -east -to :0.0 &
+: 1589438115:0;kill 120265
+: 1589438119:0;ssh -YC work x2x -east -to :0.0 &!
+: 1589438551:0;cd src/abyss/abyss-bedrock
+: 1589438646:0;pm
+: 1589438654:0;use-curved-only
+: 1589444640:0;use-both-screens
+: 1589444657:0;ssh -YC work x2x -east -to :0.0 &!
+: 1589462040:0;pm
+: 1589462076:0;killall picom
+: 1589462346:0;pm
+: 1589463121:0;picom &!
+: 1589463167:0;sdn
+: 1589501938:0;sudo pacman -Syu
+: 1589502053:0;cd /tmp
+: 1589502059:0;touch /mnt/storage/Music/penis
+: 1589502067:0;sudo umount /mnt/storage
+: 1589502076:0;#sudo mount -t ntfs-3g /dev/sdb1 /mnt/storage
+: 1589502078:0;lsblk
+: 1589502085:0;sudo mount -t ntfs-3g /dev/sdb1 /mnt/storage
+: 1589502089:0;touch /mnt/storage/Music/penis
+: 1589502093:0;rm /mnt/storage/Music/penis
+: 1589502100:0;l
+: 1589503789:0;ssh -YC work x2x -east -to :0.0 &!
+: 1589508686:0;pm
+: 1589514506:0;l
+: 1589514513:0;rm facebook-100009488535858.zip*
+: 1589514514:0;l
+: 1589515420:0;sudo pacman -Syu
+: 1589516132:0;l
+: 1589516208:0;unzip facebook-100009488535858.zip -d /mnt/storage/backups/20200515-facebook
+: 1589517707:0;pm
+: 1589518744:0;cd /mnt/storage/backups/20200515-facebook/
+: 1589518746:0;tree
+: 1589518750:0;tree -d
+: 1589518782:0;l
+: 1589518785:0;cd messages
+: 1589518786:0;l
+: 1589518794:0;l archived_threads
+: 1589518833:0;cd archived_threads
+: 1589518841:0;tree
+: 1589518871:0;l
+: 1589518886:0;cd selbybradshaw_l2ihw26ahw
+: 1589518887:0;l
+: 1589518890:0;cat message_1.json
+: 1589519958:0;l
+: 1589527472:0;pm
+: 1589527491:0;cd src/projects/machine-learning/turntable
+: 1589527494:0;git pull
+: 1589527504:0;l
+: 1589527509:0;cd labelling
+: 1589527510:0;l
+: 1589527548:0;./label --output-file ../data/delet.bin --input-file ../data/hip-hop-1.annotated.bin
+: 1589527747:0;cd src/projects/machine-learning/turntable
+: 1589527748:0;l
+: 1589527754:0;cd training
+: 1589527754:0;l
+: 1589527761:0;em train
+: 1589527829:0;./train --training-data ../data/hip-hop-1.annotated.bin
+: 1589528430:0;use-curved-only
+: 1589530869:0;git status
+: 1589530880:0;rm ../training/1589527985.json
+: 1589530911:0;git commit -a -m "some updates after talking to Eric\
+"
+: 1589530915:0;git push
+: 1589614300:0;cd src/projects/emily/
+: 1589614302:0;git status
+: 1589614312:0;git add non-emily/
+: 1589614330:0;git commit -a -m "non-emily folder added"
+: 1589614332:0;git push
+: 1589689078:0;cd src/projects/machine-learning/turntable
+: 1589689081:0;git pull
+: 1589689102:0;ssh pi
+: 1589711132:0;cd src/projects/machine-learning/turntable
+: 1589711134:0;git pull
+: 1589711172:0;l
+: 1589711175:0;cd labelling
+: 1589711189:0;l ../training/params_after_balancing
+: 1589711193:0;l
+: 1589711210:0;./label --input-file ../data/hip-hop-1_2.annotated.culled.bin
+: 1589714764:0;use-both-screens
+: 1589714812:0;pm
+: 1589714858:0;nvim .zsh_history
+: 1589714914:0;cd /mnt/storage/backups/20200515-facebook/
+: 1589714915:0;l
+: 1589714930:0;cd messages/archived_threads
+: 1589714931:0;l
+: 1589714951:0;cd selbybradshaw_l2ihw26ahw
+: 1589714952:0;l
+: 1589714962:0;em message_1.json
+: 1589718815:0;em .zsh_history
