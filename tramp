@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <20/06/05 21:35:53 /home/hamish/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <20/06/09 00:42:43 /home/hamish/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
@@ -211,4 +211,6 @@
   ("tmpdir" "/ssh:processor:/tmp")
   ("touch-t" t)
   ("touch" "\\touch")
-  ("uid-integer" 1000)))
+  ("uid-integer" 1000))
+ ((tramp-file-name "ssh" nil nil "rgb" nil nil nil)
+  nil))

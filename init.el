@@ -118,6 +118,6 @@
 
 ;; run emacs-server in the background
 ;; by doing this, we can run emacsclient so that all sessions share buffers
-(server-start)
+;;(server-start)
 
     
