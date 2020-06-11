@@ -3,23 +3,27 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(require 'package)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-(setq use-package-always-pin  "melpa-stable")
-(package-initialize)
+;; (require 'package)
+;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+;; (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+;; (setq use-package-always-pin  "melpa-stable")
+;; (package-initialize)
 
 ;; Download use-package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+;; (unless (package-installed-p 'use-package)
+;;   (package-refresh-contents)
+;;   (package-install 'use-package))
 
-;; Reduce load time
-(eval-when-compile (require 'use-package))
+;; ;; Reduce load time
+;; (eval-when-compile (require 'use-package))
 
 ;; Initialise cyberpunk theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/cyberpunk/")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/cyberpunk/")
+
+;; this is the org-mode config file
+ (when (file-readable-p "~/.emacs.d/config.org")
+  (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))   
 
 ;; evilmode
 (require 'evil)
@@ -76,7 +80,7 @@
 (global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
 (global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
 
-;; Set where )emacs stores its backup files, and make sure it backs up by copying the file
+;; Set where emacs stores its backup files, and make sure it backs up by copying the file
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 (setq backup-by-copying t)
 
@@ -85,6 +89,15 @@
 
 ;; (add-hook 'org-mode-hook #'toggle-word-wrap)
 (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+
+;; make c, c++, java indent by 4 spaces rather than 2
+(defun my-c-mode-hook ()
+  (c-set-offset 'defun-block-intro '++)
+  (c-set-offset 'substatement-open '0)
+  (c-set-offset 'statement-block-intro '++))
+(add-hook 'c-mode-common-hook 'my-c-mode-hook)
+
+
 
 ;; Autoload octave mode on .m files
 (setq auto-mode-alist
@@ -118,6 +131,5 @@
 
 ;; run emacs-server in the background
 ;; by doing this, we can run emacsclient so that all sessions share buffers
-(server-start)
+;; (server-start)
 
-    
