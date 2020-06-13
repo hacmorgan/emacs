@@ -1,6 +1,0 @@
-# Systemd Unit Files
-The files `bluerobotics-ping-sonar.service` and `bluerobotics-ping-watch.service` control the launching (and relaunching on failure) of `bluerobotics-ping-sonar-to-csv` and `bluerobotics-ping-sonar-watch`. If you need to change the command line arguments supplied to either of these programs when they are run on boot, you must change the `ExecStart=...` line in the respective unit file.
-
-
-# scout-ntp
-the `scout-ntp` utility synchronises the Raspberry Pi in Scout to the topside computer (or any computer at 192.168.2.1 running an NTP server). On successful time sync, it writes the updated system time to the hardware clock. It is installed by the `rpi_install.sh` script, but must be invoked with `sudo` (from the raspberry pi) if you wish to run it manually. The `hwclock-sync.service` unit file controls the automatic execution of `scout-ntp`. If execution fails, systemd will wait 20 seconds before retrying, and continue doing this until a timesync is completed successfully. The CPU overhead of doing this is negligible.

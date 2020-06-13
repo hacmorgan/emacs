@@ -1,5 +1,5 @@
-* Package management
-** Package archive servers
+* package management
+** package archive servers
 #+BEGIN_SRC  emacs-lisp
 (require 'package)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
@@ -19,8 +19,111 @@ We must ensure use-package is installed every time. =eval-when-compile= helps em
 #+END_SRC
 
 
-* Theme
+
+
+* editor & environment
+** theme
 We only have to run a single line, thankfully
 #+BEGIN_SRC  emacs-lisp
-(add-to-list 'custom-theme-load-path "~/.emacs.d/cyberpunk/")
+(load-theme 'cyberpunk t)
+#+END_SRC
+
+** evil mode
+#+BEGIN_SRC  emacs-lisp
+(require 'evil)
+(evil-mode 1)
+#+END_SRC
+
+** keyboard
+*** make super key perform meta key role
+#+BEGIN_SRC  emacs-lisp
+(setq x-super-keysym 'meta)
+#+END_SRC
+
+*** keybindings for moving between and resizing windows
+#+BEGIN_SRC  emacs-lisp
+;; Resize windows
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+;; Move between windows with shift
+(windmove-default-keybindings) 
+#+END_SRC
+
+*** switch between absolute and relative line numbers
+*TODO*
+#+BEGIN_SRC  emacs-lisp
+(global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
+(global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
+#+END_SRC
+
+** generic editor settings
+*** tabs
+indent-by-spaces is set using customize, so it's in init.el
+#+BEGIN_SRC  emacs-lisp
+(setq-default tab-width 4)
+#+END_SRC
+
+** mode specific editor settings
+*** text-mode
+#+BEGIN_SRC  emacs-lisp
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+#+END_SRC
+*** c-mode (c, c++, java)
+#+BEGIN_SRC  emacs-lisp
+;; set the various indentation levels
+(defun my-c-mode-hook ()
+  (c-set-offset 'defun-block-intro '++)
+  (c-set-offset 'substatement-open '0)
+  (c-set-offset 'statement-block-intro '++))
+(add-hook 'c-mode-common-hook 'my-c-mode-hook)
+#+END_SRC
+*** octave-mode
+#+BEGIN_SRC  emacs-lisp
+;; Autoload octave mode on .m files
+(setq auto-mode-alist
+      (cons '("\\.m$" . octave-mode) auto-mode-alist))
+#+END_SRC
+** other
+*** backups
+We will not allow making backups of files
+#+BEGIN_SRC  emacs-lisp
+(setq make-backup-files nil)
+#+END_SRC
+*** fix weird behaviour ssh-ing to zsh using keys
+#+BEGIN_SRC  emacs-lisp
+(setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
+#+END_SRC
+
+
+* emms
+#+BEGIN_SRC  emacs-lisp
+(use-package emms
+  :ensure t
+  :config
+    (require 'emms-setup)
+    (require 'emms-player-mpd)
+    (emms-all) ; don't change this to values you see on stackoverflow questions if you expect emms to work
+    (setq emms-seek-seconds 5)
+    (setq emms-player-list '(emms-player-mpd))
+    (setq emms-info-functions '(emms-info-mpd))
+    (setq emms-player-mpd-server-name "localhost")
+    (setq emms-player-mpd-server-port "6600")
+    (setq emms-add-directory-tree "/mnt/storage/Music")
+  :bind
+    ("M-p p" . emms)
+    ("M-p b" . emms-smart-browse)
+    ("M-p r" . emms-player-mpd-update-all-reset-cache)
+    ("<XF86AudioPrev>" . emms-previous)
+    ("<XF86AudioNext>" . emms-next)
+    ("<XF86AudioPlay>" . emms-pause)
+    ("<XF86AudioStop>" . emms-stop))
+#+END_SRC
+
+
+* emacs server
+#+BEGIN_SRC  emacs-lisp
+(load "server")
+(unless (server-running-p) (server-start))
 #+END_SRC

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# Script for auto installing most of the useful stuff in a new system, then setting up git
-
-# Run the config scripts in install-scripts
-bash /home/hamish/src/useful-scripts/arch-desktop/install-scripts/shell-terminal-after-zsh
-bash /home/hamish/src/useful-scripts/arch-desktop/install-scripts/editors
-bash /home/hamish/src/useful-scripts/arch-desktop/install-scripts/graphical
-

@@ -26,8 +26,6 @@
   (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))   
 
 ;; evilmode
-(require 'evil)
-(evil-mode 1)
 (setq x-super-keysym 'meta)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -40,7 +38,7 @@
  '(custom-safe-themes
    (quote
     ("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default)))
- '(display-line-numbers (quote relative))
+ '(display-line-numbers t)
  '(display-line-numbers-type (quote visual))
  '(doc-view-continuous t)
  '(electric-pair-inhibit-predicate (quote electric-pair-conservative-inhibit))
@@ -55,7 +53,7 @@
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(package-selected-packages
    (quote
-    (org evil csv-mode magit haskell-mode ein markdown-mode company)))
+    (cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(vc-follow-symlinks t))
@@ -64,6 +62,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "ADBO" :family "monoki-Regular"))))
  '(cursor ((t (:background "violet"))))
  '(line-number-current-line ((t (:inherit line-number :foreground "magenta")))))
 
@@ -81,8 +80,8 @@
 (global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
 
 ;; Set where emacs stores its backup files, and make sure it backs up by copying the file
-(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
-(setq backup-by-copying t)
+;; (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
+;; (setq backup-by-copying t)
 
 ;; set default tab width
 (setq-default tab-width 4)
@@ -133,3 +132,4 @@
 ;; by doing this, we can run emacsclient so that all sessions share buffers
 ;; (server-start)
 
+(put 'scroll-left 'disabled nil)
