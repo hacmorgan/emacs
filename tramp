@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <20/06/09 23:51:53 /home/hamish/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <20/06/15 21:46:07 /home/hamish/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
@@ -186,17 +186,17 @@
   ("ls-quoting-style" t)
   ("ls-dired" t))
  ((tramp-file-name "ssh" nil nil "processor" nil nil nil)
-  ("uname" "Linux 5.3.0-53-generic")
+  ("uname" "Linux 5.3.0-59-generic")
   ("locale" "LC_ALL=en_US.utf8")
   ("test" "test")
   ("remote-path"
    ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
   ("remote-shell" "/bin/sh")
+  ("file-exists" "test -e")
   ("~" "/home/processor")
   ("perl-file-spec" t)
   ("perl-cwd-realpath" t)
   ("perl" "\\perl")
-  ("file-exists" "test -e")
   ("case-insensitive" nil)
   ("ls" "/bin/ls --color=never")
   ("ls-quoting-style" t)
@@ -207,10 +207,4 @@
   ("readlink" "\\readlink")
   ("gid-string" "processor")
   ("env-u-option" t)
-  ("git" "\\git")
-  ("tmpdir" "/ssh:processor:/tmp")
-  ("touch-t" t)
-  ("touch" "\\touch")
-  ("uid-integer" 1000))
- ((tramp-file-name "ssh" nil nil "rgb" nil nil nil)
-  nil))
+  ("git" "\\git")))
