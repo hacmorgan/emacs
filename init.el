@@ -26,7 +26,7 @@
   (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))   
 
 ;; evilmode
-(setq x-super-keysym 'meta)
+;; (setq x-super-keysym 'meta)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -53,7 +53,7 @@
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(package-selected-packages
    (quote
-    (cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
+    (powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(vc-follow-symlinks t))
@@ -62,74 +62,78 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "ADBO" :family "monoki-Regular"))))
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "UKWN" :family "Fantasque Sans Mono"))))
  '(cursor ((t (:background "violet"))))
- '(line-number-current-line ((t (:inherit line-number :foreground "magenta")))))
+ '(line-number-current-line ((t (:inherit line-number :foreground "magenta"))))
+ '(mode-line ((t (:background "#333333" :foreground "DeepSkyBlue1" :box nil))))
+ '(mode-line-inactive ((t (:background "#1A1A1A" :foreground "#4D4D4D" :box nil))))
+ '(powerline-active1 ((t (:inherit mode-line :background "SlateBlue3" :foreground "white"))))
+ '(powerline-active2 ((t (:inherit mode-line :background "DodgerBlue1" :foreground "white")))))
 
-;; Resize windows
-(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>") 'shrink-window)
-(global-set-key (kbd "S-C-<up>") 'enlarge-window)
-;; Move between windows
-(windmove-default-keybindings) 
+;; ;; Resize windows
+;; (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+;; (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+;; (global-set-key (kbd "S-C-<down>") 'shrink-window)
+;; (global-set-key (kbd "S-C-<up>") 'enlarge-window)
+;; ;; Move between windows
+;; (windmove-default-keybindings) 
 
 
 ;; keyboard shortcut for switching between relative and absolute line numbers
-(global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
-(global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
+;; (global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
+;; (global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
 
 ;; Set where emacs stores its backup files, and make sure it backs up by copying the file
 ;; (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 ;; (setq backup-by-copying t)
 
 ;; set default tab width
-(setq-default tab-width 4)
+;; (setq-default tab-width 4)
 
 ;; (add-hook 'org-mode-hook #'toggle-word-wrap)
-(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+;; (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
-;; make c, c++, java indent by 4 spaces rather than 2
-(defun my-c-mode-hook ()
-  (c-set-offset 'defun-block-intro '++)
-  (c-set-offset 'substatement-open '0)
-  (c-set-offset 'statement-block-intro '++))
-(add-hook 'c-mode-common-hook 'my-c-mode-hook)
-
-
-
-;; Autoload octave mode on .m files
-(setq auto-mode-alist
-      (cons '("\\.m$" . octave-mode) auto-mode-alist))
-
-;; attempt to fix weird errors when ssh-ing using keys
-(setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
-
-;; emms
-(use-package emms
-  :ensure t
-  :config
-    (require 'emms-setup)
-    (require 'emms-player-mpd)
-    (emms-all) ; don't change this to values you see on stackoverflow questions if you expect emms to work
-    (setq emms-seek-seconds 5)
-    (setq emms-player-list '(emms-player-mpd))
-    (setq emms-info-functions '(emms-info-mpd))
-    (setq emms-player-mpd-server-name "localhost")
-    (setq emms-player-mpd-server-port "6600")
-    (setq emms-add-directory-tree "/mnt/storage/Music")
-  :bind
-    ("M-p p" . emms)
-    ("M-p b" . emms-smart-browse)
-    ("M-p r" . emms-player-mpd-update-all-reset-cache)
-    ("<XF86AudioPrev>" . emms-previous)
-    ("<XF86AudioNext>" . emms-next)
-    ("<XF86AudioPlay>" . emms-pause)
-    ("<XF86AudioStop>" . emms-stop))
+;; ;; make c, c++, java indent by 4 spaces rather than 2
+;; (defun my-c-mode-hook ()
+;;   (c-set-offset 'defun-block-intro '++)
+;;   (c-set-offset 'substatement-open '0)
+;;   (c-set-offset 'statement-block-intro '++))
+;; (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
 
-;; run emacs-server in the background
-;; by doing this, we can run emacsclient so that all sessions share buffers
-;; (server-start)
+
+;; ;; Autoload octave mode on .m files
+;; (setq auto-mode-alist
+;;       (cons '("\\.m$" . octave-mode) auto-mode-alist))
+
+;; ;; attempt to fix weird errors when ssh-ing using keys
+;; (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
+
+;; ;; emms
+;; (use-package emms
+;;   :ensure t
+;;   :config
+;;     (require 'emms-setup)
+;;     (require 'emms-player-mpd)
+;;     (emms-all) ; don't change this to values you see on stackoverflow questions if you expect emms to work
+;;     (setq emms-seek-seconds 5)
+;;     (setq emms-player-list '(emms-player-mpd))
+;;     (setq emms-info-functions '(emms-info-mpd))
+;;     (setq emms-player-mpd-server-name "localhost")
+;;     (setq emms-player-mpd-server-port "6600")
+;;     (setq emms-add-directory-tree "/mnt/storage/Music")
+;;   :bind
+;;     ("M-p p" . emms)
+;;     ("M-p b" . emms-smart-browse)
+;;     ("M-p r" . emms-player-mpd-update-all-reset-cache)
+;;     ("<XF86AudioPrev>" . emms-previous)
+;;     ("<XF86AudioNext>" . emms-next)
+;;     ("<XF86AudioPlay>" . emms-pause)
+;;     ("<XF86AudioStop>" . emms-stop))
+
+
+;; ;; run emacs-server in the background
+;; ;; by doing this, we can run emacsclient so that all sessions share buffers
+;; ;; (server-start)
 
 (put 'scroll-left 'disabled nil)

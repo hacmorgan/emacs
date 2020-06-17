@@ -15,7 +15,10 @@
 (require 'evil)
 (evil-mode 1)
 
-(setq x-super-keysym 'meta)
+(require 'powerline)
+(powerline-center-evil-theme)
+
+;;(setq x-super-keysym 'meta)
 
 ;; Resize windows
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
@@ -27,6 +30,8 @@
 
 (global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
 (global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
+
+(global-set-key (kbd "s-g r") 'revert-buffer)
 
 (setq-default tab-width 4)
 
@@ -46,6 +51,19 @@
 (setq make-backup-files nil)
 
 (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
+
+(add-hook 'org-mode-hook                                                                      
+  (lambda ()                                                                          
+    (define-key evil-normal-state-map (kbd "TAB") 'org-cycle)))
+
+(add-hook 'evil-insert-state-entry-hook 
+  (lambda () 
+    (if (display-graphic-p) nil 
+      (send-string-to-terminal "\033[5 q"))))
+(add-hook 'evil-normal-state-entry-hook (lambda () (if (display-graphic-p) nil (send-string-to-terminal "\033[0 q"))))
+
+(load "server")
+(unless (server-running-p) (server-start))
 
 (use-package emms
   :ensure t
@@ -67,6 +85,3 @@
     ("<XF86AudioNext>" . emms-next)
     ("<XF86AudioPlay>" . emms-pause)
     ("<XF86AudioStop>" . emms-stop))
-
-(load "server")
-(unless (server-running-p) (server-start))

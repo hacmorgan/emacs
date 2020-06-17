@@ -19,8 +19,6 @@ We must ensure use-package is installed every time. =eval-when-compile= helps em
 #+END_SRC
 
 
-
-
 * editor & environment
 ** theme
 We only have to run a single line, thankfully
@@ -29,15 +27,21 @@ We only have to run a single line, thankfully
 #+END_SRC
 
 ** evil mode
+*** use evil mode
 #+BEGIN_SRC  emacs-lisp
 (require 'evil)
 (evil-mode 1)
 #+END_SRC
-
+** powerline
+#+BEGIN_SRC  emacs-lisp
+(require 'powerline)
+(powerline-center-evil-theme)
+#+END_SRC
 ** keyboard
 *** make super key perform meta key role
+This doesn't always work, so commenting it out in order to use super for other stuff
 #+BEGIN_SRC  emacs-lisp
-(setq x-super-keysym 'meta)
+;;(setq x-super-keysym 'meta)
 #+END_SRC
 
 *** keybindings for moving between and resizing windows
@@ -58,8 +62,13 @@ We only have to run a single line, thankfully
 (global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
 #+END_SRC
 
+*** revert buffer
+#+BEGIN_SRC  emacs-lisp
+(global-set-key (kbd "s-g r") 'revert-buffer)
+#+END_SRC
+
 ** generic editor settings
-*** tabs
+*** indenting
 indent-by-spaces is set using customize, so it's in init.el
 #+BEGIN_SRC  emacs-lisp
 (setq-default tab-width 4)
@@ -85,6 +94,7 @@ indent-by-spaces is set using customize, so it's in init.el
 (setq auto-mode-alist
       (cons '("\\.m$" . octave-mode) auto-mode-alist))
 #+END_SRC
+
 ** other
 *** backups
 We will not allow making backups of files
@@ -94,6 +104,30 @@ We will not allow making backups of files
 *** fix weird behaviour ssh-ing to zsh using keys
 #+BEGIN_SRC  emacs-lisp
 (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
+#+END_SRC
+
+
+* terminal
+*** fix tab unresponsiveness in org mode
+#+BEGIN_SRC  emacs-lisp
+(add-hook 'org-mode-hook                                                                      
+  (lambda ()                                                                          
+    (define-key evil-normal-state-map (kbd "TAB") 'org-cycle))) 
+#+END_SRC
+*** make cursor change shape on insert mode
+#+BEGIN_SRC  emacs-lisp
+(add-hook 'evil-insert-state-entry-hook 
+  (lambda () 
+    (if (display-graphic-p) nil 
+      (send-string-to-terminal "\033[5 q"))))
+(add-hook 'evil-normal-state-entry-hook (lambda () (if (display-graphic-p) nil (send-string-to-terminal "\033[0 q"))))
+#+END_SRC
+
+
+* emacs server
+#+BEGIN_SRC  emacs-lisp
+(load "server")
+(unless (server-running-p) (server-start))
 #+END_SRC
 
 
@@ -119,11 +153,4 @@ We will not allow making backups of files
     ("<XF86AudioNext>" . emms-next)
     ("<XF86AudioPlay>" . emms-pause)
     ("<XF86AudioStop>" . emms-stop))
-#+END_SRC
-
-
-* emacs server
-#+BEGIN_SRC  emacs-lisp
-(load "server")
-(unless (server-running-p) (server-start))
 #+END_SRC
