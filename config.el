@@ -85,3 +85,6 @@
     ("<XF86AudioNext>" . emms-next)
     ("<XF86AudioPlay>" . emms-pause)
     ("<XF86AudioStop>" . emms-stop))
+
+(require 'sclang)
+(require 'w3m)

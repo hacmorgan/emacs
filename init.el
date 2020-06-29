@@ -53,7 +53,7 @@
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(package-selected-packages
    (quote
-    (powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
+    (tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(vc-follow-symlinks t)
@@ -63,7 +63,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#000000" :distant-foreground "orange red" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-light :height 105 :width expanded :foundry "PfEd" :family "Iosevka"))))
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "BE5N" :family "Fantasque Sans Mono"))))
  '(cursor ((t (:background "violet"))))
  '(font-lock-type-face ((t (:foreground "pale green"))))
  '(line-number-current-line ((t (:inherit line-number :foreground "magenta"))))

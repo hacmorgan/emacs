@@ -131,7 +131,8 @@ We will not allow making backups of files
 #+END_SRC
 
 
-* emms
+* multimedia
+** emms
 #+BEGIN_SRC  emacs-lisp
 (use-package emms
   :ensure t
@@ -153,4 +154,11 @@ We will not allow making backups of files
     ("<XF86AudioNext>" . emms-next)
     ("<XF86AudioPlay>" . emms-pause)
     ("<XF86AudioStop>" . emms-stop))
+#+END_SRC
+
+** livecoding
+*** supercolider 
+#+BEGIN_SRC emacs-lisp
+(require 'sclang)
+(require 'w3m)
 #+END_SRC
