@@ -87,4 +87,4 @@
     ("<XF86AudioStop>" . emms-stop))
 
 (require 'sclang)
-(require 'w3m)
+;;  (require 'w3m)

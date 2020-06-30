@@ -49,6 +49,7 @@
   "*The name of the tidal process buffer (default=*tidal*).")
 
 (defvar tidal-interpreter
+  ;;"stack"
   "ghci"
   "*The haskell interpeter to use (default=ghci).")
 
@@ -57,6 +58,7 @@
   "*The version of tidal interpreter as a string.")
 
 (defvar tidal-interpreter-arguments
+  ;;'("repl")
   ()
   "*Arguments to the haskell interpreter (default=none).")
 
