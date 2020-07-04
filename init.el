@@ -53,7 +53,7 @@
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(package-selected-packages
    (quote
-    (tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
+    (lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(vc-follow-symlinks t)

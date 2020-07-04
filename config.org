@@ -41,7 +41,7 @@ We only have to run a single line, thankfully
 *** make super key perform meta key role
 This doesn't always work, so commenting it out in order to use super for other stuff
 #+BEGIN_SRC  emacs-lisp
-;;(setq x-super-keysym 'meta)
+(setq x-super-keysym 'meta)
 #+END_SRC
 
 *** keybindings for moving between and resizing windows
@@ -55,7 +55,7 @@ This doesn't always work, so commenting it out in order to use super for other s
 (windmove-default-keybindings) 
 #+END_SRC
 
-*** switch between absolute and relative line numbers
+*** TODO switch between absolute and relative line numbers
 *TODO*
 #+BEGIN_SRC  emacs-lisp
 (global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
@@ -95,6 +95,21 @@ indent-by-spaces is set using customize, so it's in init.el
       (cons '("\\.m$" . octave-mode) auto-mode-alist))
 #+END_SRC
 
+** syntax highlighting, linting etc.
+*** flycheck
+note: flycheck requires linters. The list of required linters can be found [[https://www.flycheck.org/en/latest/languages.html][Here]]. Installed linters:
+- hlint (Haskell)
+- pylint
+#+BEGIN_SRC emacs-lisp
+(add-hook 'after-init-hook #'global-flycheck-mode)
+#+END_SRC
+*** lsp-mode
+lsp stands for language server protocol. It requires servers for each language (Haskell still experimental)
+#+BEGIN_SRC emacs-lisp
+(require 'lsp-mode)
+(add-hook 'sh-mode-hook #'lsp)
+(add-hook 'python-mode-hook #'lsp)
+#+END_SRC
 ** other
 *** backups
 We will not allow making backups of files

@@ -18,7 +18,7 @@
 (require 'powerline)
 (powerline-center-evil-theme)
 
-;;(setq x-super-keysym 'meta)
+(setq x-super-keysym 'meta)
 
 ;; Resize windows
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
@@ -47,6 +47,12 @@
 ;; Autoload octave mode on .m files
 (setq auto-mode-alist
       (cons '("\\.m$" . octave-mode) auto-mode-alist))
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+(require 'lsp-mode)
+(add-hook 'sh-mode-hook #'lsp)
+(add-hook 'python-mode-hook #'lsp)
 
 (setq make-backup-files nil)
 
