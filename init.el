@@ -33,19 +33,20 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
- '(company-auto-complete ''company-explicit-action-p)
- '(company-auto-complete-chars '(41 46))
- '(custom-enabled-themes '(cyberpunk))
+ '(company-auto-complete (quote (quote company-explicit-action-p)))
+ '(company-auto-complete-chars (quote (41 46)))
+ '(custom-enabled-themes (quote (cyberpunk)))
  '(custom-safe-themes
-   '("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default))
+   (quote
+    ("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default)))
  '(display-line-numbers t)
- '(display-line-numbers-type 'visual)
+ '(display-line-numbers-type (quote visual))
  '(doc-view-continuous t)
- '(electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
+ '(electric-pair-inhibit-predicate (quote electric-pair-conservative-inhibit))
  '(electric-pair-mode nil)
  '(electric-pair-open-newline-between-pairs t)
  '(electric-pair-preserve-balance t)
- '(flycheck-global-modes '(haskell-mode python-mode))
+ '(flycheck-global-modes (quote (haskell-mode python-mode)))
  '(global-auto-revert-mode t)
  '(global-company-mode t)
  '(global-display-line-numbers-mode t)
@@ -54,7 +55,8 @@
  '(line-number-mode t)
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(package-selected-packages
-   '(arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
+   (quote
+    (arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(vc-follow-symlinks t)
@@ -64,7 +66,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :extend nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "PfEd" :family "Fantasque Sans Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 112 :width normal :foundry "PfEd" :family "Fantasque Sans Mono"))))
  '(cursor ((t (:background "violet"))))
  '(font-lock-type-face ((t (:foreground "pale green"))))
  '(line-number-current-line ((t (:inherit line-number :foreground "magenta"))))
