@@ -15,6 +15,11 @@
 (require 'evil)
 (evil-mode 1)
 
+(add-hook 'evil-visual-state-entry-hook (lambda () (set-face-background 'powerline-active1 "chartreuse2")))
+(add-hook 'evil-visual-state-exit-hook (lambda () (set-face-background 'powerline-active1 "SlateBlue3")))
+(add-hook 'evil-insert-state-entry-hook (lambda () (set-face-background 'powerline-active1 "DarkOrange2")))
+(add-hook 'evil-insert-state-exit-hook (lambda () (set-face-background 'powerline-active1 "SlateBlue3")))
+
 (require 'powerline)
 (powerline-center-evil-theme)
 

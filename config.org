@@ -32,11 +32,21 @@ We only have to run a single line, thankfully
 (require 'evil)
 (evil-mode 1)
 #+END_SRC
+
+*** toggle modeline colour on insert/normal mode
+#+BEGIN_SRC emacs-lisp
+(add-hook 'evil-visual-state-entry-hook (lambda () (set-face-background 'powerline-active1 "chartreuse2")))
+(add-hook 'evil-visual-state-exit-hook (lambda () (set-face-background 'powerline-active1 "SlateBlue3")))
+(add-hook 'evil-insert-state-entry-hook (lambda () (set-face-background 'powerline-active1 "DarkOrange2")))
+(add-hook 'evil-insert-state-exit-hook (lambda () (set-face-background 'powerline-active1 "SlateBlue3")))
+#+END_SRC
+
 ** powerline
 #+BEGIN_SRC  emacs-lisp
 (require 'powerline)
 (powerline-center-evil-theme)
 #+END_SRC
+
 ** keyboard
 *** make super key perform meta key role
 This doesn't always work, so commenting it out in order to use super for other stuff
