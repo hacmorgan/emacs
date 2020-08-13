@@ -33,20 +33,20 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
- '(company-auto-complete (quote (quote company-explicit-action-p)))
- '(company-auto-complete-chars (quote (41 46)))
- '(custom-enabled-themes (quote (cyberpunk)))
+ '(blink-matching-paren nil)
+ '(company-auto-complete ''company-explicit-action-p)
+ '(company-auto-complete-chars '(41 46))
+ '(custom-enabled-themes '(cyberpunk))
  '(custom-safe-themes
-   (quote
-    ("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default)))
+   '("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default))
  '(display-line-numbers t)
- '(display-line-numbers-type (quote visual))
+ '(display-line-numbers-type 'visual)
  '(doc-view-continuous t)
- '(electric-pair-inhibit-predicate (quote electric-pair-conservative-inhibit))
+ '(electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
  '(electric-pair-mode nil)
  '(electric-pair-open-newline-between-pairs t)
  '(electric-pair-preserve-balance t)
- '(flycheck-global-modes (quote (haskell-mode python-mode)))
+ '(flycheck-global-modes '(haskell-mode python-mode))
  '(global-auto-revert-mode t)
  '(global-company-mode t)
  '(global-display-line-numbers-mode t)
@@ -55,9 +55,10 @@
  '(line-number-mode t)
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(package-selected-packages
-   (quote
-    (arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
+   '(arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
+ '(powerline-default-separator 'utf-8)
  '(scroll-bar-mode nil)
+ '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(vc-follow-symlinks t)
  '(xterm-mouse-mode t))
@@ -66,14 +67,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 112 :width normal :foundry "PfEd" :family "Fantasque Sans Mono"))))
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 132 :width normal :foundry "PfEd" :family "Fantasque Sans Mono"))))
  '(cursor ((t (:background "violet"))))
  '(font-lock-type-face ((t (:foreground "pale green"))))
  '(line-number-current-line ((t (:inherit line-number :foreground "magenta"))))
  '(mode-line ((t (:background "#333333" :foreground "DeepSkyBlue1" :box nil))))
  '(mode-line-inactive ((t (:background "#1A1A1A" :foreground "#4D4D4D" :box nil))))
  '(powerline-active1 ((t (:inherit mode-line :background "SlateBlue3" :foreground "white"))))
- '(powerline-active2 ((t (:inherit mode-line :background "DodgerBlue1" :foreground "white")))))
+ '(powerline-active2 ((t (:inherit mode-line :background "DodgerBlue1" :foreground "white"))))
+ '(show-paren-mismatch ((t (:background "#000000" :foreground "orange red")))))
 
 ;; ;; Resize windows
 ;; (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
