@@ -32,6 +32,8 @@
    '(arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator 'utf-8)
+ '(powerline-gui-use-vcs-glyph t)
+ '(powerline-height 10)
  '(python-indent-guess-indent-offset nil)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 101)
@@ -47,7 +49,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :extend nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 132 :width normal :foundry "PfEd" :family "Fantasque Sans Mono"))))
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 112 :width normal :foundry "PfEd" :family "Fantasque Sans Mono"))))
  '(cursor ((t (:background "violet"))))
  '(font-lock-type-face ((t (:foreground "pale green"))))
  '(line-number-current-line ((t (:inherit line-number :foreground "magenta"))))
