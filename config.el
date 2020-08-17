@@ -33,8 +33,8 @@
 ;; Move between windows with shift
 (windmove-default-keybindings)
 
-(global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
-(global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
+;; (global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
+;; (global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
 
 (global-set-key (kbd "s-g r") 'revert-buffer)
 
