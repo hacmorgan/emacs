@@ -33,9 +33,7 @@
    (quote
     (arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
  '(pixel-scroll-mode nil)
- '(powerline-default-separator 'utf-8)
- '(powerline-gui-use-vcs-glyph t)
- '(powerline-height 10)
+ '(powerline-default-separator (quote utf-8))
  '(python-indent-guess-indent-offset nil)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 101)
