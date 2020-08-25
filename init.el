@@ -20,6 +20,8 @@
  '(electric-pair-mode nil)
  '(electric-pair-open-newline-between-pairs t)
  '(electric-pair-preserve-balance t)
+ '(evil-move-beyond-eol t)
+ '(evil-move-cursor-back nil)
  '(flycheck-global-modes '(haskell-mode python-mode))
  '(global-auto-revert-mode t)
  '(global-company-mode t)
@@ -29,7 +31,7 @@
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(mouse-wheel-scroll-amount '(2 ((shift) . 1) ((meta)) ((control) . text-scale)))
  '(package-selected-packages
-   '(arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
+   '(arduino-mode rust-mode lsp-ui flycheck tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator 'utf-8)
  '(python-indent-guess-indent-offset nil)

@@ -12,6 +12,9 @@
 
 (load-theme 'cyberpunk t)
 
+(set-frame-parameter (selected-frame) 'alpha '(95 . 85))
+(add-to-list 'default-frame-alist '(alpha . (95 . 85)))
+
 (require 'evil)
 (evil-mode 1)
 
@@ -40,7 +43,7 @@
 
 (setq-default tab-width 4)
 
-(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+;; (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
 ;; set the various indentation levels
 (defun my-c-mode-hook ()
