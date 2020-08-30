@@ -26,6 +26,13 @@ We only have to run a single line, thankfully
 (load-theme 'cyberpunk t)
 #+END_SRC
 
+** transparency
+picom will handle inactive opacity for us, so we will just set a base opacity
+#+BEGIN_SRC  emacs-lisp
+(set-frame-parameter (selected-frame) 'alpha '(95 . 85))
+(add-to-list 'default-frame-alist '(alpha . (95 . 85)))
+#+END_SRC
+
 ** evil mode
 *** use evil mode
 #+BEGIN_SRC  emacs-lisp
@@ -68,8 +75,8 @@ This doesn't always work, so commenting it out in order to use super for other s
 *** TODO switch between absolute and relative line numbers
 *TODO*
 #+BEGIN_SRC  emacs-lisp
-(global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
-(global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
+  ;; (global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
+  ;; (global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
 #+END_SRC
 
 *** revert buffer
@@ -87,7 +94,7 @@ indent-by-spaces is set using customize, so it's in init.el
 ** mode specific editor settings
 *** text-mode
 #+BEGIN_SRC  emacs-lisp
-(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+  ;; (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 #+END_SRC
 *** c-mode (c, c++, java)
 #+BEGIN_SRC  emacs-lisp

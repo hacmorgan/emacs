@@ -12,6 +12,9 @@
 
 (load-theme 'cyberpunk t)
 
+(set-frame-parameter (selected-frame) 'alpha '(95 . 85))
+(add-to-list 'default-frame-alist '(alpha . (95 . 85)))
+
 (require 'evil)
 (evil-mode 1)
 
@@ -33,14 +36,14 @@
 ;; Move between windows with shift
 (windmove-default-keybindings)
 
-(global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
-(global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
+;; (global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
+;; (global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
 
 (global-set-key (kbd "s-g r") 'revert-buffer)
 
 (setq-default tab-width 4)
 
-(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+;; (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
 ;; set the various indentation levels
 (defun my-c-mode-hook ()
