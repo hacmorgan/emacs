@@ -9,7 +9,7 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(blink-matching-paren nil)
- '(c-basic-offset 2)
+ '(c-basic-offset 4)
  '(company-auto-complete ''company-explicit-action-p)
  '(company-auto-complete-chars '(41 46))
  '(custom-enabled-themes '(cyberpunk))
