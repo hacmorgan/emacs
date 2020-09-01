@@ -96,6 +96,7 @@ indent-by-spaces is set using customize, so it's in init.el
 #+BEGIN_SRC  emacs-lisp
   ;; (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 #+END_SRC
+
 *** c-mode (c, c++, java)
 #+BEGIN_SRC  emacs-lisp
 ;; set the various indentation levels
@@ -105,6 +106,7 @@ indent-by-spaces is set using customize, so it's in init.el
   (c-set-offset 'statement-block-intro '++))
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 #+END_SRC
+
 *** octave-mode
 #+BEGIN_SRC  emacs-lisp
 ;; Autoload octave mode on .m files
@@ -120,13 +122,15 @@ note: flycheck requires linters. The list of required linters can be found [[htt
 #+BEGIN_SRC emacs-lisp
 (add-hook 'after-init-hook #'global-flycheck-mode)
 #+END_SRC
+
 *** lsp-mode
 lsp stands for language server protocol. It requires servers for each language (Haskell still experimental)
 #+BEGIN_SRC emacs-lisp
 (require 'lsp-mode)
-(add-hook 'sh-mode-hook #'lsp)
+;;(add-hook 'sh-mode-hook #'lsp)
 (add-hook 'python-mode-hook #'lsp)
 #+END_SRC
+
 ** other
 *** backups
 We will not allow making backups of files

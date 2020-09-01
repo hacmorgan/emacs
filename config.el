@@ -47,9 +47,9 @@
 
 ;; set the various indentation levels
 (defun my-c-mode-hook ()
-  (c-set-offset 'defun-block-intro '++)
+  (c-set-offset 'defun-block-intro '+)
   (c-set-offset 'substatement-open '0)
-  (c-set-offset 'statement-block-intro '++))
+  (c-set-offset 'statement-block-intro '+))
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
 ;; Autoload octave mode on .m files
