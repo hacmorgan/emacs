@@ -47,9 +47,10 @@
 
 ;; set the various indentation levels
 (defun my-c-mode-hook ()
-  (c-set-offset 'defun-block-intro '+)
+  (c-set-offset 'defun-block-intro '++)
   (c-set-offset 'substatement-open '0)
-  (c-set-offset 'statement-block-intro '+))
+  (c-set-offset 'substatement '++)
+  (c-set-offset 'statement-block-intro '++))
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
 ;; Autoload octave mode on .m files
@@ -59,7 +60,7 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (require 'lsp-mode)
-(add-hook 'sh-mode-hook #'lsp)
+;;(add-hook 'sh-mode-hook #'lsp)
 (add-hook 'python-mode-hook #'lsp)
 
 (setq make-backup-files nil)
