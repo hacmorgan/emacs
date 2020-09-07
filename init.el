@@ -13,8 +13,9 @@
  '(company-auto-complete-chars (quote (41 46)))
  '(custom-enabled-themes (quote (cyberpunk)))
  '(custom-safe-themes
-   '("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default))
- '(display-line-numbers 'relative)
+   (quote
+    ("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default)))
+ '(display-line-numbers (quote relative))
  '(electric-pair-inhibit-predicate (quote electric-pair-conservative-inhibit))
  '(electric-pair-mode nil)
  '(electric-pair-open-newline-between-pairs t)
@@ -31,7 +32,7 @@
  '(mouse-wheel-scroll-amount (quote (2 ((shift) . 1) ((meta)) ((control) . text-scale))))
  '(package-selected-packages
    (quote
-    (arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
+    (rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator (quote utf-8))
  '(python-indent-guess-indent-offset nil)
