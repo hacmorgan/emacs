@@ -11,7 +11,7 @@
  '(blink-matching-paren nil)
  '(c-basic-offset 4)
  '(company-auto-complete ''company-explicit-action-p)
- '(company-auto-complete-chars '(41 46))
+ '(company-auto-complete-chars '(41))
  '(custom-enabled-themes '(cyberpunk))
  '(custom-safe-themes
    '("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default))
@@ -21,6 +21,7 @@
  '(electric-pair-mode nil)
  '(electric-pair-open-newline-between-pairs t)
  '(electric-pair-preserve-balance t)
+ '(evil-backspace-join-lines nil)
  '(evil-move-beyond-eol t)
  '(evil-move-cursor-back nil)
  '(flycheck-global-modes '(haskell-mode python-mode))
@@ -32,7 +33,7 @@
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(mouse-wheel-scroll-amount '(2 ((shift) . 1) ((meta)) ((control) . text-scale)))
  '(package-selected-packages
-   '(arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
+   '(systemd arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator 'utf-8)
  '(powerline-gui-use-vcs-glyph t)
