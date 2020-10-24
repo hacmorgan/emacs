@@ -16,7 +16,6 @@
  '(custom-safe-themes
    '("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default))
  '(display-line-numbers 'relative)
- '(doc-view-continuous t)
  '(electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
  '(electric-pair-mode nil)
  '(electric-pair-open-newline-between-pairs t)
@@ -33,11 +32,10 @@
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(mouse-wheel-scroll-amount '(2 ((shift) . 1) ((meta)) ((control) . text-scale)))
  '(package-selected-packages
-   '(systemd arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
+   '(systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator 'utf-8)
- '(powerline-gui-use-vcs-glyph t)
- '(powerline-height 10)
+ '(powerline-height 22)
  '(python-indent-guess-indent-offset nil)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 101)
@@ -53,7 +51,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :extend nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "PfEd" :family "Fantasque Sans Mono"))))
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "PfEd" :family "Fantasque Sans Mono"))))
  '(cursor ((t (:background "violet"))))
  '(font-lock-type-face ((t (:foreground "pale green"))))
  '(line-number-current-line ((t (:inherit line-number :foreground "magenta"))))
