@@ -20,7 +20,6 @@
  '(electric-pair-mode nil)
  '(electric-pair-open-newline-between-pairs t)
  '(electric-pair-preserve-balance t)
- '(evil-backspace-join-lines nil)
  '(evil-move-beyond-eol t)
  '(evil-move-cursor-back nil)
  '(flycheck-global-modes '(haskell-mode python-mode))

@@ -57,6 +57,9 @@
 (setq auto-mode-alist
       (cons '("\\.m$" . octave-mode) auto-mode-alist))
 
+(require 'org-tempo)  ;; make <s TAB insert code block
+(add-hook 'org-mode-hook #'toggle-word-wrap) ;; word wrap in org mode
+
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (require 'lsp-mode)
