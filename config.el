@@ -43,7 +43,7 @@
 
 (setq-default tab-width 4)
 
-;; (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)  ;; makes word wrap work in org mode
 
 ;; set the various indentation levels
 (defun my-c-mode-hook ()
