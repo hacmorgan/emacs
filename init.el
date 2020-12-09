@@ -30,6 +30,8 @@
  '(line-number-mode nil)
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(mouse-wheel-scroll-amount '(2 ((shift) . 1) ((meta)) ((control) . text-scale)))
+ '(org-hide-emphasis-markers t)
+ '(org-startup-indented t)
  '(package-selected-packages
    '(systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
  '(pixel-scroll-mode nil)
