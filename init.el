@@ -65,3 +65,6 @@
 
 
 (put 'scroll-left 'disabled nil)
+
+;; fix Error running timer ‘org-indent-initialize-agent’ bug 
+(org-reload)
