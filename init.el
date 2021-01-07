@@ -34,6 +34,18 @@
  '(org-hide-emphasis-markers t)
  '(org-hide-leading-stars t)
  '(org-startup-indented t)
+ '(org-structure-template-alist
+   (quote
+    (("a" . "export ascii")
+     ("c" . "center")
+     ("C" . "comment")
+     ("e" . "example")
+     ("E" . "export")
+     ("h" . "export html")
+     ("l" . "export latex")
+     ("q" . "quote")
+     ("s" . "src")
+     ("v" . "verse"))))
  '(package-selected-packages
    (quote
     (systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
