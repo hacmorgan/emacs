@@ -43,7 +43,7 @@
 
 (setq-default tab-width 4)
 
-;; (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)  ;; makes word wrap work in org mode
 
 ;; set the various indentation levels
 (defun my-c-mode-hook ()
@@ -56,6 +56,9 @@
 ;; Autoload octave mode on .m files
 (setq auto-mode-alist
       (cons '("\\.m$" . octave-mode) auto-mode-alist))
+
+(require 'org-tempo)  ;; make <s TAB insert code block
+(add-hook 'org-mode-hook #'toggle-word-wrap) ;; word wrap in org mode
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
