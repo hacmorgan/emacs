@@ -165,7 +165,11 @@ We will not allow making backups of files
 #+BEGIN_SRC  emacs-lisp
 (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
 #+END_SRC
-
+*** replace audible ding with visual
+the ding on the ThinkPad P14s is very loud, we will use a visual indicator instead
+#+begin_src emacs-lisp
+(setq visible-bell 1)
+#+end_src
 
 * terminal
 *** fix tab unresponsiveness in org mode
