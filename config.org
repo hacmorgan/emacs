@@ -121,6 +121,23 @@ indent-by-spaces is set using customize, so it's in init.el
 (add-hook 'org-mode-hook #'toggle-word-wrap) ;; word wrap in org mode
 #+END_SRC
 
+*** sh-mode
+**** fix problem where << starts a heredoc, but a 3rd < will revert to <<<
+#+BEGIN_SRC emacs-lisp
+(defadvice sh--maybe-here-document (around be-smart-about-it activate)
+  "Do normal here doc auto insert, but if you type another chevron, revert and leave just <<<."
+  (if (and (= (current-column) 1)
+           (looking-back "^<")
+           (looking-at "\nEOF")
+           (save-excursion
+             (forward-line -1)
+             (end-of-line 1)
+             (looking-back "<<EOF")))
+      (progn (delete-region (search-backward "EOF") (search-forward "EOF" nil t 2))
+             (insert "<"))
+    ad-do-it))
+#+END_SRC
+
 ** syntax highlighting, linting etc.
 *** flycheck
 note: flycheck requires linters. The list of required linters can be found [[https://www.flycheck.org/en/latest/languages.html][Here]]. Installed linters:
@@ -148,7 +165,11 @@ We will not allow making backups of files
 #+BEGIN_SRC  emacs-lisp
 (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
 #+END_SRC
-
+*** replace audible ding with visual
+the ding on the ThinkPad P14s is very loud, we will use a visual indicator instead
+#+begin_src emacs-lisp
+(setq visible-bell 1)
+#+end_src
 
 * terminal
 *** fix tab unresponsiveness in org mode

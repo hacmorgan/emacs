@@ -60,6 +60,19 @@
 (require 'org-tempo)  ;; make <s TAB insert code block
 (add-hook 'org-mode-hook #'toggle-word-wrap) ;; word wrap in org mode
 
+(defadvice sh--maybe-here-document (around be-smart-about-it activate)
+  "Do normal here doc auto insert, but if you type another chevron, revert and leave just <<<."
+  (if (and (= (current-column) 1)
+           (looking-back "^<")
+           (looking-at "\nEOF")
+           (save-excursion
+             (forward-line -1)
+             (end-of-line 1)
+             (looking-back "<<EOF")))
+      (progn (delete-region (search-backward "EOF") (search-forward "EOF" nil t 2))
+             (insert "<"))
+    ad-do-it))
+
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (require 'lsp-mode)
