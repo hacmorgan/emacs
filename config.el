@@ -83,6 +83,8 @@
 
 (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
 
+(setq visible-bell 1)
+
 (add-hook 'org-mode-hook                                                                      
   (lambda ()                                                                          
     (define-key evil-normal-state-map (kbd "TAB") 'org-cycle)))
