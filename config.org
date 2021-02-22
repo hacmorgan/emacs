@@ -118,7 +118,8 @@ indent-by-spaces is set using customize, so it's in init.el
 *** org-mode
 #+BEGIN_SRC emacs-lisp
 (require 'org-tempo)  ;; make <s TAB insert code block
-(add-hook 'org-mode-hook #'toggle-word-wrap) ;; word wrap in org mode
+;;(add-hook 'org-mode-hook #'toggle-word-wrap) ;; word wrap in org mode
+;; turned this off because it was cutting words in half
 #+END_SRC
 
 *** sh-mode
