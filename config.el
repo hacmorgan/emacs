@@ -59,6 +59,7 @@
 
 (require 'org-tempo)  ;; make <s TAB insert code block
 ;;(add-hook 'org-mode-hook #'toggle-word-wrap) ;; word wrap in org mode
+;; turned this off because it was cutting words in half
 
 (defadvice sh--maybe-here-document (around be-smart-about-it activate)
   "Do normal here doc auto insert, but if you type another chevron, revert and leave just <<<."
