@@ -58,7 +58,21 @@
       (cons '("\\.m$" . octave-mode) auto-mode-alist))
 
 (require 'org-tempo)  ;; make <s TAB insert code block
-(add-hook 'org-mode-hook #'toggle-word-wrap) ;; word wrap in org mode
+;;(add-hook 'org-mode-hook #'toggle-word-wrap) ;; word wrap in org mode
+;; turned this off because it was cutting words in half
+
+(defadvice sh--maybe-here-document (around be-smart-about-it activate)
+  "Do normal here doc auto insert, but if you type another chevron, revert and leave just <<<."
+  (if (and (= (current-column) 1)
+           (looking-back "^<")
+           (looking-at "\nEOF")
+           (save-excursion
+             (forward-line -1)
+             (end-of-line 1)
+             (looking-back "<<EOF")))
+      (progn (delete-region (search-backward "EOF") (search-forward "EOF" nil t 2))
+             (insert "<"))
+    ad-do-it))
 
 (defadvice sh--maybe-here-document (around be-smart-about-it activate)
   "Do normal here doc auto insert, but if you type another chevron, revert and leave just <<<."
@@ -82,6 +96,8 @@
 (setq make-backup-files nil)
 
 (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
+
+(setq visible-bell 1)
 
 (add-hook 'org-mode-hook                                                                      
   (lambda ()                                                                          
