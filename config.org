@@ -8,7 +8,6 @@
 (setq use-package-always-pin  "melpa-stable")
 (package-initialize)
 #+END_SRC
-
 ** use-package
 We must ensure use-package is installed every time. =eval-when-compile= helps emacs load faster.
 #+BEGIN_SRC  emacs-lisp
@@ -17,8 +16,11 @@ We must ensure use-package is installed every time. =eval-when-compile= helps em
   (package-install 'use-package))
 (eval-when-compile (require 'use-package))
 #+END_SRC
-
-
+** external packages
+Any packes not obtainable from {,m}elpa we put in ~/.emacs.d/external-packages
+#+begin_src emacs-lisp
+(add-to-list 'load-path "~/.emacs.d/external-packages/doxymacs")
+#+end_src
 * editor & environment
 ** theme
 We only have to run a single line, thankfully
@@ -237,6 +239,34 @@ lsp stands for language server protocol. It requires servers for each language (
 (add-hook 'python-mode-hook #'lsp)
 #+END_SRC
 
+*** clang-format
+Call clang-format whenever indenting
+#+begin_src emacs-lisp
+  ;; (fset 'c-indent-region 'clang-format-region)
+#+end_src
+
+Keybindings for clang-format{,-region}
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-M-\\") 'clang-format-region)
+  (global-set-key (kbd "C-M-|")  'clang-format-buffer)
+#+end_src
+
+** doxygen
+*** Make sure we're using doxymacs
+#+begin_src emacs-lisp
+(require 'doxymacs)
+#+end_src
+*** Use doxymacs mode on all C/C++
+#+begin_src emacs-lisp
+(add-hook 'c-mode-common-hook 'doxymacs-mode)
+#+end_src
+*** Always fontify
+#+begin_src emacs-lisp
+(defun my-doxymacs-font-lock-hook ()
+(if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+(doxymacs-font-lock)))
+(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+#+end_src
 ** other
 *** backups
 We will not allow making backups of files
@@ -269,13 +299,11 @@ the ding on the ThinkPad P14s is very loud, we will use a visual indicator inste
 (add-hook 'evil-normal-state-entry-hook (lambda () (if (display-graphic-p) nil (send-string-to-terminal "\033[0 q"))))
 #+END_SRC
 
-
 * emacs server
 #+BEGIN_SRC  emacs-lisp
 (load "server")
 (unless (server-running-p) (server-start))
 #+END_SRC
-
 
 * multimedia
 ** emms
