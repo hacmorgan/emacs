@@ -10,13 +10,6 @@
  '(blink-cursor-mode nil)
  '(blink-matching-paren nil)
  '(c-basic-offset 4)
- '(c-default-style
-   (quote
-    ((c-mode . "abyss")
-     (c++-mode . "abyss")
-     (java-mode . "java")
-     (awk-mode . "awk")
-     (other . "gnu"))))
  '(company-auto-complete (quote (quote company-explicit-action-p)))
  '(company-auto-complete-chars (quote (41)))
  '(custom-enabled-themes (quote (cyberpunk)))
@@ -30,8 +23,8 @@
  '(electric-pair-preserve-balance t)
  '(evil-move-beyond-eol t)
  '(evil-move-cursor-back nil)
- '(fira-code-mode-disabled-ligatures '("<<" ">>" "**" "::"))
- '(flycheck-global-modes '(haskell-mode python-mode))
+ '(fira-code-mode-disabled-ligatures (quote ("<<" ">>" "**" "::")))
+ '(flycheck-global-modes (quote (haskell-mode python-mode)))
  '(global-auto-revert-mode t)
  '(global-company-mode t)
  '(indent-tabs-mode nil)
@@ -55,7 +48,8 @@
      ("s" . "src")
      ("v" . "verse"))))
  '(package-selected-packages
-   '(fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
+   (quote
+    (fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator (quote utf-8))
  '(powerline-height 20)
