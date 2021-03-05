@@ -10,6 +10,8 @@
   (package-install 'use-package))
 (eval-when-compile (require 'use-package))
 
+(add-to-list 'load-path "~/.emacs.d/external-packages/doxymacs")
+
 (load-theme 'cyberpunk t)
 
 (set-frame-parameter (selected-frame) 'alpha '(95 . 85))
@@ -158,10 +160,19 @@
 ;;(add-hook 'sh-mode-hook #'lsp)
 (add-hook 'python-mode-hook #'lsp)
 
-(fset 'c-indent-region 'clang-format-region)
+;; (fset 'c-indent-region 'clang-format-region)
 
 (global-set-key (kbd "C-M-\\") 'clang-format-region)
-(global-set-key (kbd "C-M-|")    'clang-format)
+(global-set-key (kbd "C-M-|")  'clang-format-buffer)
+
+(require 'doxymacs)
+
+(add-hook 'c-mode-common-hook 'doxymacs-mode)
+
+(defun my-doxymacs-font-lock-hook ()
+(if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+(doxymacs-font-lock)))
+(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
 
 (setq make-backup-files nil)
 
