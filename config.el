@@ -160,6 +160,15 @@
 ;;(add-hook 'sh-mode-hook #'lsp)
 (add-hook 'python-mode-hook #'lsp)
 
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+
 ;; (fset 'c-indent-region 'clang-format-region)
 
 (global-set-key (kbd "C-M-\\") 'clang-format-region)

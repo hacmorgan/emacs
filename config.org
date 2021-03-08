@@ -238,7 +238,21 @@ lsp stands for language server protocol. It requires servers for each language (
 ;;(add-hook 'sh-mode-hook #'lsp)
 (add-hook 'python-mode-hook #'lsp)
 #+END_SRC
+*** irony-mode
+Turn on irony mode for C, C++, Objective C
+#+begin_src emacs-lisp
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
 
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+#+end_src
+
+Add company-irony to company backends
+#+begin_src emacs-lisp
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+#+end_src
 *** clang-format
 Call clang-format whenever indenting
 #+begin_src emacs-lisp
