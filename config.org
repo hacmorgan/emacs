@@ -222,6 +222,12 @@ indent-by-spaces is set using customize, so it's in init.el
              (insert "<"))
     ad-do-it))
 #+END_SRC
+*** python-mode
+**** Jedi mode (autocomplete)
+#+begin_src emacs-lisp
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+#+end_src
 ** syntax highlighting, linting etc.
 *** flycheck
 note: flycheck requires linters. The list of required linters can be found [[https://www.flycheck.org/en/latest/languages.html][Here]]. Installed linters:
