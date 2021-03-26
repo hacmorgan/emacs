@@ -10,9 +10,13 @@
  '(blink-cursor-mode nil)
  '(blink-matching-paren nil)
  '(c-basic-offset 4)
- '(company-auto-complete (quote (quote company-explicit-action-p)))
- '(company-auto-complete-chars (quote (41)))
- '(custom-enabled-themes (quote (cyberpunk)))
+ '(company-auto-complete ''company-explicit-action-p)
+ '(company-auto-complete-chars nil)
+ '(company-backends
+   '(company-irony company-bbdb company-eclim company-semantic company-clang company-xcode company-capf company-files
+                   (company-dabbrev-code company-gtags company-etags company-keywords)
+                   company-oddmuse company-dabbrev))
+ '(custom-enabled-themes '(cyberpunk))
  '(custom-safe-themes
    (quote
     ("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default)))
@@ -48,8 +52,7 @@
      ("s" . "src")
      ("v" . "verse"))))
  '(package-selected-packages
-   (quote
-    (fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
+   '(company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator (quote utf-8))
  '(powerline-height 20)
