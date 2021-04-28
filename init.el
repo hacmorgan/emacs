@@ -12,6 +12,10 @@
  '(c-basic-offset 4)
  '(company-auto-complete ''company-explicit-action-p)
  '(company-auto-complete-chars '(41))
+ '(company-backends
+   '(company-irony company-bbdb company-eclim company-semantic company-clang company-xcode company-capf company-files
+                   (company-dabbrev-code company-gtags company-etags company-keywords)
+                   company-oddmuse company-dabbrev))
  '(custom-enabled-themes '(cyberpunk))
  '(custom-safe-themes
    '("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default))
