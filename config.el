@@ -174,6 +174,11 @@
 (global-set-key (kbd "C-M-\\") 'clang-format-region)
 (global-set-key (kbd "C-M-|")  'clang-format-buffer)
 
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'python-mode-hook 'my/python-mode-hook)
+
 (require 'doxymacs)
 
 (add-hook 'c-mode-common-hook 'doxymacs-mode)
