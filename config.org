@@ -20,6 +20,7 @@ We must ensure use-package is installed every time. =eval-when-compile= helps em
 Any packes not obtainable from {,m}elpa we put in ~/.emacs.d/external-packages
 #+begin_src emacs-lisp
 (add-to-list 'load-path "~/.emacs.d/external-packages/doxymacs")
+(add-to-list 'load-path "~/.emacs.d/external-packages/blacken")
 #+end_src
 * editor & environment
 ** theme
