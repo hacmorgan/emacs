@@ -71,8 +71,23 @@ This doesn't always work, so commenting it out in order to use super for other s
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 ;; Move between windows with shift
-(windmove-default-keybindings) 
-#+END_SRC
+(windmove-default-keybindings)
+;; Move between windows with C-x <arrows> (for terminals with tmux)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+;; Move between windows with C-x <vim-keys> (for terminals with tmux)
+(global-set-key (kbd "C-x h") 'windmove-left)
+(global-set-key (kbd "C-x l") 'windmove-right)
+(global-set-key (kbd "C-x j") 'windmove-down)
+(global-set-key (kbd "C-x k") 'windmove-up)
+;; Resize windows with C-x S-<arrows> (for terminals with tmux)
+(global-set-key (kbd "C-x r <left>") 'shrink-window-horizontally)
+(global-set-key (kbd "C-x r <right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-x r <down>") 'shrink-window)
+(global-set-key (kbd "C-x r <up>") 'enlarge-window)
+#+end_src
 
 *** TODO switch between absolute and relative line numbers
 *TODO*
@@ -85,6 +100,11 @@ This doesn't always work, so commenting it out in order to use super for other s
 #+BEGIN_SRC  emacs-lisp
 (global-set-key (kbd "s-g r") 'revert-buffer)
 #+END_SRC
+
+*** <select> is end (also helpful for terminal)
+#+begin_src emacs-lisp
+(global-set-key (kbd "<select>") 'end-of-line)
+#+end_src
 
 ** generic editor settings
 *** indenting
@@ -319,7 +339,6 @@ the ding on the ThinkPad P14s is very loud, we will use a visual indicator inste
       (send-string-to-terminal "\033[5 q"))))
 (add-hook 'evil-normal-state-entry-hook (lambda () (if (display-graphic-p) nil (send-string-to-terminal "\033[0 q"))))
 #+END_SRC
-
 * emacs server
 #+BEGIN_SRC  emacs-lisp
 (load "server")

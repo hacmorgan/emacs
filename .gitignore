@@ -4,3 +4,4 @@ company-statistics-cache.el
 .cache
 elpa/archives
 irony
+config.el
