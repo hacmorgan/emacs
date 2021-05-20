@@ -38,11 +38,28 @@
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 ;; Move between windows with shift
 (windmove-default-keybindings)
+;; Move between windows with C-x <arrows> (for terminals with tmux)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+;; Move between windows with C-x <vim-keys> (for terminals with tmux)
+(global-set-key (kbd "C-x h") 'windmove-left)
+(global-set-key (kbd "C-x l") 'windmove-right)
+(global-set-key (kbd "C-x j") 'windmove-down)
+(global-set-key (kbd "C-x k") 'windmove-up)
+;; Resize windows with C-x S-<arrows> (for terminals with tmux)
+(global-set-key (kbd "C-x r <left>") 'shrink-window-horizontally)
+(global-set-key (kbd "C-x r <right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-x r <down>") 'shrink-window)
+(global-set-key (kbd "C-x r <up>") 'enlarge-window)
 
 ;; (global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
 ;; (global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
 
 (global-set-key (kbd "s-g r") 'revert-buffer)
+
+(global-set-key (kbd "<select>") 'end-of-line)
 
 (setq-default tab-width 4)
 
