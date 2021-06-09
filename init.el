@@ -34,6 +34,7 @@
  '(global-company-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(js-indent-level 2)
  '(line-number-mode nil)
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(mouse-wheel-scroll-amount (quote (2 ((shift) . 1) ((meta)) ((control) . text-scale))))
