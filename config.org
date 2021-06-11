@@ -106,6 +106,12 @@ This doesn't always work, so commenting it out in order to use super for other s
 (global-set-key (kbd "<select>") 'end-of-line)
 #+end_src
 
+*** comment-line hotkey (for terminal)
+Emacs in a terminal interprets "C-x C-;" as "C-x ;", so we will bind that also to comment-line
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-x ;") 'comment-line)
+(global-set-key (kbd "C-c ,") 'org-insert-structure-template)
+#+end_src
 ** generic editor settings
 *** indenting
 indent-by-spaces is set using customize, so it's in init.el
@@ -339,6 +345,12 @@ the ding on the ThinkPad P14s is very loud, we will use a visual indicator inste
       (send-string-to-terminal "\033[5 q"))))
 (add-hook 'evil-normal-state-entry-hook (lambda () (if (display-graphic-p) nil (send-string-to-terminal "\033[0 q"))))
 #+END_SRC
+*** fix broken keybindings
+In a terminal, emacs receives "C-;" and "C-," (likely among others) without the ctrl prefix, so we overwrite some other keybindings that we don't need.
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-x ;") 'comment-line)
+(global-set-key (kbd "C-c ,") 'org-insert-structure-template)
+#+end_src
 * emacs server
 #+BEGIN_SRC  emacs-lisp
 (load "server")
