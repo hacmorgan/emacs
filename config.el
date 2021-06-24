@@ -60,6 +60,9 @@
 
 (global-set-key (kbd "<select>") 'end-of-line)
 
+(global-set-key (kbd "C-x ;") 'comment-line)
+(global-set-key (kbd "C-c ,") 'org-insert-structure-template)
+
 (setq-default tab-width 4)
 
 (add-hook 'text-mode-hook 'turn-on-visual-line-mode)  ;; makes word wrap work in org mode
@@ -220,6 +223,9 @@
     (if (display-graphic-p) nil 
       (send-string-to-terminal "\033[5 q"))))
 (add-hook 'evil-normal-state-entry-hook (lambda () (if (display-graphic-p) nil (send-string-to-terminal "\033[0 q"))))
+
+(global-set-key (kbd "C-x ;") 'comment-line)
+(global-set-key (kbd "C-c ,") 'org-insert-structure-template)
 
 (load "server")
 (unless (server-running-p) (server-start))
