@@ -11,7 +11,11 @@
  '(blink-matching-paren nil)
  '(c-basic-offset 4)
  '(company-auto-complete ''company-explicit-action-p)
- '(company-auto-complete-chars '(41 46))
+ '(company-auto-complete-chars nil)
+ '(company-backends
+   '(company-irony company-bbdb company-eclim company-semantic company-clang company-xcode company-capf company-files
+                   (company-dabbrev-code company-gtags company-etags company-keywords)
+                   company-oddmuse company-dabbrev))
  '(custom-enabled-themes '(cyberpunk))
  '(custom-safe-themes
    '("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default))
@@ -22,25 +26,42 @@
  '(electric-pair-preserve-balance t)
  '(evil-move-beyond-eol t)
  '(evil-move-cursor-back nil)
- '(flycheck-global-modes '(haskell-mode python-mode))
+ '(fira-code-mode-disabled-ligatures '("<<" ">>" "**" "::"))
+ '(flycheck-global-modes '(sh-mode haskell-mode python-mode))
  '(global-auto-revert-mode t)
  '(global-company-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(js-indent-level 2)
  '(line-number-mode nil)
  '(menu-bar-mode nil nil nil "Enables the menu bar")
  '(mouse-wheel-scroll-amount '(2 ((shift) . 1) ((meta)) ((control) . text-scale)))
+ '(org-hide-emphasis-markers t)
+ '(org-hide-leading-stars t)
+ '(org-startup-indented t)
+ '(org-structure-template-alist
+   '(("a" . "export ascii")
+     ("c" . "center")
+     ("C" . "comment")
+     ("e" . "example")
+     ("E" . "export")
+     ("h" . "export html")
+     ("l" . "export latex")
+     ("q" . "quote")
+     ("s" . "src")
+     ("v" . "verse")))
  '(package-selected-packages
-   '(rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
+   '(lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator 'utf-8)
- '(powerline-height 22)
+ '(powerline-height 20)
  '(python-indent-guess-indent-offset nil)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 101)
  '(scroll-margin 1)
  '(scroll-preserve-screen-position 1)
  '(scroll-step 1)
+ '(shell-command-prompt-show-cwd t)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(vc-follow-symlinks t)
@@ -50,7 +71,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :extend nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "PfEd" :family "Fantasque Sans Mono"))))
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#000000" :foreground "#d3d3d3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "PfEd" :family "Fantasque Sans Mono"))))
  '(cursor ((t (:background "violet"))))
  '(font-lock-type-face ((t (:foreground "pale green"))))
  '(line-number-current-line ((t (:inherit line-number :foreground "magenta"))))
@@ -62,3 +83,6 @@
 
 
 (put 'scroll-left 'disabled nil)
+
+;; fix Error running timer ‘org-indent-initialize-agent’ bug 
+(org-reload)
