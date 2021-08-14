@@ -27,7 +27,7 @@
  '(evil-move-beyond-eol t)
  '(evil-move-cursor-back nil)
  '(fira-code-mode-disabled-ligatures '("<<" ">>" "**" "::"))
- '(flycheck-global-modes '(haskell-mode python-mode))
+ '(flycheck-global-modes '(sh-mode haskell-mode python-mode))
  '(global-auto-revert-mode t)
  '(global-company-mode t)
  '(indent-tabs-mode nil)
