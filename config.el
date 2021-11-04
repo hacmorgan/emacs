@@ -53,8 +53,17 @@
 (global-set-key (kbd "C-x r <down>") 'shrink-window)
 (global-set-key (kbd "C-x r <up>") 'enlarge-window)
 
-;; (global-set-key (kbd "C-S-l r") (custom-set-variables '(display-line-numbers (quote relative))))
-;; (global-set-key (kbd "C-S-l a") (custom-set-variables '(display-line-numbers t)))
+(defun use-relative-numbers ()
+  "Switch to using relative numbers (as opposed to absolute)"
+  (interactive)
+  (custom-set-variables '(display-line-numbers 'relative)))
+(defun use-absolute-numbers ()
+  "Switch to using absolute numbers (as opposed to relative)"
+  (interactive)
+  (custom-set-variables '(display-line-numbers t)))
+
+(global-set-key (kbd "C-x n r") 'use-relative-numbers)
+(global-set-key (kbd "C-x n a") 'use-absolute-numbers)
 
 (global-set-key (kbd "s-g r") 'revert-buffer)
 
@@ -180,6 +189,14 @@
 ;;(add-hook 'sh-mode-hook #'lsp)
 (add-hook 'python-mode-hook #'lsp)
 
+(use-package lsp-jedi
+  :ensure t
+  :config
+  (with-eval-after-load "lsp-mode"
+    (add-to-list 'lsp-disabled-clients 'pyls)
+    (add-to-list 'lsp-disabled-clients 'pylsp)
+    (add-to-list 'lsp-enabled-clients 'jedi)))
+
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
@@ -207,6 +224,8 @@
 (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
 (doxymacs-font-lock)))
 (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+
+(custom-set-variables '(ein:worksheet-enable-undo t))
 
 (setq make-backup-files nil)
 

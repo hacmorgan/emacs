@@ -258,6 +258,10 @@ indent-by-spaces is set using customize, so it's in init.el
     ad-do-it))
 #+END_SRC
 ** syntax highlighting, linting etc.
+Because emacs is emacs, getting syntax highlighting, linting, etc working correctly is a matter of getting many packages to work together.
+
+Some pip packages are necessary (though they /should/ be installed by =sysbs=)
+
 *** flycheck
 note: flycheck requires linters. The list of required linters can be found [[https://www.flycheck.org/en/latest/languages.html][Here]]. Installed linters:
 - hlint (Haskell)
@@ -273,6 +277,22 @@ lsp stands for language server protocol. It requires servers for each language (
 ;;(add-hook 'sh-mode-hook #'lsp)
 (add-hook 'python-mode-hook #'lsp)
 #+END_SRC
+**** lsp-jedi
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-jedi
+  :ensure t
+  :config
+  (with-eval-after-load "lsp-mode"
+    (add-to-list 'lsp-disabled-clients 'pyls)
+    (add-to-list 'lsp-disabled-clients 'pylsp)
+    (add-to-list 'lsp-enabled-clients 'jedi)))
+#+END_SRC
+**** lsp performance
+Run the =lsp-doctor= command to see what can be done to improve performance. This one can't just be configured in customize.
+#+begin_src emacs-lisp
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+#+end_src
+
 *** irony-mode
 Turn on irony mode for C, C++, Objective C
 #+begin_src emacs-lisp
@@ -322,6 +342,12 @@ Keybindings for clang-format{,-region}
 (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
 (doxymacs-font-lock)))
 (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+#+end_src
+** ein
+*** Enable undo
+For some reson, undo is disabled somewhere outside of customize. We will see if this helps.
+#+begin_src emacs-lisp
+(custom-set-variables '(ein:worksheet-enable-undo t))
 #+end_src
 ** other
 *** backups
