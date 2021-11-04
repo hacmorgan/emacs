@@ -92,17 +92,17 @@ This doesn't always work, so commenting it out in order to use super for other s
 *** switch between absolute and relative line numbers
 To set keybindings (using =global-set-key=), the functions called must be interactive. We define the functions and then set keybindings for them.
 #+BEGIN_SRC  emacs-lisp
-(defun use-relative-numbers ()
-  "Switch to using relative numbers (as opposed to absolute)"
-  (interactive)
-  (custom-set-variables '(display-line-numbers 'relative)))
-(defun use-absolute-numbers ()
-  "Switch to using absolute numbers (as opposed to relative)"
-  (interactive)
-  (custom-set-variables '(display-line-numbers t)))
-
-(global-set-key (kbd "C-x n r") 'use-relative-numbers)
-(global-set-key (kbd "C-x n a") 'use-absolute-numbers)
+  (defun use-relative-numbers ()
+    "Switch to using relative numbers (as opposed to absolute)"
+    (interactive)
+    (custom-set-variables '(display-line-numbers 'relative)))
+  (defun use-absolute-numbers ()
+    "Switch to using absolute numbers (as opposed to relative)"
+    (interactive)
+    (custom-set-variables '(display-line-numbers t)))
+  
+  (global-set-key (kbd "C-x n r") 'use-relative-numbers)
+  (global-set-key (kbd "C-x n a") 'use-absolute-numbers)
 #+END_SRC
 
 *** revert buffer
@@ -270,6 +270,12 @@ note: flycheck requires linters. The list of required linters can be found [[htt
 (add-hook 'after-init-hook #'global-flycheck-mode)
 #+END_SRC
 
+**** Set flycheck backend to pylint (not lsp)
+This way we get the detection of invalid syntax from pylint, as well as all the nice lsp jedi stuff
+#+begin_src emacs-lisp
+  (setq lsp-diagnostic-package :none)
+#+end_src
+
 *** lsp-mode
 lsp stands for language server protocol. It requires servers for each language (Haskell still experimental)
 #+BEGIN_SRC emacs-lisp
@@ -279,14 +285,15 @@ lsp stands for language server protocol. It requires servers for each language (
 #+END_SRC
 **** lsp-jedi
 #+BEGIN_SRC emacs-lisp
-(use-package lsp-jedi
-  :ensure t
-  :config
-  (with-eval-after-load "lsp-mode"
-    (add-to-list 'lsp-disabled-clients 'pyls)
-    (add-to-list 'lsp-disabled-clients 'pylsp)
-    (add-to-list 'lsp-enabled-clients 'jedi)))
+  (use-package lsp-jedi
+    :ensure t
+    :config
+    (with-eval-after-load "lsp-mode"
+      (add-to-list 'lsp-disabled-clients 'pyls)
+      ;; (add-to-list 'lsp-disabled-clients 'pylsp)
+      (add-to-list 'lsp-enabled-clients 'jedi)))
 #+END_SRC
+
 **** lsp performance
 Run the =lsp-doctor= command to see what can be done to improve performance. This one can't just be configured in customize.
 #+begin_src emacs-lisp

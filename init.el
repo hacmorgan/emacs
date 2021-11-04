@@ -35,12 +35,13 @@
  '(gc-cons-threshold 100000000)
  '(global-auto-revert-mode t)
  '(global-company-mode t)
+ '(global-undo-tree-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
  '(line-number-mode nil)
  '(lsp-eldoc-render-all t)
- '(lsp-idle-delay 0.01)
+ '(lsp-idle-delay 0.5)
  '(lsp-ui-doc-delay 0.05)
  '(lsp-ui-doc-enable nil)
  '(lsp-ui-sideline-enable nil)
@@ -92,7 +93,7 @@
  '(mode-line ((t (:background "#333333" :foreground "DeepSkyBlue1" :box nil))))
  '(mode-line-inactive ((t (:background "#1A1A1A" :foreground "#4D4D4D" :box nil))))
  '(powerline-active1 ((t (:inherit mode-line :background "SlateBlue3" :foreground "white"))))
- '(powerline-active2 ((t (:inherit mode-line :background "DodgerBlue1" :foreground "white"))))
+ '(powerline-active2 ((t (:foreground "white" :background "color-90" :inherit mode-line))))
  '(show-paren-mismatch ((t (:background "#000000" :foreground "orange red")))))
 
 
