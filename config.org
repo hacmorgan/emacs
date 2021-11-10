@@ -392,6 +392,7 @@ In a terminal, emacs receives "C-;" and "C-," (likely among others) without the 
 #+begin_src emacs-lisp
 (global-set-key (kbd "C-x ;") 'comment-line)
 (global-set-key (kbd "C-c ,") 'org-insert-structure-template)
+(global-set-key (kbd "C-c f") 'lsp-find-definition)
 #+end_src
 * emacs server
 #+BEGIN_SRC  emacs-lisp
