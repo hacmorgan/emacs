@@ -31,6 +31,7 @@
  '(evil-move-beyond-eol t)
  '(evil-move-cursor-back nil)
  '(fira-code-mode-disabled-ligatures '("<<" ">>" "**" "::"))
+ '(flycheck-flake8rc ".flake8")
  '(flycheck-global-modes '(sh-mode haskell-mode python-mode))
  '(gc-cons-threshold 100000000)
  '(global-auto-revert-mode t)
