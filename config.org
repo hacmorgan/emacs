@@ -56,6 +56,13 @@ picom will handle inactive opacity for us, so we will just set a base opacity
 (powerline-center-evil-theme)
 #+END_SRC
 
+** arduino mode
+*** Disable irony mode
+Irony is incompatible with arduino files (for now at least)
+#+begin_src emacs-lisp
+(add-hook 'arduino-mode-hook (lambda () (irony-mode "off")))
+#+end_src
+
 ** keyboard
 *** make super key perform meta key role
 This doesn't always work, so commenting it out in order to use super for other stuff
