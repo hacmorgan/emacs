@@ -8,3 +8,4 @@ config.el
 *.elc
 eln-cache
 request
+.lsp-session*
