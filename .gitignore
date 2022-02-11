@@ -9,3 +9,4 @@ config.el
 eln-cache
 request
 .lsp-session*
+network-security.data
