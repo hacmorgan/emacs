@@ -10,3 +10,5 @@ eln-cache
 request
 .lsp-session*
 network-security.data
+build
+*.egg-info
