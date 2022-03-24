@@ -17,6 +17,7 @@
                    (company-dabbrev-code company-gtags company-etags company-keywords)
                    company-oddmuse company-dabbrev))
  '(company-idle-delay 0.05)
+ '(company-minimum-prefix-length 1)
  '(company-tooltip-idle-delay 0)
  '(custom-enabled-themes '(cyberpunk))
  '(custom-safe-themes
