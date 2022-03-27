@@ -341,6 +341,15 @@ Keybindings for clang-format{,-region}
 
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 #+end_src
+** yasnippet
+For the google style python docstring, we need GitHub user Xaldew's package repository
+#+begin_src emacs-lisp
+(require 'package)
+(add-to-list 'package-archives
+             '("xaldew" . "https://gustafwaldemarson.com/elpa/"))
+(add-to-list 'package-unsigned-archives "xaldew")
+(package-initialize)
+#+end_src
 ** doxygen
 *** Make sure we're using doxymacs
 #+begin_src emacs-lisp
@@ -398,7 +407,7 @@ the ding on the ThinkPad P14s is very loud, we will use a visual indicator inste
 In a terminal, emacs receives "C-;" and "C-," (likely among others) without the ctrl prefix, so we overwrite some other keybindings that we don't need.
 #+begin_src emacs-lisp
 (global-set-key (kbd "C-x ;") 'comment-line)
-(global-set-key (kbd "C-c ,") 'org-insert-structure-template)
+(global-set-key (kbd "C-x ,") 'org-insert-structure-template)
 (global-set-key (kbd "C-c f") 'lsp-find-definition)
 #+end_src
 * emacs server
