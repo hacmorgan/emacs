@@ -5,4 +5,10 @@ company-statistics-cache.el
 elpa/archives
 irony
 config.el
+*.elc
+eln-cache
 request
+.lsp-session*
+network-security.data
+build
+*.egg-info
