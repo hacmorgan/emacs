@@ -61,7 +61,7 @@ picom will handle inactive opacity for us, so we will just set a base opacity
 *** Disable irony mode
 Irony is incompatible with arduino files (for now at least)
 #+begin_src emacs-lisp
-(add-hook 'arduino-mode-hook (lambda () (irony-mode "off")))
+(add-hook 'arduino-mode-hook (lambda () (irony-mode 0)))
 #+end_src
 
 ** keyboard
