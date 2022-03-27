@@ -12,6 +12,8 @@
  '(c-basic-offset 4)
  '(company-auto-commit ''company-explicit-action-p)
  '(company-auto-commit-chars nil)
+ '(company-auto-complete ''company-explicit-action-p)
+ '(company-auto-complete-chars nil)
  '(company-backends
    '(company-irony company-bbdb company-eclim company-semantic company-clang company-xcode company-capf company-files
                    (company-dabbrev-code company-gtags company-etags company-keywords)
@@ -65,7 +67,7 @@
      ("s" . "src")
      ("v" . "verse")))
  '(package-selected-packages
-   '(dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
+   '(yasnippet-classic-snippets yasnippet-radical-snippets yasnippet-snippets yasnippet sphinx-doc dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator 'utf-8)
  '(powerline-gui-use-vcs-glyph t)
@@ -82,7 +84,9 @@
  '(tooltip-delay 0.1)
  '(vc-follow-symlinks t)
  '(warning-suppress-types '((comp)))
- '(xterm-mouse-mode t))
+ '(xterm-mouse-mode t)
+ '(yas-snippet-dirs
+   '("/home/hamish/.emacs.d/snippets" yasnippet-snippets-dir yasnippet-classic-snippets-dir "/home/hamish/.emacs.d/elpa/yasnippet-radical-snippets-20210915.1309/snippets")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -95,7 +99,7 @@
  '(mode-line ((t (:background "#333333" :foreground "DeepSkyBlue1" :box nil))))
  '(mode-line-inactive ((t (:background "#1A1A1A" :foreground "#4D4D4D" :box nil))))
  '(powerline-active1 ((t (:inherit mode-line :background "SlateBlue3" :foreground "white"))))
- '(powerline-active2 ((t (:foreground "white" :background "color-90" :inherit mode-line))))
+ '(powerline-active2 ((t (:inherit mode-line :background "DodgerBlue1" :foreground "white"))))
  '(show-paren-mismatch ((t (:background "#000000" :foreground "orange red")))))
 
 
