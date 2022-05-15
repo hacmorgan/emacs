@@ -342,6 +342,11 @@ Keybindings for clang-format{,-region}
 
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 #+end_src
+*** blacken
+Automatically run black on python scripts when saving
+#+begin_src emacs-lisp
+(add-hook 'python-mode-hook 'blacken-mode)
+#+end_src
 ** yasnippet
 For the google style python docstring, we need GitHub user Xaldew's package repository
 #+begin_src emacs-lisp
