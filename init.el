@@ -7,35 +7,36 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(blacken-executable "black --preview")
  '(blink-cursor-mode nil)
  '(blink-matching-paren nil)
  '(c-basic-offset 4)
- '(company-auto-commit ''company-explicit-action-p)
+ '(company-auto-commit (quote (quote company-explicit-action-p)))
  '(company-auto-commit-chars nil)
- '(company-auto-complete ''company-explicit-action-p)
- '(company-auto-complete-chars nil)
  '(company-backends
-   '(company-irony company-bbdb company-eclim company-semantic company-clang company-xcode company-capf company-files
+   (quote
+    (company-irony company-bbdb company-eclim company-semantic company-clang company-xcode company-capf company-files
                    (company-dabbrev-code company-gtags company-etags company-keywords)
-                   company-oddmuse company-dabbrev))
+                   company-oddmuse company-dabbrev)))
  '(company-idle-delay 0.05)
  '(company-minimum-prefix-length 1)
  '(company-tooltip-idle-delay 0)
- '(custom-enabled-themes '(cyberpunk))
+ '(custom-enabled-themes (quote (cyberpunk)))
  '(custom-safe-themes
-   '("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default))
- '(display-line-numbers 'relative)
+   (quote
+    ("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default)))
+ '(display-line-numbers (quote relative))
  '(ein:output-area-inlined-images nil)
  '(ein:worksheet-enable-undo t)
- '(electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
+ '(electric-pair-inhibit-predicate (quote electric-pair-conservative-inhibit))
  '(electric-pair-mode nil)
  '(electric-pair-open-newline-between-pairs t)
  '(electric-pair-preserve-balance t)
  '(evil-move-beyond-eol t)
  '(evil-move-cursor-back nil)
- '(fira-code-mode-disabled-ligatures '("<<" ">>" "**" "::"))
+ '(fira-code-mode-disabled-ligatures (quote ("<<" ">>" "**" "::")))
  '(flycheck-flake8rc ".flake8")
- '(flycheck-global-modes '(sh-mode haskell-mode python-mode))
+ '(flycheck-global-modes (quote (sh-mode haskell-mode python-mode)))
  '(gc-cons-threshold 100000000)
  '(global-auto-revert-mode t)
  '(global-company-mode t)
@@ -49,14 +50,15 @@
  '(lsp-ui-doc-delay 0.05)
  '(lsp-ui-doc-enable nil)
  '(lsp-ui-sideline-enable nil)
- '(mailcap-user-mime-data '(("feh -d. %s" "image/*" nil)))
+ '(mailcap-user-mime-data (quote (("feh -d. %s" "image/*" nil))))
  '(menu-bar-mode nil nil nil "Enables the menu bar")
- '(mouse-wheel-scroll-amount '(2 ((shift) . 1) ((meta)) ((control) . text-scale)))
+ '(mouse-wheel-scroll-amount (quote (2 ((shift) . 1) ((meta)) ((control) . text-scale))))
  '(org-hide-emphasis-markers t)
  '(org-hide-leading-stars t)
  '(org-startup-indented t)
  '(org-structure-template-alist
-   '(("a" . "export ascii")
+   (quote
+    (("a" . "export ascii")
      ("c" . "center")
      ("C" . "comment")
      ("e" . "example")
@@ -65,11 +67,12 @@
      ("l" . "export latex")
      ("q" . "quote")
      ("s" . "src")
-     ("v" . "verse")))
+     ("v" . "verse"))))
  '(package-selected-packages
-   '(yasnippet-classic-snippets yasnippet-radical-snippets yasnippet-snippets yasnippet sphinx-doc dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company))
+   (quote
+    (yasnippet-classic-snippets yasnippet-radical-snippets yasnippet-snippets yasnippet sphinx-doc dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme org evil csv-mode magit haskell-mode ein markdown-mode company)))
  '(pixel-scroll-mode nil)
- '(powerline-default-separator 'utf-8)
+ '(powerline-default-separator (quote utf-8))
  '(powerline-gui-use-vcs-glyph t)
  '(powerline-height 20)
  '(python-indent-guess-indent-offset nil)
@@ -83,10 +86,11 @@
  '(tool-bar-mode nil)
  '(tooltip-delay 0.1)
  '(vc-follow-symlinks t)
- '(warning-suppress-types '((comp)))
+ '(warning-suppress-types (quote ((comp))))
  '(xterm-mouse-mode t)
  '(yas-snippet-dirs
-   '("/home/hamish/.emacs.d/snippets" yasnippet-snippets-dir yasnippet-classic-snippets-dir "/home/hamish/.emacs.d/elpa/yasnippet-radical-snippets-20210915.1309/snippets")))
+   (quote
+    ("/home/hamish/.emacs.d/snippets" yasnippet-snippets-dir yasnippet-classic-snippets-dir "/home/hamish/.emacs.d/elpa/yasnippet-radical-snippets-20210915.1309/snippets"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
