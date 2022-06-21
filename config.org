@@ -49,6 +49,8 @@ picom will handle inactive opacity for us, so we will just set a base opacity
 (add-hook 'evil-visual-state-exit-hook (lambda () (set-face-background 'powerline-active1 "SlateBlue3")))
 (add-hook 'evil-insert-state-entry-hook (lambda () (set-face-background 'powerline-active1 "DarkOrange3")))
 (add-hook 'evil-insert-state-exit-hook (lambda () (set-face-background 'powerline-active1 "SlateBlue3")))
+(add-hook 'evil-emacs-state-entry-hook (lambda () (set-face-background 'powerline-active1 "color-124")))
+(add-hook 'evil-emacs-state-exit-hook (lambda () (set-face-background 'powerline-active1 "SlateBlue3")))
 #+END_SRC
 
 ** powerline
