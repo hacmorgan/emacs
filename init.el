@@ -87,6 +87,7 @@
  '(vc-follow-symlinks t)
  '(warning-suppress-types (quote ((comp))))
  '(xterm-mouse-mode t)
+ '(yaml-indent-offset 4)
  '(yas-snippet-dirs
    (quote
     ("/home/hamish/.emacs.d/snippets" yasnippet-snippets-dir yasnippet-classic-snippets-dir "/home/hamish/.emacs.d/elpa/yasnippet-radical-snippets-20210915.1309/snippets"))))
