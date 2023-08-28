@@ -136,6 +136,13 @@ indent-by-spaces is set using customize, so it's in init.el
 #+BEGIN_SRC  emacs-lisp
 (setq-default tab-width 4)
 #+END_SRC
+*** fill column indicator (88 char line)
+Automatically enable the fill column indicator at 88 chars for all dev modes, assign C-x f to toggle it
+#+BEGIN_SRC  emacs-lisp
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+'(display-fill-column-indicator-column 88)
+(global-set-key (kbd "C-x f") 'display-fill-column-indicator-mode)
+#+END_SRC
 
 ** mode specific editor settings
 *** text-mode
