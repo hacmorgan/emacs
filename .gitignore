@@ -12,3 +12,5 @@ request
 network-security.data
 build
 *.egg-info
+*.signed
+*~undo-tree~*

@@ -1,12 +1,12 @@
 * package management
 ** package archive servers
 #+BEGIN_SRC  emacs-lisp
-(require 'package)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-(setq use-package-always-pin  "melpa-stable")
-(package-initialize)
+  (require 'package)
+  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  ;; (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)  ;; used to be required for org mode
+  (setq use-package-always-pin  "melpa-stable")
+  (package-initialize)
 #+END_SRC
 ** use-package
 We must ensure use-package is installed every time. =eval-when-compile= helps emacs load faster.
@@ -35,7 +35,7 @@ picom will handle inactive opacity for us, so we will just set a base opacity
 (add-to-list 'default-frame-alist '(alpha . (95 . 85)))
 #+END_SRC
 
-** evil mode
+** evil mode (vim layer)
 *** use evil mode
 #+BEGIN_SRC  emacs-lisp
 (require 'evil)
@@ -136,6 +136,13 @@ indent-by-spaces is set using customize, so it's in init.el
 #+BEGIN_SRC  emacs-lisp
 (setq-default tab-width 4)
 #+END_SRC
+
+*** ~which-key~ mode
+If you wait for 1 second after typing an icomplete command, you are shown all possible completions
+#+BEGIN_SRC  emacs-lisp
+(which-key-mode)
+#+END_SRC
+
 *** fill column indicator (88 char line)
 Automatically enable the fill column indicator at 88 chars for all dev modes, assign C-x f to toggle it
 #+BEGIN_SRC  emacs-lisp
@@ -160,88 +167,6 @@ Automatically enable the fill column indicator at 88 chars for all dev modes, as
     ;; (c-set-offset 'statement-block-intro '++))
   (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 #+END_SRC
-
-**** abyss indent style
-#+begin_src emacs-lisp
-(c-add-style "STYLE NAME HERE"
-             '("abyss"
-               (c-basic-offset . 4)     ; Guessed value
-               (c-offsets-alist
-                (arglist-cont . 0)      ; Guessed value
-                (arglist-intro . +)     ; Guessed value
-                (block-close . 0)       ; Guessed value
-                (defun-block-intro . +) ; Guessed value
-                (defun-close . 0)       ; Guessed value
-                (defun-open . 0)        ; Guessed value
-                (innamespace . 0)       ; Guessed value
-                (member-init-intro . +)     ; Guessed value
-                (namespace-close . 0)   ; Guessed value
-                (statement . 0)         ; Guessed value
-                (statement-block-intro . +) ; Guessed value
-                (topmost-intro . 0)         ; Guessed value
-                (topmost-intro-cont . 0) ; Guessed value
-                (access-label . -)
-                (annotation-top-cont . 0)
-                (annotation-var-cont . +)
-                (arglist-close . c-lineup-close-paren)
-                (arglist-cont-nonempty . c-lineup-arglist)
-                (block-open . 0)
-                (brace-entry-open . 0)
-                (brace-list-close . 0)
-                (brace-list-entry . c-lineup-under-anchor)
-                (brace-list-intro . +)
-                (brace-list-open . 0)
-                (c . c-lineup-C-comments)
-                (case-label . 0)
-                (catch-clause . 0)
-                (class-close . 0)
-                (class-open . 0)
-                (comment-intro . c-lineup-comment)
-                (composition-close . 0)
-                (composition-open . 0)
-                (cpp-define-intro c-lineup-cpp-define +)
-                (cpp-macro . -1000)
-                (cpp-macro-cont . +)
-                (do-while-closure . 0)
-                (else-clause . 0)
-                (extern-lang-close . 0)
-                (extern-lang-open . 0)
-                (friend . 0)
-                (func-decl-cont . +)
-                (inclass . +)
-                (incomposition . +)
-                (inexpr-class . +)
-                (inexpr-statement . +)
-                (inextern-lang . +)
-                (inher-cont . c-lineup-multi-inher)
-                (inher-intro . +)
-                (inlambda . c-lineup-inexpr-block)
-                (inline-close . 0)
-                (inline-open . +)
-                (inmodule . +)
-                (knr-argdecl . 0)
-                (knr-argdecl-intro . +)
-                (label . 2)
-                (lambda-intro-cont . +)
-                (member-init-cont . c-lineup-multi-inher)
-                (module-close . 0)
-                (module-open . 0)
-                (namespace-open . 0)
-                (objc-method-args-cont . c-lineup-ObjC-method-args)
-                (objc-method-call-cont c-lineup-ObjC-method-call-colons c-lineup-ObjC-method-call +)
-                (objc-method-intro .
-                                   [0])
-                (statement-case-intro . +)
-                (statement-case-open . 0)
-                (statement-cont . +)
-                (stream-op . c-lineup-streamop)
-                (string . -1000)
-                (substatement . +)
-                (substatement-label . 2)
-                (substatement-open . +)
-                (template-args-cont c-lineup-template-args +))))
-
-#+end_src
 
 *** octave-mode
 #+BEGIN_SRC  emacs-lisp
@@ -279,6 +204,8 @@ Because emacs is emacs, getting syntax highlighting, linting, etc working correc
 Some pip packages are necessary (though they /should/ be installed by =sysbs=)
 
 *** flycheck
+Flycheck is the module which provides squiggly underlines/highlighted text and tooltip/modeline explanations for ~lsp-mode~
+
 note: flycheck requires linters. The list of required linters can be found [[https://www.flycheck.org/en/latest/languages.html][Here]]. Installed linters:
 - hlint (Haskell)
 - pylint
@@ -293,13 +220,14 @@ This way we get the detection of invalid syntax from pylint, as well as all the 
 #+end_src
 
 *** lsp-mode
-lsp stands for language server protocol. It requires servers for each language (Haskell still experimental)
+lsp stands for /language server protocol/. the ~lsp-mode~ module combines numerous emacs UI modules together with one or more language servers to provide an IDE experience
 #+BEGIN_SRC emacs-lisp
 (require 'lsp-mode)
 ;;(add-hook 'sh-mode-hook #'lsp)
 (add-hook 'python-mode-hook #'lsp)
 #+END_SRC
 **** lsp-jedi
+Jedi is probably python's
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-jedi
     :ensure t
@@ -307,8 +235,23 @@ lsp stands for language server protocol. It requires servers for each language (
     (with-eval-after-load "lsp-mode"
       (add-to-list 'lsp-disabled-clients 'pyls)
       ;; (add-to-list 'lsp-disabled-clients 'pylsp)
+      (add-to-list 'lsp-enabled-clients 'pylsp)
       (add-to-list 'lsp-enabled-clients 'jedi)))
 #+END_SRC
+
+**** lsp-ui
+~lsp-ui~ combines UI elements into one package
+
+TODO: determine if this removes the need for flycheck to be separately installed?
+#+begin_src emacs-lisp
+(use-package lsp-ui)
+#+end_src
+
+**** lsp-treemacs
+~lsp-treemacs~ integrates ~treemacs~ (vscode-like tree structure for files) with lsp-mode
+#+begin_src emacs-lisp
+(lsp-treemacs-sync-mode 1)
+#+end_src
 
 **** lsp performance
 Run the =lsp-doctor= command to see what can be done to improve performance. This one can't just be configured in customize.
@@ -355,6 +298,50 @@ Automatically run black on python scripts when saving
 #+begin_src emacs-lisp
 (add-hook 'python-mode-hook 'blacken-mode)
 #+end_src
+** treemacs
+Treemacs adds VScode-like tree-structure folders to Emacs
+#+BEGIN_SRC emacs-lisp
+  (use-package treemacs)
+
+  ;; always use treemacs (TODO: determine if this is a shit idea)
+  ;; (treemacs)
+  ;; (add-hook 'python-mode-hook #'treemacs)
+  ;; (add-hook 'after-init-hook
+  ;;   (lambda ()
+  ;;     (split-window-horizontally)
+  ;;     (treemacs)))
+
+  ;; Make quick keybind for treemacs
+  (global-set-key (kbd "C-x T") 'treemacs)
+
+  (use-package treemacs-evil
+    :after (treemacs evil)
+    :ensure t)
+
+  ;; (use-package treemacs-projectile
+  ;;   :after (treemacs projectile)
+  ;;   :ensure t)
+
+  ;; (use-package treemacs-icons-dired
+  ;;   :hook (dired-mode . treemacs-icons-dired-enable-once)
+  ;;   :ensure t)
+
+  ;; (use-package treemacs-magit
+  ;;   :after (treemacs magit)
+  ;;   :ensure t)
+
+  ;; (use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
+  ;;   :after (treemacs persp-mode) ;;or perspective vs. persp-mode
+  ;;   :ensure t
+  ;;   :config (treemacs-set-scope-type 'Perspectives))
+
+  ;; (use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
+  ;;   :after (treemacs)
+  ;;   :ensure t
+  ;;   :config (treemacs-set-scope-type 'Tabs)
+  ;;	)
+#+END_SRC
+
 ** yasnippet
 For the google style python docstring, we need GitHub user Xaldew's package repository
 #+begin_src emacs-lisp
