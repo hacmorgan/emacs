@@ -22,6 +22,7 @@
  '(custom-enabled-themes '(cyberpunk))
  '(custom-safe-themes
    '("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default))
+ '(display-fill-column-indicator-column 88)
  '(display-line-numbers 'relative)
  '(ein:output-area-inlined-images nil)
  '(ein:worksheet-enable-undo t)
@@ -66,7 +67,7 @@
      ("s" . "src")
      ("v" . "verse")))
  '(package-selected-packages
-   '(iedit treemacs xref yasnippet-classic-snippets yasnippet-radical-snippets yasnippet-snippets yasnippet sphinx-doc dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme evil csv-mode magit haskell-mode ein markdown-mode company))
+   '(tree-sitter-langs tree-sitter iedit treemacs xref yasnippet-classic-snippets yasnippet-radical-snippets yasnippet-snippets yasnippet sphinx-doc dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme evil csv-mode magit haskell-mode ein markdown-mode company))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator 'utf-8)
  '(powerline-gui-use-vcs-glyph t)

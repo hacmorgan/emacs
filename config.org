@@ -154,7 +154,8 @@ If you wait for 1 second after typing an icomplete command, you are shown all po
 Automatically enable the fill column indicator at 88 chars for all dev modes, assign C-x f to toggle it
 #+BEGIN_SRC  emacs-lisp
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
-'(display-fill-column-indicator-column 88)
+;; (add-hook 'python-mode-hook '(set-fill-column 88))
+;;'(display-fill-column-indicator-column 88)
 (global-set-key (kbd "C-x f") 'display-fill-column-indicator-mode)
 #+END_SRC
 
@@ -306,6 +307,16 @@ Keybindings for clang-format{,-region}
 Automatically run black on python scripts when saving
 #+begin_src emacs-lisp
 (add-hook 'python-mode-hook 'blacken-mode)
+#+end_src
+*** tree-sitter
+Tree-sitter is a package that aims to provide better syntax highlighting via syntax trees
+#+begin_src emacs-lisp
+(require 'tree-sitter)
+(require 'tree-sitter-langs)
+;; enable globally for all supported modes
+(global-tree-sitter-mode)
+;; turn on tree-sitter syntax highlighting for python files
+(add-hook 'python-mode-hook #'tree-sitter-hl-mode)
 #+end_src
 ** treemacs
 Treemacs adds VScode-like tree-structure folders to Emacs
