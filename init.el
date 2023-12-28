@@ -38,6 +38,7 @@
  '(global-auto-revert-mode t)
  '(global-company-mode t)
  '(global-undo-tree-mode t)
+ '(iedit-case-sensitive-default nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
@@ -65,7 +66,7 @@
      ("s" . "src")
      ("v" . "verse")))
  '(package-selected-packages
-   '(treemacs xref yasnippet-classic-snippets yasnippet-radical-snippets yasnippet-snippets yasnippet sphinx-doc dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme evil csv-mode magit haskell-mode ein markdown-mode company))
+   '(iedit treemacs xref yasnippet-classic-snippets yasnippet-radical-snippets yasnippet-snippets yasnippet sphinx-doc dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme evil csv-mode magit haskell-mode ein markdown-mode company))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator 'utf-8)
  '(powerline-gui-use-vcs-glyph t)

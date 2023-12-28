@@ -42,6 +42,13 @@ picom will handle inactive opacity for us, so we will just set a base opacity
 (evil-mode 1)
 #+END_SRC
 
+*** unbind/rebind evil keybindings
+We want to replace the emacs builtin C-f keybinding and evil's redefintion of it, so we can use it for iedit mode
+#+BEGIN_SRC  emacs-lisp
+(global-unset-key (kbd "C-f"))
+(define-key evil-normal-state-map (kbd "C-f") 'iedit-mode)
+#+END_SRC
+
 *** toggle modeline colour on insert/normal mode
 #+BEGIN_SRC emacs-lisp
 (add-hook 'evil-visual-state-entry-hook (lambda () (set-face-background 'powerline-active1 "chartreuse4")))
@@ -249,6 +256,8 @@ TODO: determine if this removes the need for flycheck to be separately installed
 
 **** lsp-treemacs
 ~lsp-treemacs~ integrates ~treemacs~ (vscode-like tree structure for files) with lsp-mode
+
+This seems to mean that treemacs only shows files that ~lsp~ is tracking
 #+begin_src emacs-lisp
 (lsp-treemacs-sync-mode 1)
 #+end_src
