@@ -21,7 +21,7 @@
  '(company-tooltip-idle-delay 0)
  '(custom-enabled-themes '(cyberpunk))
  '(custom-safe-themes
-   '("5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default))
+   '("b66970f42d765a40fdb2b6b86dd2ab6289bed518cf4d8973919e5f24f0ca537b" "5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default))
  '(display-fill-column-indicator-column 88)
  '(display-line-numbers 'relative)
  '(ein:output-area-inlined-images nil)

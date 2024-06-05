@@ -155,6 +155,10 @@ Emacs in a terminal interprets "C-x C-;" as "C-x ;", so we will bind that also t
 (global-set-key (kbd "C-x ;") 'comment-line)
 (global-set-key (kbd "C-c ,") 'org-insert-structure-template)
 #+end_src
+*** map f12 to match VSCode
+#+begin_src emacs-lisp
+(global-set-key (kbd "<f12>") 'lsp-find-definition)
+#+end_src
 ** generic editor settings
 *** indenting
 indent-by-spaces is set using customize, so it's in init.el
