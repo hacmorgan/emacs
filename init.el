@@ -67,7 +67,7 @@
      ("s" . "src")
      ("v" . "verse")))
  '(package-selected-packages
-   '(tree-sitter-langs tree-sitter iedit treemacs xref yasnippet-classic-snippets yasnippet-radical-snippets yasnippet-snippets yasnippet sphinx-doc dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme evil csv-mode magit haskell-mode ein markdown-mode company))
+   '(json-rpc-server json-rpc editorconfig tree-sitter-langs tree-sitter iedit treemacs xref yasnippet-classic-snippets yasnippet-radical-snippets yasnippet-snippets yasnippet sphinx-doc dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme evil csv-mode magit haskell-mode ein markdown-mode company))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator 'utf-8)
  '(powerline-gui-use-vcs-glyph t)

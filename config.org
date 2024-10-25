@@ -4,9 +4,9 @@
   (require 'package)
   (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-  ;; (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)  ;; used to be required for org mode
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)  ;; used to be required for org mode
   (setq use-package-always-pin  "melpa-stable")
-  (package-initialize)
+  ;; (package-initialize)
 #+END_SRC
 ** use-package
 We must ensure use-package is installed every time. =eval-when-compile= helps emacs load faster.
@@ -391,7 +391,7 @@ For the google style python docstring, we need GitHub user Xaldew's package repo
 (add-to-list 'package-archives
              '("xaldew" . "https://gustafwaldemarson.com/elpa/"))
 (add-to-list 'package-unsigned-archives "xaldew")
-(package-initialize)
+;; (package-initialize)
 #+end_src
 ** doxygen
 *** Make sure we're using doxymacs
@@ -414,6 +414,15 @@ For the google style python docstring, we need GitHub user Xaldew's package repo
 For some reson, undo is disabled somewhere outside of customize. We will see if this helps.
 #+begin_src emacs-lisp
 (custom-set-variables '(ein:worksheet-enable-undo t))
+#+end_src
+** copilot
+Enable copilot
+#+begin_src emacs-lisp
+  (add-to-list 'load-path "/home/hamish/.emacs.d/external-packages/copilot.el")
+  (require 'copilot)
+  (add-hook 'prog-mode-hook 'copilot-mode)
+  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
 #+end_src
 ** other
 *** backups
