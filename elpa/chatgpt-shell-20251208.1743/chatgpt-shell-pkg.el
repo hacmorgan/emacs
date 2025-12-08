@@ -1,0 +1,9 @@
+;; -*- no-byte-compile: t; lexical-binding: nil -*-
+(define-package "chatgpt-shell" "20251208.1743"
+  "A family of utilities to interact with LLMs (ChatGPT, Claude, DeepSeek, Gemini, Kagi, Ollama, Perplexity)."
+  '((emacs       "28.1")
+    (shell-maker "0.82.3")
+    (transient   "0.9.3"))
+  :url "https://github.com/xenodium/chatgpt-shell"
+  :commit "59599f99be71ac6751657f8128fe2adc9ea8b104"
+  :revdesc "59599f99be71")
