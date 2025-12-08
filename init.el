@@ -67,7 +67,7 @@
      ("s" . "src")
      ("v" . "verse")))
  '(package-selected-packages
-   '(chatgpt-shell shell-maker copilot-chat json-rpc-server json-rpc editorconfig tree-sitter-langs tree-sitter iedit treemacs xref yasnippet-classic-snippets yasnippet-radical-snippets yasnippet-snippets yasnippet sphinx-doc dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme evil csv-mode magit haskell-mode ein markdown-mode company))
+   '(dart-mode terraform-mode chatgpt-shell shell-maker copilot-chat json-rpc-server json-rpc editorconfig tree-sitter-langs tree-sitter iedit treemacs xref yasnippet-classic-snippets yasnippet-radical-snippets yasnippet-snippets yasnippet sphinx-doc dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme evil csv-mode magit haskell-mode ein markdown-mode company))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator 'utf-8)
  '(powerline-gui-use-vcs-glyph t)
@@ -85,7 +85,7 @@
  '(vc-follow-symlinks t)
  '(warning-suppress-types '((comp)))
  '(xterm-mouse-mode t)
- '(yaml-indent-offset 4)
+ '(yaml-indent-offset 2)
  '(yas-snippet-dirs
    '("/home/hamish/.emacs.d/snippets" yasnippet-snippets-dir yasnippet-classic-snippets-dir "/home/hamish/.emacs.d/elpa/yasnippet-radical-snippets-20210915.1309/snippets")))
 (custom-set-faces
