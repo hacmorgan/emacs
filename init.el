@@ -11,8 +11,11 @@
  '(blink-matching-paren nil)
  '(c-basic-offset 4)
  '(company-backends
-   '(company-irony company-bbdb company-eclim company-semantic company-clang company-xcode company-capf company-files
-                   (company-dabbrev-code company-gtags company-etags company-keywords)
+   '(company-irony company-bbdb company-eclim company-semantic
+                   company-clang company-xcode company-capf
+                   company-files
+                   (company-dabbrev-code company-gtags company-etags
+                                         company-keywords)
                    company-oddmuse company-dabbrev))
  '(company-idle-delay 0.05)
  '(company-insertion-on-trigger ''company-explicit-action-p)
@@ -21,7 +24,10 @@
  '(company-tooltip-idle-delay 0)
  '(custom-enabled-themes '(cyberpunk))
  '(custom-safe-themes
-   '("b66970f42d765a40fdb2b6b86dd2ab6289bed518cf4d8973919e5f24f0ca537b" "5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000" "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451" default))
+   '("b66970f42d765a40fdb2b6b86dd2ab6289bed518cf4d8973919e5f24f0ca537b"
+     "5adf7ad078568675387aac96e142c1300006531721bca35b941e4ed3e3b59000"
+     "1a232652b04b68380b1cff7ceeb62787b4eb43df826a97c67831c50b0c0d1451"
+     default))
  '(display-fill-column-indicator-column 88)
  '(display-line-numbers 'relative)
  '(ein:output-area-inlined-images nil)
@@ -56,18 +62,16 @@
  '(org-hide-leading-stars t)
  '(org-startup-indented t)
  '(org-structure-template-alist
-   '(("a" . "export ascii")
-     ("c" . "center")
-     ("C" . "comment")
-     ("e" . "example")
-     ("E" . "export")
-     ("h" . "export html")
-     ("l" . "export latex")
-     ("q" . "quote")
-     ("s" . "src")
+   '(("a" . "export ascii") ("c" . "center") ("C" . "comment")
+     ("e" . "example") ("E" . "export") ("h" . "export html")
+     ("l" . "export latex") ("q" . "quote") ("s" . "src")
      ("v" . "verse")))
- '(package-selected-packages
-   '(dart-mode terraform-mode chatgpt-shell shell-maker copilot-chat json-rpc-server json-rpc editorconfig tree-sitter-langs tree-sitter iedit treemacs xref yasnippet-classic-snippets yasnippet-radical-snippets yasnippet-snippets yasnippet sphinx-doc dockerfile-mode docker lsp-jedi company-jedi company-irony irony fira-code-mode yaml-mode clang-format cmake-ide cmake-mode systemd rainbow-mode arduino-mode rust-mode lsp-ui flycheck lsp-mode tidal powerline cyberpunk-theme evil csv-mode magit haskell-mode ein markdown-mode company))
+ '(package-selected-packages '(monet websocket))
+ '(package-vc-selected-packages
+   '((websocket :vc-backend Git :url
+                "https://github.com/ahyatt/emacs-websocket")
+     (monet :vc-backend Git :url
+            "https://github.com/stevemolitor/monet")))
  '(pixel-scroll-mode nil)
  '(powerline-default-separator 'utf-8)
  '(powerline-gui-use-vcs-glyph t)
@@ -87,7 +91,9 @@
  '(xterm-mouse-mode t)
  '(yaml-indent-offset 2)
  '(yas-snippet-dirs
-   '("/home/hamish/.emacs.d/snippets" yasnippet-snippets-dir yasnippet-classic-snippets-dir "/home/hamish/.emacs.d/elpa/yasnippet-radical-snippets-20210915.1309/snippets")))
+   '("/home/hamish/.emacs.d/snippets" yasnippet-snippets-dir
+     yasnippet-classic-snippets-dir
+     "/home/hamish/.emacs.d/elpa/yasnippet-radical-snippets-20210915.1309/snippets")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
