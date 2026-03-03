@@ -11,9 +11,24 @@
 #+END_SRC
 ** use-package
 We must ensure use-package is installed every time. =eval-when-compile= helps emacs load faster.
+
+Package archives are refreshed at most once per week (timestamp stored in
+=package-refresh-timestamp= in the emacs directory).
 #+BEGIN_SRC  emacs-lisp
+;; Refresh package archives at most once per week
+(let* ((timestamp-file (expand-file-name "package-refresh-timestamp" user-emacs-directory))
+       (last-refresh (and (file-exists-p timestamp-file)
+                          (float-time (file-attribute-modification-time
+                                       (file-attributes timestamp-file)))))
+       (stale (or (not last-refresh)
+                  (> (- (float-time) last-refresh) (* 7 86400)))))
+  (when stale
+    (message "Package archive cache is stale, refreshing...")
+    (package-refresh-contents)
+    (with-temp-file timestamp-file
+      (insert (format-time-string "%Y-%m-%d %H:%M:%S")))))
+
 (unless (package-installed-p 'use-package)
-  (package-refresh-contents)
   (package-install 'use-package))
 (eval-when-compile (require 'use-package))
 #+END_SRC
@@ -219,12 +234,12 @@ Automatically enable the fill column indicator at 88 chars for all dev modes, as
 (defadvice sh--maybe-here-document (around be-smart-about-it activate)
   "Do normal here doc auto insert, but if you type another chevron, revert and leave just <<<."
   (if (and (= (current-column) 1)
-           (looking-back "^<")
+           (looking-back "^<" (line-beginning-position))
            (looking-at "\nEOF")
            (save-excursion
              (forward-line -1)
              (end-of-line 1)
-             (looking-back "<<EOF")))
+             (looking-back "<<EOF" (- (point) 5))))
       (progn (delete-region (search-backward "EOF") (search-forward "EOF" nil t 2))
              (insert "<"))
     ad-do-it))
@@ -426,38 +441,40 @@ Enable copilot
   (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
 #+end_src
 
-Copilot Chat
-#+begin_src emacs-lisp
-  (require 'chatgpt-shell)
-  (use-package copilot-chat)
-#+end_src
+# Copilot Chat
+# #+begin_src emacs-lisp
+#   (require 'chatgpt-shell)
+#   (use-package copilot-chat)
+# #+end_src
 # ** claude code
 # #+begin_src emacs-lisp
 
-# ;; install required inheritenv dependency:
-# (use-package inheritenv
-#   :vc (:url "https://github.com/purcell/inheritenv" :rev :newest))
+#   ;; install required inheritenv dependency from GitHub:
+#   (unless (package-installed-p 'inheritenv)
+#     (package-vc-install '(inheritenv :url "https://github.com/purcell/inheritenv" :vc-backend Git)))
+#   (use-package inheritenv)
 
-# ;; for eat terminal backend:
-# (use-package eat :ensure t)
+#   ;; for eat terminal backend (only on MELPA, not MELPA stable):
+#   (use-package eat :ensure t :pin melpa)
 
-# ;; for vterm terminal backend:
-# (use-package vterm :ensure t)
+#   ;; ;; for vterm terminal backend (only on MELPA, not MELPA stable):
+#   ;; (use-package vterm :ensure t :pin melpa)
 
-# ;; install claude-code.el
-# (use-package claude-code :ensure t
-#   :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
-#   :config
-#   ;; optional IDE integration with Monet
-#   (add-hook 'claude-code-process-environment-functions #'monet-start-server-function)
-#   (monet-mode 1)
+#   ;; install claude-code.el from GitHub:
+#   (unless (package-installed-p 'claude-code)
+#     (package-vc-install '(claude-code :url "https://github.com/stevemolitor/claude-code.el" :vc-backend Git)))
+#   (use-package claude-code
+#     :config
+#     ;; optional IDE integration with Monet
+#     (add-hook 'claude-code-process-environment-functions #'monet-start-server-function)
+#     (monet-mode 1)
 
-#   (claude-code-mode)
-#   :bind-keymap ("C-c c" . claude-code-command-map)
+#     (claude-code-mode)
+#     :bind-keymap ("C-c c" . claude-code-command-map)
 
-#   ;; Optionally define a repeat map so that "M" will cycle thru Claude auto-accept/plan/confirm modes after invoking claude-code-cycle-mode / C-c M.
-#   :bind
-#   (:repeat-map my-claude-code-map ("M" . claude-code-cycle-mode)))
+#     ;; Optionally define a repeat map so that "M" will cycle thru Claude auto-accept/plan/confirm modes after invoking claude-code-cycle-mode / C-c M.
+#     :bind
+#     (:repeat-map my-claude-code-map ("M" . claude-code-cycle-mode)))
 # #+end_src
 ** claude monet
 #+begin_src emacs-lisp

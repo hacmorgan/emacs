@@ -66,7 +66,22 @@
      ("e" . "example") ("E" . "export") ("h" . "export html")
      ("l" . "export latex") ("q" . "quote") ("s" . "src")
      ("v" . "verse")))
- '(package-selected-packages '(monet websocket))
+ '(package-selected-packages
+   '(arduino-mode async auto-complete blacken chatgpt-shell clang-format
+                  claude-code cmake-ide cmake-mode company-irony
+                  company-jedi copilot-chat csv-mode cyberpunk-theme
+                  dart-mode dash-functional docker docker-tramp
+                  dockerfile-mode editorconfig ein eink-theme emms
+                  exec-path-from-shell fira-code-mode flycheck
+                  git-commit iedit json-mode json-rpc json-rpc-server
+                  lsp-jedi lsp-treemacs lsp-ui monet pkg-info
+                  powerline rainbow-mode rust-mode sphinx-doc systemd
+                  terraform-mode tidal tree-sitter-langs treemacs-evil
+                  treemacs-icons-dired treemacs-magit treemacs-persp
+                  treemacs-projectile treemacs-tab-bar undo-tree
+                  use-package vterm which-key yaml-mode
+                  yasnippet-classic-snippets
+                  yasnippet-radical-snippets yasnippet-snippets))
  '(package-vc-selected-packages
    '((websocket :vc-backend Git :url
                 "https://github.com/ahyatt/emacs-websocket")
