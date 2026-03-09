@@ -11,12 +11,11 @@
  '(blink-matching-paren nil)
  '(c-basic-offset 4)
  '(company-backends
-   '(company-irony company-bbdb company-eclim company-semantic
-                   company-clang company-xcode company-capf
-                   company-files
-                   (company-dabbrev-code company-gtags company-etags
-                                         company-keywords)
-                   company-oddmuse company-dabbrev))
+   '(company-bbdb company-eclim company-semantic company-clang
+                  company-xcode company-capf company-files
+                  (company-dabbrev-code company-gtags company-etags
+                                        company-keywords)
+                  company-oddmuse company-dabbrev))
  '(company-idle-delay 0.05)
  '(company-insertion-on-trigger ''company-explicit-action-p)
  '(company-insertion-triggers nil)
@@ -79,7 +78,7 @@
                   terraform-mode tidal tree-sitter-langs treemacs-evil
                   treemacs-icons-dired treemacs-magit treemacs-persp
                   treemacs-projectile treemacs-tab-bar undo-tree
-                  use-package vterm which-key yaml-mode
+                  use-package vterm vundo which-key yaml-mode
                   yasnippet-classic-snippets
                   yasnippet-radical-snippets yasnippet-snippets))
  '(package-vc-selected-packages
@@ -101,6 +100,9 @@
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(tooltip-delay 0.1)
+ '(undo-limit 1600000000)
+ '(undo-outer-limit 240000000)
+ '(undo-strong-limit 240000000)
  '(vc-follow-symlinks t)
  '(warning-suppress-types '((comp)))
  '(xterm-mouse-mode t)

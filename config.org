@@ -75,6 +75,11 @@ We want to replace the emacs builtin C-f keybinding and evil's redefintion of it
 (add-hook 'evil-emacs-state-exit-hook (lambda () (set-face-background 'powerline-active1 "SlateBlue3")))
 #+END_SRC
 
+** vundo (new undo tree)
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-x u") 'vundo)
+#+end_src
+
 ** powerline
 #+BEGIN_SRC  emacs-lisp
 (require 'powerline)
@@ -82,12 +87,6 @@ We want to replace the emacs builtin C-f keybinding and evil's redefintion of it
 #+END_SRC
 
 ** arduino mode
-*** Disable irony mode
-Irony is incompatible with arduino files (for now at least)
-#+begin_src emacs-lisp
-(add-hook 'arduino-mode-hook (lambda () (irony-mode 0)))
-#+end_src
-
 ** keyboard
 *** make super key perform meta key role
 This doesn't always work, so commenting it out in order to use super for other stuff
@@ -307,21 +306,6 @@ Run the =lsp-doctor= command to see what can be done to improve performance. Thi
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 #+end_src
 
-*** irony-mode
-Turn on irony mode for C, C++, Objective C
-#+begin_src emacs-lisp
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
-
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-#+end_src
-
-Add company-irony to company backends
-#+begin_src emacs-lisp
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
-#+end_src
 *** clang-format
 Call clang-format whenever indenting
 #+begin_src emacs-lisp
@@ -332,14 +316,6 @@ Keybindings for clang-format{,-region}
 #+begin_src emacs-lisp
   (global-set-key (kbd "C-M-\\") 'clang-format-region)
   (global-set-key (kbd "C-M-|")  'clang-format-buffer)
-#+end_src
-*** company-mode
-**** company-jedi (python)
-#+begin_src emacs-lisp
-(defun my/python-mode-hook ()
-  (add-to-list 'company-backends 'company-jedi))
-
-(add-hook 'python-mode-hook 'my/python-mode-hook)
 #+end_src
 *** blacken
 Automatically run black on python scripts when saving
@@ -408,6 +384,10 @@ For the google style python docstring, we need GitHub user Xaldew's package repo
              '("xaldew" . "https://gustafwaldemarson.com/elpa/"))
 (add-to-list 'package-unsigned-archives "xaldew")
 ;; (package-initialize)
+#+end_src
+*** Enable yas-minor-mode for Python files
+#+begin_src emacs-lisp
+(add-hook 'python-mode-hook #'yas-minor-mode)
 #+end_src
 ** doxygen
 *** Make sure we're using doxymacs
