@@ -1,0 +1,5 @@
+;;; -*- lisp-data -*-
+(("/home/hamish/.emacs.d/elpa/claude-code/")
+ ("/home/hamish/.emacs.d/elpa/inheritenv/")
+ ("/home/hamish/.emacs.d/elpa/websocket/") ("/home/hamish/.emacs.d/")
+ ("/home/hamish/.emacs.d/elpa/monet/"))

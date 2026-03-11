@@ -67,12 +67,39 @@ We want to replace the emacs builtin C-f keybinding and evil's redefintion of it
 
 *** toggle modeline colour on insert/normal mode
 #+BEGIN_SRC emacs-lisp
-(add-hook 'evil-visual-state-entry-hook (lambda () (set-face-background 'powerline-active1 "chartreuse4")))
-(add-hook 'evil-visual-state-exit-hook (lambda () (set-face-background 'powerline-active1 "SlateBlue3")))
-(add-hook 'evil-insert-state-entry-hook (lambda () (set-face-background 'powerline-active1 "DarkOrange3")))
-(add-hook 'evil-insert-state-exit-hook (lambda () (set-face-background 'powerline-active1 "SlateBlue3")))
-(add-hook 'evil-emacs-state-entry-hook (lambda () (set-face-background 'powerline-active1 "color-124")))
-(add-hook 'evil-emacs-state-exit-hook (lambda () (set-face-background 'powerline-active1 "SlateBlue3")))
+(defun my-modeline-color-for-evil-state ()
+  "Return the modeline colour for the current evil state."
+  (cond ((evil-insert-state-p)  "DarkOrange3")
+        ((evil-visual-state-p)  "chartreuse4")
+        ((evil-emacs-state-p)   "color-124")
+        (t                      "SlateBlue3")))
+
+(defun my-update-modeline-color (&rest _)
+  "Set modeline colour to match the evil state of the selected window."
+  (set-face-background 'powerline-active1 (my-modeline-color-for-evil-state)))
+
+(add-hook 'evil-visual-state-entry-hook #'my-update-modeline-color)
+(add-hook 'evil-visual-state-exit-hook  #'my-update-modeline-color)
+(add-hook 'evil-insert-state-entry-hook #'my-update-modeline-color)
+(add-hook 'evil-insert-state-exit-hook  #'my-update-modeline-color)
+(add-hook 'evil-emacs-state-entry-hook  #'my-update-modeline-color)
+(add-hook 'evil-emacs-state-exit-hook   #'my-update-modeline-color)
+;; Update colour when switching windows, so it reflects the new window's state
+(add-hook 'window-selection-change-functions #'my-update-modeline-color)
+#+END_SRC
+*** make cursor change shape on insert mode
+#+BEGIN_SRC  emacs-lisp
+(defun my-update-cursor-shape (&rest _)
+  "Set terminal cursor shape to match the evil state of the selected window."
+  (unless (display-graphic-p)
+    (send-string-to-terminal
+     (if (evil-insert-state-p) "\033[5 q" "\033[0 q"))))
+
+(add-hook 'evil-insert-state-entry-hook #'my-update-cursor-shape)
+(add-hook 'evil-insert-state-exit-hook  #'my-update-cursor-shape)
+(add-hook 'evil-normal-state-entry-hook #'my-update-cursor-shape)
+;; Update cursor shape when switching windows, so it reflects the new window's state
+(add-hook 'window-selection-change-functions #'my-update-cursor-shape)
 #+END_SRC
 
 ** vundo (new undo tree)
@@ -225,6 +252,11 @@ Automatically enable the fill column indicator at 88 chars for all dev modes, as
 (require 'org-tempo)  ;; make <s TAB insert code block
 ;;(add-hook 'org-mode-hook #'toggle-word-wrap) ;; word wrap in org mode
 ;; turned this off because it was cutting words in half
+
+;; Disable org-element cache to prevent it from being triggered in non-org
+;; buffers (known org 9.5/9.6 bug where org-element--cache-after-change ends
+;; up in after-change-functions globally)
+(setq org-element-use-cache nil)
 #+END_SRC
 
 *** sh-mode
@@ -417,8 +449,13 @@ Enable copilot
   (add-to-list 'load-path "/home/hamish/.emacs.d/external-packages/copilot.el")
   (require 'copilot)
   (add-hook 'prog-mode-hook 'copilot-mode)
+  (add-hook 'yaml-mode-hook 'copilot-mode)
+  (add-to-list 'warning-suppress-types '(copilot))
   (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
   (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+  (global-set-key (kbd "C-x c w") 'copilot-accept-completion-by-word)
+  (global-set-key (kbd "C-x c l") 'copilot-accept-completion-by-line)
+  (global-set-key (kbd "C-x c p") 'copilot-accept-completion-by-paragraph)
 #+end_src
 
 # Copilot Chat
@@ -489,14 +526,6 @@ the ding on the ThinkPad P14s is very loud, we will use a visual indicator inste
 (add-hook 'org-mode-hook                                                                      
   (lambda ()                                                                          
     (define-key evil-normal-state-map (kbd "TAB") 'org-cycle))) 
-#+END_SRC
-*** make cursor change shape on insert mode
-#+BEGIN_SRC  emacs-lisp
-(add-hook 'evil-insert-state-entry-hook 
-  (lambda () 
-    (if (display-graphic-p) nil 
-      (send-string-to-terminal "\033[5 q"))))
-(add-hook 'evil-normal-state-entry-hook (lambda () (if (display-graphic-p) nil (send-string-to-terminal "\033[0 q"))))
 #+END_SRC
 *** fix broken keybindings
 In a terminal, emacs receives "C-;" and "C-," (likely among others) without the ctrl prefix, so we overwrite some other keybindings that we don't need.
