@@ -78,6 +78,7 @@ We want to replace the emacs builtin C-f keybinding and evil's redefintion of it
   "Set modeline colour to match the evil state of the selected window."
   (set-face-background 'powerline-active1 (my-modeline-color-for-evil-state)))
 
+(add-hook 'evil-normal-state-entry-hook #'my-update-modeline-color)
 (add-hook 'evil-visual-state-entry-hook #'my-update-modeline-color)
 (add-hook 'evil-visual-state-exit-hook  #'my-update-modeline-color)
 (add-hook 'evil-insert-state-entry-hook #'my-update-modeline-color)
