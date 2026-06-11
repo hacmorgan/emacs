@@ -333,6 +333,15 @@ This seems to mean that treemacs only shows files that ~lsp~ is tracking
 (lsp-treemacs-sync-mode 1)
 #+end_src
 
+**** lsp workspace blacklist
+Prevent lsp-mode from registering venv/site-packages directories as workspace folders.
+Without this, lsp-jedi adds every installed package as a workspace root, which
+~lsp-treemacs-sync-mode~ then copies into treemacs. When the venv is rebuilt those
+paths go stale and every Python file open shows "Project X cannot be read" errors.
+#+begin_src emacs-lisp
+(setq lsp-session-folders-blacklist (list (expand-file-name "~/venvs/")))
+#+end_src
+
 **** lsp performance
 Run the =lsp-doctor= command to see what can be done to improve performance. This one can't just be configured in customize.
 #+begin_src emacs-lisp
@@ -444,6 +453,20 @@ For some reson, undo is disabled somewhere outside of customize. We will see if 
 #+begin_src emacs-lisp
 (custom-set-variables '(ein:worksheet-enable-undo t))
 #+end_src
+** warnings
+Auto-dismiss the ~*Warnings*~ window after a few seconds so transient notices
+(e.g. copilot file-too-large warnings) don't require manual dismissal.
+#+begin_src emacs-lisp
+(defun my/auto-dismiss-warning-buffer (&rest _)
+  (run-with-timer 4 nil
+    (lambda ()
+      (when-let* ((buf (get-buffer "*Warnings*"))
+                  (win (get-buffer-window buf t)))
+        (delete-window win)))))
+
+(advice-add 'display-warning :after #'my/auto-dismiss-warning-buffer)
+#+end_src
+
 ** copilot
 Enable copilot
 #+begin_src emacs-lisp
