@@ -43,7 +43,6 @@
  '(gc-cons-threshold 100000000)
  '(global-auto-revert-mode t)
  '(global-company-mode t)
- '(global-undo-tree-mode t)
  '(iedit-case-sensitive-default nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)

@@ -202,6 +202,41 @@ Emacs in a terminal interprets "C-x C-;" as "C-x ;", so we will bind that also t
 #+begin_src emacs-lisp
 (global-set-key (kbd "<f12>") 'lsp-find-definition)
 #+end_src
+*** find definition in a split window
+Like =<f12>= (=lsp-find-definition=), but first splits the current window and
+jumps to the definition in the new window, leaving the original buffer visible.
+The number keys mirror Emacs's own split bindings: =C-c 2= splits below (like
+=C-x 2=) and =C-c 3= splits to the right (like =C-x 3=). =<f9>= and =<f11>= are
+function-key equivalents that survive Kitty/tmux.
+#+begin_src emacs-lisp
+  (defun lsp-find-definition-split-below ()
+    "Split below, then find the definition at point in the new window."
+    (interactive)
+    (select-window (split-window-below))
+    (lsp-find-definition))
+  (defun lsp-find-definition-split-right ()
+    "Split right, then find the definition at point in the new window."
+    (interactive)
+    (select-window (split-window-right))
+    (lsp-find-definition))
+
+  (global-set-key (kbd "C-c 2") 'lsp-find-definition-split-below)
+  (global-set-key (kbd "C-c 3") 'lsp-find-definition-split-right)
+  (global-set-key (kbd "<f9>")  'lsp-find-definition-split-below)
+  (global-set-key (kbd "<f11>") 'lsp-find-definition-split-right)
+#+end_src
+*** reload this config
+=C-c R= re-tangles =config.org= and reloads it (same path as startup, via
+=org-babel-load-file=). Note this is additive: newly added settings take effect,
+but removed bindings/disabled modes only revert on a full restart. For a single
+edited block, putting point in it and hitting =C-c C-c= is faster.
+#+begin_src emacs-lisp
+  (defun reload-config ()
+    "Re-tangle and reload config.org."
+    (interactive)
+    (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
+  (global-set-key (kbd "C-c R") 'reload-config)
+#+end_src
 ** generic editor settings
 *** indenting
 indent-by-spaces is set using customize, so it's in init.el
@@ -258,6 +293,11 @@ Automatically enable the fill column indicator at 88 chars for all dev modes, as
 ;; buffers (known org 9.5/9.6 bug where org-element--cache-after-change ends
 ;; up in after-change-functions globally)
 (setq org-element-use-cache nil)
+
+;; Don't prompt before evaluating emacs-lisp src blocks. This makes C-c C-c on
+;; a block in this config reload-without-friction. Safe for a trusted personal
+;; config; be aware it disables the prompt for ALL org files.
+(setq org-confirm-babel-evaluate nil)
 #+END_SRC
 
 *** sh-mode
