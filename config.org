@@ -414,6 +414,46 @@ Tree-sitter is a package that aims to provide better syntax highlighting via syn
 ;; turn on tree-sitter syntax highlighting for python files
 (add-hook 'python-mode-hook #'tree-sitter-hl-mode)
 #+end_src
+*** yaml-ts-mode + folding
+The blocks above use the old third-party =tree-sitter= package. YAML instead
+uses Emacs 30's *built-in* =treesit=, which gives us =yaml-ts-mode= plus
+structure-aware code folding via =treesit-fold=.
+
+The compiled =yaml= grammar lives in =~/.emacs.d/tree-sitter/=. On a fresh
+machine, rebuild it with =M-x treesit-install-language-grammar RET yaml RET=
+(needs a C compiler + git).
+
+Folding keys (active in YAML buffers): =C-c f= toggle fold at point,
+=C-c F= open all, =C-c U= close all.
+#+begin_src emacs-lisp
+;; Where to fetch/rebuild the grammar from if it is ever missing
+(add-to-list 'treesit-language-source-alist
+             '(yaml "https://github.com/tree-sitter-grammars/tree-sitter-yaml"))
+
+;; Open .yaml/.yml with the built-in tree-sitter mode
+(add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
+(add-to-list 'major-mode-remap-alist '(yaml-mode . yaml-ts-mode))
+
+;; Structure-aware folding for YAML
+(use-package treesit-fold
+  :pin "nongnu"
+  :hook (yaml-ts-mode . treesit-fold-mode)
+  :bind (:map treesit-fold-mode-map
+              ("C-c f" . treesit-fold-toggle)
+              ("C-c F" . treesit-fold-open-all)
+              ("C-c U" . treesit-fold-close-all))
+  :config
+  ;; vim-style fold keys in evil normal state (buffer-local override of the
+  ;; global z-prefix fold bindings, active only where treesit-fold is on)
+  (with-eval-after-load 'evil
+    (evil-define-key 'normal treesit-fold-mode-map
+      "za" #'treesit-fold-toggle
+      "zo" #'treesit-fold-open
+      "zO" #'treesit-fold-open-recursively
+      "zc" #'treesit-fold-close
+      "zR" #'treesit-fold-open-all
+      "zM" #'treesit-fold-close-all)))
+#+end_src
 ** treemacs
 Treemacs adds VScode-like tree-structure folders to Emacs
 #+BEGIN_SRC emacs-lisp
@@ -514,6 +554,7 @@ Enable copilot
   (require 'copilot)
   (add-hook 'prog-mode-hook 'copilot-mode)
   (add-hook 'yaml-mode-hook 'copilot-mode)
+  (add-hook 'yaml-ts-mode-hook 'copilot-mode)
   (add-to-list 'warning-suppress-types '(copilot))
   (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
   (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
