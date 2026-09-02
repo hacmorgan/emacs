@@ -289,6 +289,12 @@ Automatically enable the fill column indicator at 88 chars for all dev modes, as
 ;;(add-hook 'org-mode-hook #'toggle-word-wrap) ;; word wrap in org mode
 ;; turned this off because it was cutting words in half
 
+;; Add an IN-PROGRESS state between TODO and DONE (cycle with C-c C-t)
+(setq org-todo-keywords
+      '((sequence "TODO" "IN-PROGRESS" "DONE")))
+(setq org-todo-keyword-faces
+      '(("IN-PROGRESS" . (:foreground "SlateBlue1" :weight bold))))
+
 ;; Disable org-element cache to prevent it from being triggered in non-org
 ;; buffers (known org 9.5/9.6 bug where org-element--cache-after-change ends
 ;; up in after-change-functions globally)
